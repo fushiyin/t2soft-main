@@ -152,7 +152,7 @@ export default function Contact() {
 																placeholder={t(
 																	`contact.form.${field}_placeholder`,
 																)}
-																className="font-sans break-keep whitespace-normal break-words min-h-[120px] border-t2-grayBlue focus:outline-none focus:ring-0 focus-visible:shadow-none focus-visible:outline-none focus-visible:ring-0 focus-visible:border-light-blue"
+																className="font-sans break-keep whitespace-normal break-words min-h-[120px] border-t2-grayBlue focus:outline-none focus:ring-0 focus-visible:shadow-none focus-visible:outline-none focus-visible:ring-0 focus-visible:border-SecondaryBg"
 															/>
 														) : (
 															<Input
@@ -169,7 +169,7 @@ export default function Contact() {
 																placeholder={t(
 																	`contact.form.${field}_placeholder`,
 																)}
-																className="focus:outline-none focus:ring-0 focus-visible:shadow-none focus-visible:outline-none focus-visible:ring-0 border-t2-grayBlue focus-visible:border-light-blue"
+																className="focus:outline-none focus:ring-0 focus-visible:shadow-none focus-visible:outline-none focus-visible:ring-0 border-t2-grayBlue focus-visible:border-SecondaryBg"
 															/>
 														)}
 													</motion.div>
@@ -179,7 +179,7 @@ export default function Contact() {
 											<motion.div variants={itemVariants}>
 												<Button
 													type="submit"
-													className="w-full bg-dark-blue hover:bg-light-blue cursor-pointer text-white transition-colors duration-300"
+													className="w-full bg-dark-blue hover:bg-SecondaryBg cursor-pointer text-white transition-colors duration-300"
 													disabled={isSubmitting}
 												>
 													{isSubmitting

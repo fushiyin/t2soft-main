@@ -90,7 +90,7 @@ const SolutionDetail = () => {
 
 				<div className="absolute max-w-[1440px] mx-auto px-2 md:px-6 inset-0 flex gap-4 flex-col items-center md:items-start justify-center">
 					<motion.p
-						className="text-base md:text-xl text-light-blue korean-text"
+						className="text-base md:text-xl text-SecondaryBg korean-text"
 						initial="hidden"
 						animate={bannerInView ? "visible" : "hidden"}
 						variants={fadeUp}
@@ -135,7 +135,7 @@ const SolutionDetail = () => {
 					</motion.p>
 					<motion.button
 						type="button"
-						className="inline-flex korean-text cursor-pointer font-bold items-center gap-2 px-4 md:px-6 py-2 md:py-3 text-base text-heading-black hover:text-white bg-gradient-to-r from-pale-blue to-light-blue rounded-lg hover:bg-primary/90 w-fit duration-300 transform hover:scale-105 shadow-lg font-sans break-keep whitespace-normal break-words"
+						className="inline-flex korean-text cursor-pointer font-bold items-center gap-2 px-4 md:px-6 py-2 md:py-3 text-base text-heading-black hover:text-white bg-gradient-to-r from-pale-blue to-SecondaryBg rounded-lg hover:bg-primary/90 w-fit duration-300 transform hover:scale-105 shadow-lg font-sans break-keep whitespace-normal break-words"
 						onClick={() => navigate(idRouter.contact)}
 						initial="hidden"
 						animate={bannerInView ? "visible" : "hidden"}
@@ -300,7 +300,7 @@ const SolutionDetail = () => {
 										min-h-[80px] md:min-h-[120px]
 										flex items-center justify-center
 										bg-[#1A318B] text-white
-										hover:bg-light-blue hover:text-dark-gray
+										hover:bg-SecondaryBg hover:text-dark-gray
 										transition-all
 										data-[state=active]:bg-white
 										data-[state=active]:text-dark-gray

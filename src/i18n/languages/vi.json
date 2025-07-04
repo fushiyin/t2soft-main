@@ -108,7 +108,7 @@
 				},
 				{
 					"text": "expert teams, cost efficiency, ",
-					"className": "text-light-blue font-bold"
+					"className": "text-SecondaryBg font-bold"
 				},
 				{
 					"text": "and flexible scalability. ",
@@ -124,7 +124,7 @@
 				},
 				{
 					"text": "development partner ",
-					"className": "text-light-blue font-bold"
+					"className": "text-SecondaryBg font-bold"
 				}
 			],
 			"desc": "T2 Soft is a leading IT outsourcing and systems integration company, providing software development, maintenance, and IT consulting services to global clients. We aim to quickly deliver high-quality IT solutions optimized for customer needs, successfully support digital transformation, and grow together with our clients."
@@ -754,7 +754,7 @@
 			"1": [
 				{
 					"text": "Skilled tech talent",
-					"className": "text-light-blue font-bold text-3xl"
+					"className": "text-SecondaryBg font-bold text-3xl"
 				},
 				{
 					"text": " is harder to find and costlier than ever.",
@@ -764,7 +764,7 @@
 			"2": [
 				{
 					"text": "Skilled tech talent",
-					"className": "text-light-blue font-bold text-3xl"
+					"className": "text-SecondaryBg font-bold text-3xl"
 				},
 				{
 					"text": " harder to find and costlier than ever.",
@@ -775,7 +775,7 @@
 				{ "text": "Hard to", "className": "text-dark-gray text-2xl" },
 				{
 					"text": " deploy talent instantly",
-					"className": "text-light-blue font-bold text-3xl"
+					"className": "text-SecondaryBg font-bold text-3xl"
 				},
 				{ "text": " in a rapidly changing market.", "className": "text-dark-gray text-2xl" }
 			],
@@ -791,7 +791,7 @@
 			],
 			"5": [
 				{ "text": "A fast-growing", "className": "text-white text-2xl" },
-				{ "text": " tech gap", "className": "text-light-blue font-bold text-3xl" },
+				{ "text": " tech gap", "className": "text-SecondaryBg font-bold text-3xl" },
 				{
 					"text": " leads to a loss in competitiveness",
 					"className": "text-white text-2xl"

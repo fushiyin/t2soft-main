@@ -244,7 +244,7 @@ export default function DevelopmentCapacity({ contentClass }) {
 						transition={{ duration: 0.6 }}
 						viewport={{ once: true }}
 					>
-						<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl pb-6 bg-gradient-to-r from-light-blue via-light-blue-gray to-pale-blue bg-clip-text text-transparent">
+						<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl pb-6 bg-gradient-to-r from-SecondaryBg via-SecondaryBg-gray to-pale-blue bg-clip-text text-transparent">
 							{t("tech_stack.title")}
 						</h2>
 						<p className="max-w-[900px] mx-auto text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed px-8 400:px-6 font-sans break-keep whitespace-normal break-words">
@@ -361,7 +361,7 @@ export default function DevelopmentCapacity({ contentClass }) {
 						{t("tech_stack.cta.des_2")}
 					</p>
 					<button
-						className="cursor-pointer text-sm sm:text-xl px-5 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-pale-blue to-light-blue text-heading-black hover:text-white font-semibold rounded-xl hover:from-light-blue hover:to-normal-dark-blue transition-all duration-300 transform hover:scale-105 shadow-lg"
+						className="cursor-pointer text-sm sm:text-xl px-5 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-pale-blue to-SecondaryBg text-heading-black hover:text-white font-semibold rounded-xl hover:from-SecondaryBg hover:to-normal-dark-blue transition-all duration-300 transform hover:scale-105 shadow-lg"
 						onClick={() => navigate(idRouter.contact)}
 					>
 						{t("tech_stack.cta.button")}

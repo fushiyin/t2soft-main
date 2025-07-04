@@ -5,86 +5,261 @@
 
 :root {
 	--radius: 0.625rem;
-	--background: #F9FAFB;
-	--foreground: #111827;
-	--card: #FFFFFF;
-	--card-foreground: #111827;
-	--popover: #FFFFFF;
-	--popover-foreground: #111827;
-	--primary: #0F172A;
-	--primary-foreground: #FFFFFF;
-	--secondary: #10B981;
-	--secondary-foreground: #FFFFFF;
-	--muted: #F3F4F6;
-	--muted-foreground: #6B7280;
-	--accent: #F59E0B;
-	--accent-foreground: #FFFFFF;
-	--destructive: #EF4444;
-	--success: #22C55E;
-	--border: #E5E7EB;
-	--input: #E5E7EB;
-	--ring: #2563EB;
-	--link: #2563EB;
-	--footer: #0F172A;
-	--navbar: #0F172A;
-	--icon-accent: #F59E0B;
-	--button-hover: #0E9E6E;
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.129 0.042 264.695);
+	--card: oklch(1 0 0);
+	--card-foreground: oklch(0.129 0.042 264.695);
+	--popover: oklch(1 0 0);
+	--popover-foreground: oklch(0.129 0.042 264.695);
+	--primary: oklch(0.208 0.042 265.755);
+	--primary-foreground: oklch(0.984 0.003 247.858);
+	--secondary: oklch(0.968 0.007 247.896);
+	--secondary-foreground: oklch(0.208 0.042 265.755);
+	--muted: oklch(0.968 0.007 247.896);
+	--muted-foreground: oklch(0.554 0.046 257.417);
+	--accent: oklch(0.968 0.007 247.896);
+	--accent-foreground: oklch(0.208 0.042 265.755);
+	--destructive: oklch(0.577 0.245 27.325);
+	--border: oklch(0.929 0.013 255.508);
+	--input: oklch(0.929 0.013 255.508);
+	--ring: oklch(0.704 0.04 256.788);
+	--chart-1: oklch(0.646 0.222 41.116);
+	--chart-2: oklch(0.6 0.118 184.704);
+	--chart-3: oklch(0.398 0.07 227.392);
+	--chart-4: oklch(0.828 0.189 84.429);
+	--chart-5: oklch(0.769 0.188 70.08);
+	--sidebar: oklch(0.984 0.003 247.858);
+	--sidebar-foreground: oklch(0.129 0.042 264.695);
+	--sidebar-primary: oklch(0.208 0.042 265.755);
+	--sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+	--sidebar-accent: oklch(0.968 0.007 247.896);
+	--sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+	--sidebar-border: oklch(0.929 0.013 255.508);
+	--sidebar-ring: oklch(0.704 0.04 256.788);
 	--header-active: #e6f4ff;
 	--header-hover: #0000000f;
 }
-
 @theme inline {
 	--breakpoint-500: 500px;
 	--breakpoint-400: 400px;
-	--color-primary: #0F172A;
-	--color-secondary: #10B981;
-	--color-secondary-hover: #0E9E6E;
-	--color-accent: #F59E0B;
-	--color-success: #22C55E;
-	--color-destructive: #EF4444;
-	--color-link: #2563EB;
-	--color-footer: #0F172A;
-	--color-navbar: #0F172A;
-	--color-card: #FFFFFF;
-	--color-background: #F9FAFB;
-	--color-header: #0F172A;
-	--color-button-hover: #0E9E6E;
-	--color-title: #111827;
-	--color-text: #111827;
-	--color-text-secondary: #6B7280;
-	--color-icon-accent: #F59E0B;
-	--color-border: #E5E7EB;
-	--color-input: #E5E7EB;
-	--color-ring: #2563EB;
-	--color-muted: #F3F4F6;
-	--color-muted-foreground: #6B7280;
+
+	/*our custom color */
+	--color-custom-primary: #181A20;
+	--color-SecondaryBg-gray: #0B0E11;
+	--color-dark-blue: #2B3139;
+	--color-draker-blue: #474D57;
+	--color-btn: #FCD535;
+	--color-
+	--color-near-black-blue: #090f33;
+	--color-deepest-navy: #03071f;
+	--color-dark-gray: #232222;
+	--color-heading-black: #2d2d2d;
+	--color-section-gray: #f4f8ff;
+	--color-pale-blue: #b1dfe6;
+	--color-closet-dark-blue: #000428;
+	--color-normal-dark-blue: #004e92;
+	--color-pure-black: #000000;
+	--color-light-mint: #00a9c0;
+	--color-light-green: #7cd957;
+	--color-pure-black: #000000;
+	--color-header-active: #e6f4ff;
+	--color-header-hover: #0000000f;
+
+	/* clone color */
+	--color-BasicBg: #181A20;
+    --color-SecondaryBg: #0B0E11;
+    --color-Input: #2B3139;
+    --color-InputLine: #474D57;
+    --color-CardBg: #1E2329;
+    --color-Vessel: #1E2329;
+    --color-Line: #2B3139;
+    --color-DisableBtn: #2B3139;
+    --color-DisableText: #5E6673;
+    --color-TertiaryText: #848E9C;
+    --color-SecondaryText: #B7BDC6;
+    --color-PrimaryText: #EAECEF;
+    --color-RedGreenBgText: #FFFFFF;
+    --color-EmphasizeText: #FF693D;
+    --color-TextOnGray: #EAECEF;
+    --color-TextOnYellow: #202630;
+    --color-IconNormal: #848E9C;
+    --color-LiteBg1: #202630;
+    --color-LiteBg2: #191A1F;
+    --color-BtnBg: #FCD535;
+    --color-PrimaryYellow: #F0B90B;
+    --color-TextLink: #F0B90B;
+    --color-TradeBg: #0B0E11;
+    --color-TextToast: #A37200;
+    --color-DepthSellBg: #35141D;
+    --color-SellHover: #FF707E;
+    --color-Sell: #F6465D;
+    --color-TextSell: #F6465D;
+    --color-DepthBuyBg: #102821;
+    --color-BuyHover: #32D993;
+    --color-Buy: #2EBD85;
+    --color-TextBuy: #2EBD85;
+    --color-Error: #F6465D;
+    --color-SuccessBg: #102821;
+    --color-Success: #2EBD85;
+    --color-TagBg: #474D57;
+    --color-Grid: #2B3139;
+    --color-Placeholder: #474D57;
+    --color-ToastBg: #707A8A;
+    --color-TwoColorIcon: #CACED3;
+    --color-ErrorBg: rgba(246, 70, 93, 0.1);
+    --color-BadgeBg: rgba(240, 185, 11, 0.1);
+    --color-Popup: #2B3139;
+    --color-Mask: rgba(11, 14, 17, 0.6);
+    --color-WidgetSecondaryBg: rgba(193, 204, 219, 0.08);
+    --color-ContainerBg: #1E2329;
+    --color-YellowAlpha10: rgba(252, 213, 53, 0.1);
+    --color-YellowAlpha20: rgba(252, 213, 53, 0.2);
+    --color-RedAlpha10: rgba(246, 70, 93, 0.1);
+    --color-RedAlpha20: rgba(246, 70, 93, 0.2);
+    --color-GreenAlpha10: rgba(46, 189, 133, 0.1);
+    --color-GreenAlpha20: rgba(46, 189, 133, 0.2);
+
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
 }
 
 .dark {
-	--background: #1F2937;
-	--foreground: #F3F4F6;
-	--card: #1F2937;
-	--card-foreground: #F3F4F6;
-	--popover: #1F2937;
-	--popover-foreground: #F3F4F6;
-	--primary: #0F172A;
-	--primary-foreground: #F3F4F6;
-	--secondary: #10B981;
-	--secondary-foreground: #F3F4F6;
-	--muted: #374151;
-	--muted-foreground: #9CA3AF;
-	--accent: #F59E0B;
-	--accent-foreground: #1F2937;
-	--destructive: #EF4444;
-	--success: #22C55E;
-	--border: #374151;
-	--input: #374151;
-	--ring: #2563EB;
-	--link: #2563EB;
-	--footer: #0F172A;
-	--navbar: #0F172A;
-	--icon-accent: #F59E0B;
-	--button-hover: #0E9E6E;
+	/*custom color */
+	--color-SecondaryBg: #5087f7;
+	--color-SecondaryBg-gray: #dae4ed;
+	--color-dark-blue: #19286d;
+	--color-draker-blue: #101944;
+	--color-near-black-blue: #090f33;
+	--color-deepest-navy: #03071f;
+	--color-dark-gray: #232222;
+	--color-heading-black: #2d2d2d;
+	--color-section-gray: #f4f8ff;
+	--color-pale-blue: #b1dfe6;
+	--color-closet-dark-blue: #000428;
+	--color-normal-dark-blue: #004e92;
+	--color-pure-black: #000000;
+	--color-light-mint: #00a9c0;
+	--color-light-green: #7cd957;
+	--color-pure-black: #000000;
+
+	/* clone color */
+	--color-BasicBg: #181A20;
+    --color-SecondaryBg: #0B0E11;
+    --color-Input: #2B3139;
+    --color-InputLine: #474D57;
+    --color-CardBg: #1E2329;
+    --color-Vessel: #1E2329;
+    --color-Line: #2B3139;
+    --color-DisableBtn: #2B3139;
+    --color-DisableText: #5E6673;
+    --color-TertiaryText: #848E9C;
+    --color-SecondaryText: #B7BDC6;
+    --color-PrimaryText: #EAECEF;
+    --color-RedGreenBgText: #FFFFFF;
+    --color-EmphasizeText: #FF693D;
+    --color-TextOnGray: #EAECEF;
+    --color-TextOnYellow: #202630;
+    --color-IconNormal: #848E9C;
+    --color-LiteBg1: #202630;
+    --color-LiteBg2: #191A1F;
+    --color-BtnBg: #FCD535;
+    --color-PrimaryYellow: #F0B90B;
+    --color-TextLink: #F0B90B;
+    --color-TradeBg: #0B0E11;
+    --color-TextToast: #A37200;
+    --color-DepthSellBg: #35141D;
+    --color-SellHover: #FF707E;
+    --color-Sell: #F6465D;
+    --color-TextSell: #F6465D;
+    --color-DepthBuyBg: #102821;
+    --color-BuyHover: #32D993;
+    --color-Buy: #2EBD85;
+    --color-TextBuy: #2EBD85;
+    --color-Error: #F6465D;
+    --color-SuccessBg: #102821;
+    --color-Success: #2EBD85;
+    --color-TagBg: #474D57;
+    --color-Grid: #2B3139;
+    --color-Placeholder: #474D57;
+    --color-ToastBg: #707A8A;
+    --color-TwoColorIcon: #CACED3;
+    --color-ErrorBg: rgba(246, 70, 93, 0.1);
+    --color-BadgeBg: rgba(240, 185, 11, 0.1);
+    --color-Popup: #2B3139;
+    --color-Mask: rgba(11, 14, 17, 0.6);
+    --color-WidgetSecondaryBg: rgba(193, 204, 219, 0.08);
+    --color-ContainerBg: #1E2329;
+    --color-YellowAlpha10: rgba(252, 213, 53, 0.1);
+    --color-YellowAlpha20: rgba(252, 213, 53, 0.2);
+    --color-RedAlpha10: rgba(246, 70, 93, 0.1);
+    --color-RedAlpha20: rgba(246, 70, 93, 0.2);
+    --color-GreenAlpha10: rgba(46, 189, 133, 0.1);
+    --color-GreenAlpha20: rgba(46, 189, 133, 0.2);
+
+	--background: oklch(0.129 0.042 264.695);
+	--foreground: oklch(0.984 0.003 247.858);
+	--card: oklch(0.208 0.042 265.755);
+	--card-foreground: oklch(0.984 0.003 247.858);
+	--popover: oklch(0.208 0.042 265.755);
+	--popover-foreground: oklch(0.984 0.003 247.858);
+	--primary: oklch(0.929 0.013 255.508);
+	--primary-foreground: oklch(0.208 0.042 265.755);
+	--secondary: oklch(0.279 0.041 260.031);
+	--secondary-foreground: oklch(0.984 0.003 247.858);
+	--muted: oklch(0.279 0.041 260.031);
+	--muted-foreground: oklch(0.704 0.04 256.788);
+	--accent: oklch(0.279 0.041 260.031);
+	--accent-foreground: oklch(0.984 0.003 247.858);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.551 0.027 264.364);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
+	--sidebar: oklch(0.208 0.042 265.755);
+	--sidebar-foreground: oklch(0.984 0.003 247.858);
+	--sidebar-primary: oklch(0.488 0.243 264.376);
+	--sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+	--sidebar-accent: oklch(0.279 0.041 260.031);
+	--sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
 @layer base {
@@ -93,7 +268,7 @@
 	}
 	body {
 		@apply bg-background text-foreground;
-		/* cursor: none; */
+		cursor: none;
 	}
 }
 
@@ -114,11 +289,6 @@
 	background-color: #00aeef !important;
 }
 
-.korean-text {
-	word-break: keep-all;
-	line-break: auto;
-  }
-
 .loader {
   border: 4px solid #f3f3f3;
   border-top: 4px solid #3498db;
@@ -130,6 +300,7 @@
   height: 48px;
   animation: spin 0.8s linear infinite;
 }
+
 @keyframes spin {
   0% { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}

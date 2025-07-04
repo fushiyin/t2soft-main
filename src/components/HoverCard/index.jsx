@@ -24,14 +24,14 @@ const HoverCard = ({ icon, title, description, className = "" }) => {
 				</h2>
 				{!icon && (
 					<div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-4">
-						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-light-blue"></div>
-						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-light-blue"></div>
-						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-light-blue"></div>
-						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-light-blue"></div>
-						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-light-blue"></div>
-						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-light-blue"></div>
-						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-light-blue"></div>
-						<div className="w-20 sm:w-28 md:w-32 h-2.5 sm:h-[10px] bg-gradient-to-r from-pale-blue to-light-blue rounded-full" />
+						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-SecondaryBg"></div>
+						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-SecondaryBg"></div>
+						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-SecondaryBg"></div>
+						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-SecondaryBg"></div>
+						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-SecondaryBg"></div>
+						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-SecondaryBg"></div>
+						<div className="w-2.5 h-2.5 sm:w-[10px] sm:h-[10px] rounded-full bg-gradient-to-r from-pale-blue to-SecondaryBg"></div>
+						<div className="w-20 sm:w-28 md:w-32 h-2.5 sm:h-[10px] bg-gradient-to-r from-pale-blue to-SecondaryBg rounded-full" />
 					</div>
 				)}
 

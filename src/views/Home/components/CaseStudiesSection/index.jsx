@@ -65,7 +65,7 @@ const CaseStudiesSection = () => {
       group flex gap-2.5 items-center px-4 py-2 text-sm font-bold rounded-md
       shadow-sm bg-foreground text-white cursor-pointer
       transition-all duration-300 ease-in-out
-      hover:bg-gradient-to-r hover:from-dark-blue hover:to-light-blue
+      hover:bg-gradient-to-r hover:from-dark-blue hover:to-SecondaryBg
       hover:shadow-lg hover:scale-105
       "
 					>

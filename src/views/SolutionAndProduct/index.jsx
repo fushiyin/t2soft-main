@@ -204,8 +204,8 @@ export default function SolutionAndProduct() {
 									<div className="w-full md:w-[50%] h-[60%] md:h-[90%] px-4 md:pl-8 md:pr-8 pt-4 md:pt-8 pb-4 md:pb-8 gap-4 flex flex-col md:px-0 ">
 										<div className="flex items-center space-x-3">
 											<div className="flex space-x-1">
-												<div className="w-8 h-4 bg-gradient-to-r from-pale-blue to-light-blue transform -skew-x-[30deg]"></div>
-												<div className="w-8 h-4 bg-gradient-to-r from-pale-blue to-light-blue transform -skew-x-[30deg]"></div>
+												<div className="w-8 h-4 bg-gradient-to-r from-pale-blue to-SecondaryBg transform -skew-x-[30deg]"></div>
+												<div className="w-8 h-4 bg-gradient-to-r from-pale-blue to-SecondaryBg transform -skew-x-[30deg]"></div>
 											</div>
 											<h3 className="text-lg font-semibold font-sans break-keep whitespace-normal break-words korean-text">
 												{t("solution.product.so.kick_start")}
@@ -219,7 +219,7 @@ export default function SolutionAndProduct() {
 										</p>
 										<button
 											type="button"
-											className="inline-flex korean-text cursor-pointer font-bold items-center gap-2 px-6 md:px-6 py-2 md:py-3 text-base text-heading-black hover:text-white bg-gradient-to-r from-pale-blue to-light-blue rounded-lg hover:bg-primary/90 w-fit duration-300 transform hover:scale-105 shadow-lg font-sans break-keep whitespace-normal break-words"
+											className="inline-flex korean-text cursor-pointer font-bold items-center gap-2 px-6 md:px-6 py-2 md:py-3 text-base text-heading-black hover:text-white bg-gradient-to-r from-pale-blue to-SecondaryBg rounded-lg hover:bg-primary/90 w-fit duration-300 transform hover:scale-105 shadow-lg font-sans break-keep whitespace-normal break-words"
 											onClick={() =>
 												navigate(
 													`${idRouter.solutionDetail.replace(":id", product.id)}`,

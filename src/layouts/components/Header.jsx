@@ -169,7 +169,7 @@ const Header = () => {
 												isHome && !isScrolled && !isActive,
 											"text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)]":
 												!isHome && !isActive,
-											"dark:text-light-blue": isScrolled && isActive,
+											"dark:text-SecondaryBg": isScrolled && isActive,
 										},
 									)}
 								>
@@ -197,11 +197,11 @@ const Header = () => {
 										className={classNames(
 											"px-3 py-2 text-base font-medium transition-colors w-full",
 											{
-												"text-[var(--color-dark-blue)] font-extrabold underline underline-offset-8 dark:text-light-blue":
+												"text-[var(--color-dark-blue)] font-extrabold underline underline-offset-8 dark:text-SecondaryBg":
 													window.location?.pathname ===
 														contactLink.path ||
 													!window.location?.pathname,
-												"text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)] hover:bg-gray-100 dark:hover:bg-light-blue rounded-lg":
+												"text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)] hover:bg-gray-100 dark:hover:bg-SecondaryBg rounded-lg":
 													!(
 														window.location?.pathname ===
 															contactLink.path ||
@@ -218,10 +218,10 @@ const Header = () => {
 										className={classNames(
 											"px-3 py-2 text-base font-medium transition-colors w-full ",
 											{
-												"text-[var(--color-dark-blue)] font-extrabold underline underline-offset-8 dark:text-light-blue":
+												"text-[var(--color-dark-blue)] font-extrabold underline underline-offset-8 dark:text-SecondaryBg":
 													window.location?.pathname === blogLink.path ||
 													!window.location?.pathname,
-												"text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)] hover:bg-gray-100 dark:hover:bg-light-blue rounded-lg":
+												"text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)] hover:bg-gray-100 dark:hover:bg-SecondaryBg rounded-lg":
 													!(
 														window.location?.pathname ===
 															blogLink.path ||
@@ -401,9 +401,9 @@ const Header = () => {
 													key={`lang_item_${lang_item?.code}_${index}`}
 													onClick={() => changeLanguage(lang_item)}
 													className={classNames(
-														"flex justify-start items-center cursor-pointer w-full h-[48px] px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-light-blue hover:text-white dark:hover:bg-dark-blue",
+														"flex justify-start items-center cursor-pointer w-full h-[48px] px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-SecondaryBg hover:text-white dark:hover:bg-dark-blue",
 														{
-															"bg-light-blue-gray dark:bg-light-blue text-gray-700":
+															"bg-SecondaryBg-gray dark:bg-SecondaryBg text-gray-700":
 																language?.code === lang_item.code,
 															"rounded-t-md": index === 0,
 															"rounded-b-md":

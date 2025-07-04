@@ -99,19 +99,19 @@
 		"text_header": {
 			"title": [
 				{ "text": "외주개발은 ", "className": "text-white" },
-				{ "text": "전문 인력, 비용 절감, ", "className": "text-light-blue font-bold" },
+				{ "text": "전문 인력, 비용 절감, ", "className": "text-SecondaryBg font-bold" },
 				{
 					"text": "유연한 대응으로 기술 격차와 인재 부족 문제를 ",
 					"className": "text-white"
 				},
-				{ "text": "효과적으로 ", "className": "text-light-blue font-bold" },
+				{ "text": "효과적으로 ", "className": "text-SecondaryBg font-bold" },
 				{ "text": "해결합니다. ", "className": "text-white" }
 			]
 		},
 		"text_footer": {
 			"title": [
 				{ "text": "차세대 기술을 이끄는 신뢰의 <br>", "className": "text-dark-gray" },
-				{ "text": "개발 파트너", "className": "text-light-blue font-bold" },
+				{ "text": "개발 파트너", "className": "text-SecondaryBg font-bold" },
 				{
 					"text": "가 되어드립니다.",
 					"className": "text-dark-gray"
@@ -746,7 +746,7 @@
 				{ "text": "국내 ", "className": "text-white text-2xl" },
 				{
 					"text": "인건비 부담, ",
-					"className": "text-light-blue font-bold text-3xl",
+					"className": "text-SecondaryBg font-bold text-3xl",
 					"br": true
 				},
 				{ "text": "프로젝트 시작조차 어렵게 만듭니다.", "className": "text-white text-2xl" }
@@ -755,7 +755,7 @@
 				{ "text": "최신 기술을 구현할 ", "className": "text-dark-gray text-2xl" },
 				{
 					"text": "개발자 찾기, ",
-					"className": "text-light-blue font-bold text-3xl",
+					"className": "text-SecondaryBg font-bold text-3xl",
 					"br": true
 				},
 				{ "text": "이제는 더 어렵고 더 비쌉니다.", "className": "text-dark-gray text-2xl" }
@@ -766,7 +766,7 @@
 					"className": "text-dark-gray text-2xl",
 					"br": true
 				},
-				{ "text": "즉각적인 인력 확충", "className": "text-light-blue font-bold text-3xl" },
+				{ "text": "즉각적인 인력 확충", "className": "text-SecondaryBg font-bold text-3xl" },
 				{ "text": "이 쉽지 않습니다.", "className": "text-dark-gray text-2xl" }
 			],
 			"4": [
@@ -779,7 +779,7 @@
 			],
 			"5": [
 				{ "text": "빠르게 벌어지는", "className": "text-white text-2xl" },
-				{ "text": " 기술 격차", "className": "text-light-blue font-bold text-3xl" },
+				{ "text": " 기술 격차", "className": "text-SecondaryBg font-bold text-3xl" },
 				{ "text": "는 ", "className": "text-white text-2xl", "br": true },
 				{ "text": "곧 경쟁력의 격차로 이어집니다.", "className": "text-white text-2xl" }
 			]

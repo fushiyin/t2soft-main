@@ -80,7 +80,7 @@ export default function Testimonials({ contentClass }) {
 				<div className="absolute inset-10 md:inset-0 z-10 m-auto aspect-[1051/375] w-full max-w-[1051px] rounded-[300px]  blur-[97px] bg-dark-gray/80"></div>
 				<div className="absolute inset-10 md:inset-0 z-20 m-auto aspect-[639/229] w-full max-w-[639px] rounded-[300px] blur-[52px] bg-dark-gray/80"></div>
 				<div className="absolute inset-10 md:inset-0 flex items-center justify-center">
-					<h2 className="z-30 w-full max-w-[600px] text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold  bg-gradient-to-r from-light-blue via-light-blue-gray to-pale-blue bg-clip-text text-transparent text-center px-6 py-4 sm:px-8 sm:py-5 md:px-[30px] md:py-[25px] rounded-[10px]">
+					<h2 className="z-30 w-full max-w-[600px] text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold  bg-gradient-to-r from-SecondaryBg via-SecondaryBg-gray to-pale-blue bg-clip-text text-transparent text-center px-6 py-4 sm:px-8 sm:py-5 md:px-[30px] md:py-[25px] rounded-[10px]">
 						{t("testimonials.title")}
 					</h2>
 				</div>

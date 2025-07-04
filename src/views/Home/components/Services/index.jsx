@@ -173,7 +173,7 @@ const Services = ({ contentClass }) => {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5 }}
-						className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter pb-4 md:pb-6 bg-gradient-to-r from-light-blue via-light-blue-gray to-pale-blue bg-clip-text text-transparent"
+						className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter pb-4 md:pb-6 bg-gradient-to-r from-SecondaryBg via-SecondaryBg-gray to-pale-blue bg-clip-text text-transparent"
 					>
 						{t("services.section.title")}
 					</motion.h2>
@@ -239,7 +239,7 @@ const Services = ({ contentClass }) => {
 													initial={{ height: 0 }}
 													animate={{ height: "60%" }}
 													transition={{ duration: 0.5, delay: 0.3 }}
-													className="absolute left-[80px] top-1/2 -translate-y-1/2 w-[20px] bg-light-blue"
+													className="absolute left-[80px] top-1/2 -translate-y-1/2 w-[20px] bg-SecondaryBg"
 												/>
 											)}
 											<div
@@ -322,7 +322,7 @@ const Services = ({ contentClass }) => {
 																duration: 0.3,
 																delay: 0.8 + idx * 0.1,
 															}}
-															className="mt-1 w-1.5 h-1.5 rounded-full bg-light-blue shrink-0"
+															className="mt-1 w-1.5 h-1.5 rounded-full bg-SecondaryBg shrink-0"
 														/>
 														<span className="font-sans break-words whitespace-normal text-white/90">
 															{detail}
@@ -337,7 +337,7 @@ const Services = ({ contentClass }) => {
 												animate={{ opacity: 1, y: 0 }}
 												transition={{ duration: 0.5, delay: 1 }}
 												onClick={() => navigate(idRouter?.service)}
-												className="hidden md:inline-flex cursor-pointer font-bold items-center gap-2 px-4 md:px-6 py-2 md:py-3 text-base text-heading-black hover:text-white bg-gradient-to-r from-pale-blue to-light-blue rounded-lg hover:bg-primary/90 w-fit duration-300 transform hover:scale-105 shadow-lg"
+												className="hidden md:inline-flex cursor-pointer font-bold items-center gap-2 px-4 md:px-6 py-2 md:py-3 text-base text-heading-black hover:text-white bg-gradient-to-r from-pale-blue to-SecondaryBg rounded-lg hover:bg-primary/90 w-fit duration-300 transform hover:scale-105 shadow-lg"
 											>
 												{t("our_services.button_learn_more")}
 												<ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
