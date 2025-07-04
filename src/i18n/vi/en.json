@@ -1,0 +1,80 @@
+{
+	"about_us": {
+		"title": "About us"
+	},
+	"competitive_edges": {
+		"description": "Your Smart Development Partner for Shared Success.",
+		"edges": {
+			"coordinator": {
+				"description": [
+					"Bilingual project managers with global experience",
+					"Deep understanding of client needs & local teams",
+					"Optimized workflows for global operations",
+					"Fast, clear issue resolution, smooth communication"
+				],
+				"title": "Korean PM Coordinator"
+			},
+			"developer": {
+				"title": "Highly Qualified Tech Talent",
+				"description": [
+					"Various language and frameworks proficiency",
+					"Quickly adapt to the latest trends and technological changes",
+					"Flexible team structure for client project needs",
+					"Quality-oriented, hands-on development team"
+				]
+			},
+			"communication": {
+				"title": "Global Communication Skill",
+				"description": [
+					"Optimized communication between customers and developers with professional bridge personnel",
+					"High level of understanding and responsiveness to cultural differences",
+					"Efficient collaboration through customer-tailored communication",
+					"Real-time smooth communication through collaboration tools"
+				]
+			},
+			"cost": {
+				"title": "High Cost-Efficiency",
+				"description": [
+					"Provide cost-effective solutions with high-quality services",
+					"Minimizing trial and error with abundant experience",
+					"Maximizing productivity with solid internal processes",
+					"Achieving cost savings through flexible personnel management"
+				]
+			}
+		},
+		"title": "Our Competitive Edges"
+	},
+	"description": "T2 Soft is an IT outsourcing company specializing in software development and maintenance services for global clients. With experienced Korean IT professionals leading the projects and a dynamic team of skilled Vietnamese developers, we deliver high-quality, customized solutions quickly and reliably. At T2 Soft, we are committed to being your trusted development partner, supporting your digital transformation and sustainable business growth every step of the way.",
+	"description_mobile": "T2 Soft is an IT outsourcing company specializing in software development and maintenance services for global clients.",
+	"focus_industries": {
+		"description": "T2 Soft leverages extensive project experience and technical expertise across various industries to deliver customized IT solutions. We work hand-in-hand with our clients to maximize business value, driving both efficiency and innovation.",
+		"title": "Focused Industries"
+	},
+	"footer": {
+		"company": "Company",
+		"documentation": "Documentation",
+		"privacy": "Success Story",
+		"resources": "Resources",
+		"studies": "Case Studies"
+	},
+	"menu": {
+		"about": "About Us",
+		"blog": "Blog",
+		"careers": "Careers",
+		"contact": "Contact Us",
+		"faq": "FAQs",
+		"home": "Home",
+		"services": "Services",
+		"solutions": "Solution",
+		"testimonials": "Testimonials",
+		"courses": "Courses",
+		"courses_all": "All Courses",
+		"courses_my": "My Courses",
+		"blog_all": "All Posts",
+		"blog_categories": "Categories",
+		"community": "Community",
+		"community_forum": "Forum",
+		"community_events": "Events"
+	},
+// ... rest of the JSON ...
+} 

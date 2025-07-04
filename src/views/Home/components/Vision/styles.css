@@ -1,0 +1,74 @@
+@keyframes rotate {
+	0% {
+		background-position: 10px 0;
+	}
+	100% {
+		background-position: 560px 0px;
+	}
+}
+.paused {
+	animation-play-state: paused;
+}
+.pinned {
+	transition: opacity 1s ease-in-out;
+	opacity: 1;
+	visibility: visible;
+}
+
+.zoomIn {
+	animation: zoom-in-zoom-out 5s ease;
+}
+
+@keyframes slideLeft {
+	0% {
+		transform: translate(-50%, -50%);
+	}
+	100% {
+		transform: translate(-100%, -50%);
+	}
+}
+
+@keyframes zoom-in-zoom-out {
+	0% {
+		scale: 100%;
+	}
+	50% {
+		scale: 150%;
+	}
+	100% {
+		scale: 100%;
+	}
+}
+
+@keyframes twinkle {
+	0%, 100% {
+		opacity: 0.2;
+		transform: scale(0.8);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+}
+
+.animate-twinkle {
+	animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes rotate3D {
+	0% {
+		transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(20deg) rotateY(360deg) rotateZ(360deg);
+	}
+}
+
+@keyframes float3D {
+	0%, 100% {
+		transform: translateY(0) translateZ(0);
+	}
+	50% {
+		transform: translateY(-20px) translateZ(50px);
+	}
+}

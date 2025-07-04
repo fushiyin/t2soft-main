@@ -1,0 +1,27 @@
+.scroll_wrapper:hover .scroll_content,
+.scroll_wrapper_revert:hover .scroll_content {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+.scroll_wrapper .scroll_content {
+    animation: swipe var(--scroll-speed) linear infinite;
+}
+.scroll_wrapper_revert .scroll_content {
+    animation: swipe_revert var(--scroll-speed) linear infinite;
+}
+@keyframes swipe {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+@keyframes swipe_revert {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

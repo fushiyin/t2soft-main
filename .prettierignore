@@ -1,0 +1,40 @@
+# This file is used to configure Prettier, a code formatter.
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+coverage/
+
+
+# Lockfiles
+package.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+bun.lock
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Minified files
+*.min.js
+*.min.css
+
+# Specific files you might want to ignore
+# For example, if you have a large data file:
+# src/data/very-large-data-file.json
+
+# Vite specific (usually handled by dist/, but good to be explicit if needed)
+.vite/
+
+.vscode/
+README.md
+lib/

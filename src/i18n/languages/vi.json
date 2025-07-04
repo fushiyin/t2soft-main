@@ -1,0 +1,996 @@
+{
+	"about_us": {
+		"title": "About us"
+	},
+	"competitive_edges": {
+		"description": "Your Smart Development Partner for Shared Success.",
+		"edges": {
+			"coordinator": {
+				"description": [
+					"Bilingual project managers with global experience",
+					"Deep understanding of client needs & local teams",
+					"Optimized workflows for global operations",
+					"Fast, clear issue resolution, smooth communication"
+				],
+				"title": "Korean PM Coordinator"
+			},
+			"developer": {
+				"title": "Highly Qualified Tech Talent",
+				"description": [
+					"Various language and frameworks proficiency",
+					"Quickly adapt to the latest trends and technological changes",
+					"Flexible team structure for client project needs",
+					"Quality-oriented, hands-on development team"
+				]
+			},
+			"communication": {
+				"title": "Global Communication Skill",
+				"description": [
+					"Optimized communication between customers and developers with professional bridge personnel",
+					"High level of understanding and responsiveness to cultural differences",
+					"Efficient collaboration through customer-tailored communication",
+					"Real-time smooth communication through collaboration tools"
+				]
+			},
+			"cost": {
+				"title": "High Cost-Efficiency",
+				"description": [
+					"Provide cost-effective solutions with high-quality services",
+					"Minimizing trial and error with abundant experience",
+					"Maximizing productivity with solid internal processes",
+					"Achieving cost savings through flexible personnel management"
+				]
+			}
+		},
+		"title": "Our Competitive Edges"
+	},
+	"description": "T2 Soft is an IT outsourcing company specializing in software development and maintenance services for global clients. With experienced Korean IT professionals leading the projects and a dynamic team of skilled Vietnamese developers, we deliver high-quality, customized solutions quickly and reliably. At T2 Soft, we are committed to being your trusted development partner, supporting your digital transformation and sustainable business growth every step of the way.",
+	"description_mobile": "T2 Soft is an IT outsourcing company specializing in software development and maintenance services for global clients.",
+	"focus_industries": {
+		"description": "T2 Soft leverages extensive project experience and technical expertise across various industries to deliver customized IT solutions. We work hand-in-hand with our clients to maximize business value, driving both efficiency and innovation.",
+		"title": "Focused Industries"
+	},
+	"footer": {
+		"company": "Company",
+		"documentation": "Documentation",
+		"privacy": "Success Story",
+		"resources": "Resources",
+		"studies": "Case Studies"
+	},
+	"menu": {
+		"about": "Giới thiệu",
+		"blog": "Blog",
+		"careers": "Nghề nghiệp",
+		"contact": "Liên hệ",
+		"faq": "Câu hỏi thường gặp",
+		"home": "Trang chủ",
+		"services": "Dịch vụ",
+		"solutions": "Giải pháp",
+		"testimonials": "Lời chứng thực",
+		"courses": "Khóa học",
+		"courses_all": "Tất cả khóa học",
+		"courses_my": "Khóa học của tôi",
+		"blog_all": "Tất cả bài viết",
+		"blog_categories": "Danh mục bài viết",
+		"community": "Cộng đồng",
+		"community_forum": "Diễn đàn",
+		"community_events": "Sự kiện",
+		"member": "Thành viên"
+	},
+	"why_vietnam": {
+		"title": "Why Vietnam?",
+		"description": "Vietnam provides an ideal outsourcing environment for global companies, offering skilled IT talent, competitive costs, fast technology adoption, and reliable development services.",
+		"talent": {
+			"title": "Skilled talent & technology strength",
+			"description": "A rich pool of young IT talent in foreign languages & quick to adopt new technologies"
+		},
+		"cost": {
+			"title": "High cost efficiency",
+			"description": "Access top-tier development talent at 25–55% lower cost than local teams – ideal for budget optimization"
+		},
+		"geo_n_culture": {
+			"title": "Strong geographical & cultural alignment",
+			"description": "Professional, respectful & hardworking culture— well-aligned with global collaboration styles"
+		},
+		"politic_n_eco": {
+			"title": "Political & economic stable environment",
+			"description": "Vietnam offers a secure & predictable environment for longterm outsourcing partnerships."
+		},
+		"experience": {
+			"title": "Global experience",
+			"description": "Proven experience collaborating with global enterprises from KR, JP and beyond"
+		},
+		"text_header": {
+			"title": [
+				{
+					"text": "Outsourcing solves talent shortages & tech gaps with ",
+					"className": "text-white"
+				},
+				{
+					"text": "expert teams, cost efficiency, ",
+					"className": "text-light-blue font-bold"
+				},
+				{
+					"text": "and flexible scalability. ",
+					"className": "text-white"
+				}
+			]
+		},
+		"text_footer": {
+			"title": [
+				{
+					"text": "Leading the next generation of technology as your trusted ",
+					"className": "text-dark-gray"
+				},
+				{
+					"text": "development partner ",
+					"className": "text-light-blue font-bold"
+				}
+			],
+			"desc": "T2 Soft is a leading IT outsourcing and systems integration company, providing software development, maintenance, and IT consulting services to global clients. We aim to quickly deliver high-quality IT solutions optimized for customer needs, successfully support digital transformation, and grow together with our clients."
+		}
+	},
+	"our": "Our",
+	"vision": {
+		"title": "Vision",
+		"des": "Toward the core of future technology with T2.<br>We aim to become a world-class global development partner leading next-generation technologies."
+	},
+	"mission": {
+		"title": "Mission",
+		"des": "We provide reliable software development and solutions to clients worldwide, offering high-quality and cost-effective services with Vietnam's top tech talent. Through technological innovation and flexible collaboration, we help our clients grow their businesses."
+	},
+	"values": {
+		"title": "Values",
+		"des": "We grow together as one team with our clients, quickly adopting and applying the latest trends and technologies to stay ahead. We build trust through honest communication and responsible actions."
+	},
+	"tech_stack": {
+		"title": "Technology Stack",
+		"description": "Our comprehensive technology expertise spans across modern frameworks, languages, and platforms. We leverage cutting-edge tools to build scalable, robust, and innovative solutions.",
+		"frontend": {
+			"title": "Frontend Development",
+			"description": "Building modern, responsive, and interactive user interfaces",
+			"technologies": {
+				"react": {
+					"description": "Component-based UI library"
+				},
+				"nextjs": {},
+				"typescript": {
+					"description": "Typed JavaScript superset"
+				},
+				"tailwind": {
+					"description": "Utility-first CSS framework"
+				},
+				"vue": {
+					"description": "Progressive JavaScript framework"
+				},
+				"angular": {
+					"description": "Platform for building mobile and desktop apps"
+				}
+			}
+		},
+		"backend": {
+			"title": "Backend Development",
+			"description": "Scalable server-side applications and robust APIs",
+			"technologies": {
+				"nodejs": {
+					"description": "JavaScript runtime environment"
+				},
+				"python": {
+					"description": "Versatile programming language"
+				},
+				"java": {
+					"description": "Enterprise-grade programming language"
+				},
+				"express": {
+					"description": "Fast Node.js web framework"
+				},
+				"django": {
+					"description": "High-level Python web framework"
+				},
+				"spring": {
+					"description": "Java-based framework"
+				}
+			}
+		},
+		"mobile": {
+			"title": "Mobile Development",
+			"description": "Native and cross-platform mobile applications",
+			"technologies": {
+				"react_native": {
+					"description": "Cross-platform mobile framework"
+				},
+				"flutter": {
+					"description": "Google's UI toolkit"
+				},
+				"ios": {
+					"description": "Native iOS development"
+				},
+				"android": {
+					"description": "Native Android development"
+				},
+				"xamarin": {
+					"description": "Microsoft's mobile platform"
+				},
+				"ionic": {
+					"description": "Hybrid mobile app framework"
+				}
+			}
+		},
+		"bigdata": {
+			"title": "Big Data & Analytics",
+			"description": "Modern tools for processing, analyzing, and visualizing large-scale data",
+			"technologies": {
+				"hadoop": {
+					"name": "Hadoop",
+					"description": "Distributed system for batch processing with MapReduce"
+				},
+				"spark": {
+					"name": "Spark",
+					"description": "Fast engine for batch and real-time data processing"
+				},
+				"kafka": {
+					"name": "Kafka",
+					"description": "Scalable event streaming for real-time data flows"
+				},
+				"elasticsearch": {
+					"name": "Elasticsearch",
+					"description": "Search and analytics engine for large datasets"
+				},
+				"bigQueryLogo": {
+					"name": "BigQuery",
+					"description": "Serverless data warehouse for fast SQL queries"
+				},
+				"powerBI": {
+					"name": "Power BI",
+					"description": "Business intelligence tool for data visualization"
+				}
+			}
+		},
+		"cta": {
+			"des_1": "Ready to leverage our technical expertise for your next project?",
+			"des_2": "Let's discuss how we can bring your vision to life",
+			"button": "Start Your Project"
+		}
+	},
+	"industries": {
+		"title": "Industries We Transform",
+		"description": "T2 Soft leverages extensive project experience and technical expertise across various industries to deliver customized IT solutions. We work hand-in-hand with our clients to maximize business value, driving both efficiency and innovation.",
+		"status": {
+			"expertise": "Expertise",
+			"advanced": "Advanced",
+			"specialized": "Specialized",
+			"innovation": "Innovation",
+			"emerging": "Emerging"
+		},
+		"manufactoring": {
+			"title": "Manufacturing",
+			"description": "Smart manufacturing solutions for Industry 4.0 transformation",
+			"tagline": "Revolutionizing Production",
+			"sub_industries": {
+				"erp": {
+					"title": "ERP Solution",
+					"description": "Enterprise Resource Planning for streamlined operations"
+				},
+				"mes": {
+					"title": "MES Solutions",
+					"description": "Manufacturing Execution Systems for production optimization"
+				},
+				"supply_chain": {
+					"title": "Supply Chain Management",
+					"description": "End-to-end supply chain optimization and tracking"
+				},
+				"quality_manage": {
+					"title": "Quality Management",
+					"description": "Automated quality control and assurance systems"
+				}
+			}
+		},
+		"bank_n_fin": {
+			"title": "Bank & Finance",
+			"description": "Trusted Financial Solutions Combining Innovation and Security",
+			"tagline": "Securing Financial Future",
+			"sub_industries": {
+				"payment_gateways": {
+					"title": "Payment Gateways",
+					"description": "Secure payment processing and gateway solutions"
+				},
+				"mobile_banking": {
+					"title": "Mobile Banking",
+					"description": "Feature-rich mobile banking applications"
+				},
+				"fintech": {
+					"title": "Fintech Platforms",
+					"description": "Innovative platform for seamless financial services"
+				},
+				"pos": {
+					"title": "POS Systems",
+					"description": "Smart and efficient POS solutions for modern businesses"
+				}
+			}
+		},
+		"ecommerce": {
+			"title": "eCommerce",
+			"description": "Comprehensive e-commerce platforms and digital marketing solutions",
+			"tagline": "Powering Digital Commerce",
+			"sub_industries": {
+				"crm": {
+					"title": "CRM Systems",
+					"description": "Advanced customer relationship management"
+				},
+				"marketing": {
+					"title": "Marketing Automation",
+					"description": "AI-powered marketing campaigns and analytics"
+				},
+				"platforms": {
+					"title": "E-commerce Platforms",
+					"description": "Full-stack e-commerce solutions with payment integration"
+				},
+				"analytics": {
+					"title": "Big Data Analytics",
+					"description": "Advanced analytics for business intelligence"
+				}
+			}
+		},
+		"ai": {
+			"title": "AI Solutions",
+			"description": "Artificial Intelligence solutions for smart automation and data-driven intelligence",
+			"tagline": "Building Intelligent Systems",
+			"sub_industries": {
+				"healthcare": {
+					"title": "Smart Healthcare",
+					"description": "AI-powered healthcare management and diagnostics"
+				},
+				"office": {
+					"title": "Smart Office",
+					"description": "Smart and Connected Office Solutions for Modern Workspaces"
+				},
+				"ibeems": {
+					"title": "AI & iBEEMS",
+					"description": "Intelligent Building Energy & Environment Management"
+				}
+			}
+		},
+		"logistics": {
+			"title": "Logistics",
+			"description": "Smart logistics and supply chain optimization solutions",
+			"tagline": "Optimizing Supply Chains",
+			"sub_industries": {
+				"warehouse": {
+					"title": "Warehouse Management",
+					"description": "Advanced WMS for inventory control and optimization"
+				},
+				"analytics": {
+					"title": "Logistics Analytics",
+					"description": "Data-driven logistics optimization and insights"
+				},
+				"fleet": {
+					"title": "Fleet Management",
+					"description": "Real-time fleet tracking and optimization"
+				}
+			}
+		}
+	},
+	"process": {
+		"title": "Our Working Process",
+		"description": "T2 Soft delivers fast and efficient IT services through a standardized and professional process, precisely tailored to meet each client's needs.",
+		"navigation": {
+			"previous": "Previous",
+			"next": "Next"
+		},
+		"steps": {
+			"client_request": {
+				"title": "Client Request",
+				"description": "We gather the client's project goals and define the initial direction.",
+				"details": [
+					"Define project objectives and scope",
+					"Collect related materials and references",
+					"Establish communication channels",
+					"Share initial timeline and budget"
+				]
+			},
+			"requirement_analysis": {
+				"title": "Requirement Analysis",
+				"description": "We analyze the client's requirements in detail to determine development feasibility and scope.",
+				"details": [
+					"Identify core features and detailed requirements",
+					"Review technical feasibility and potential risks",
+					"Estimate timeline and resource needs",
+					"Anticipate potential issues and define response strategies"
+				]
+			},
+			"proposal": {
+				"title": "Proposal",
+				"description": "Based on the analysis, we provide an optimized development proposal.",
+				"details": [
+					"Define development scope and phased approach",
+					"Prepare cost estimates and manpower plan",
+					"Suggest collaboration and communication methods",
+					"Deliver and explain the proposal to the client"
+				]
+			},
+			"client_approval": {
+				"title": "Client Approval",
+				"description": "We finalize the proposal by incorporating the client's review and feedback.",
+				"details": [
+					"Review proposal and collect feedback",
+					"Apply necessary revisions and improvements",
+					"Confirm final scope and timeline",
+					"Prepare for contract signing"
+				]
+			},
+			"contract_sign_off": {
+				"title": "Contract Signing",
+				"description": "A formal contract is signed based on the agreed terms and conditions.",
+				"details": [
+					"Draft and coordinate the contract",
+					"Specify cost, schedule, and project scope",
+					"Assign project manager and key contacts",
+					"Complete and archive the signed agreement"
+				]
+			},
+			"project_kick_off": {
+				"title": "Project Kick-off",
+				"description": "After signing, the project officially begins with a dedicated development team.",
+				"details": [
+					"Assign dedicated resources",
+					"Conduct kick-off meeting",
+					"Set up development environment",
+					"Share and initiate initial project schedule"
+				]
+			}
+		}
+	},
+	"testimonials": {
+		"title": "Testimonial",
+		"actions": {
+			"reply": "Reply",
+			"share": "Share"
+		}
+	},
+	"contact_cta": {
+		"title": "Ready to Transform Your Ideas?",
+		"description": "Let's discuss how T2 Soft can help you achieve your technology goals. Our team is ready to bring your vision to life.",
+		"contact_button": "Contact Us",
+		"services_button": "Explore Our Services"
+	},
+	"unique_value": {
+		"title": "We make sure to provide best services",
+		"description": "What sets us apart from other technology providers and makes us your ideal partner.",
+		"advantages": {
+			"quality": {
+				"title": "Quality Assurance",
+				"description": "Our rigorous quality control processes ensure that every line of code meets the highest standards. We implement comprehensive testing methodologies including unit testing, integration testing, and automated QA processes to deliver robust, bug-free solutions."
+			},
+			"technical": {
+				"title": "Technical Expertise",
+				"description": "Our team comprises specialists across various technologies and domains. From cloud architecture to AI implementation, mobile development to enterprise solutions, we bring deep technical knowledge and practical experience to every project."
+			},
+			"cultural": {
+				"title": "Cultural Alignment",
+				"description": "We bridge Eastern dedication with Western business practices. Our team understands global business cultures while bringing Vietnamese values of diligence, precision, and commitment to excellence, creating a harmonious working relationship with clients worldwide."
+			},
+			"scalable": {
+				"title": "Scalable Solutions",
+				"description": "We design with growth in mind. Our architecture and development approaches prioritize scalability, allowing your solutions to grow seamlessly with your business. From startups to enterprises, we build technology that adapts to your evolving needs."
+			}
+		}
+	},
+	"faq": {
+		"title": "Frequently Asked Questions",
+		"questions": {
+			"services": {
+				"question": "What programming services do you offer?",
+				"answer": "We provide end-to-end software development services including web and mobile app development, backend systems, API integrations, and maintenance support."
+			},
+			"technologies": {
+				"question": "Which technologies do you specialize in?",
+				"answer": "Our team specializes in a wide range of technologies including JavaScript (React, Node.js), Python, Java, PHP, .NET, and cloud platforms like AWS and Azure."
+			},
+			"quality": {
+				"question": "How do you ensure code quality?",
+				"answer": "We follow best practices such as code reviews, unit testing, continuous integration, and use of version control to maintain high code quality."
+			},
+			"communication": {
+				"question": "Can I communicate directly with the developers?",
+				"answer": "Yes, we provide direct communication channels with our developers via tools like Slack, Zoom, or email to ensure smooth collaboration."
+			},
+			"pricing": {
+				"question": "What is your pricing model?",
+				"answer": "We offer flexible pricing models including hourly rates, dedicated team setups, and fixed-price contracts depending on your project needs."
+			}
+		}
+	},
+	"about": {
+		"title": "About Us",
+		"title_sub": "With a global perspective and deep local insights, We bridges cultures and technologies to deliver real business value.",
+		"description": {
+			"title": "Code the Future ",
+			"explain": "Where Innovation Meets Execution"
+		},
+		"content": "T2 Soft is an IT outsourcing and systems integration company providing software development, maintenance, and IT consulting services for global clients. Led by experienced Korean IT professionals and supported by a dynamic team of skilled Vietnamese developers, we combine technical expertise, cultural understanding, and cost-efficiency to deliver real business value. We specialize in developing smart, scalable, and reliable solutions tailored to our clients' needs — from enterprise systems to AI-powered applications and custom software. At T2 Soft, we grow together with our clients — through innovation, transparency, and a shared vision for sustainable success.",
+		"experience": "T2 Soft Commit To",
+		"experience_list": {
+			"1": "Swift Action from Insight",
+			"2": "Quality-First Development",
+			"3": "Clear & Continuous Collaboration",
+			"4": "Reliable Post-Delivery Support"
+		},
+		"faq": {
+			"imageAlt": "Faqs"
+		}
+	},
+	"slogan": "Where Innovation Meets Execution",
+	"services": {
+		"hero": {
+			"title": "Transform Your Business<br>with Innovative Solutions",
+			"highlight": "Innovative",
+			"description": "Discover our comprehensive range of technology services designed to drive your business forward. From custom software to AI solutions, we've got you covered.",
+			"cta": "Get Started",
+			"subtitle": "Empowering Digital Transformation",
+			"stats": {
+				"clients": "500+",
+				"projects": "1000+",
+				"experience": "10+ Years"
+			}
+		},
+		"section": {
+			"title": "Our Services",
+			"description": "Delivering smart, scalable, and tailored tech solutions to power your growth.",
+			"subtitle": "End-to-End Technology Solutions",
+			"whyChooseUs": {
+				"title": "Why Choose Us",
+				"items": {
+					"1": {
+						"title": "Expert Team",
+						"description": "Our team consists of certified professionals with extensive industry experience"
+					},
+					"2": {
+						"title": "Quality Assurance",
+						"description": "Rigorous testing and quality control processes ensure reliable solutions"
+					},
+					"3": {
+						"title": "24/7 Support",
+						"description": "Round-the-clock technical support and maintenance services"
+					},
+					"4": {
+						"title": "Cost-Effective",
+						"description": "Competitive pricing with flexible engagement models"
+					}
+				}
+			}
+		},
+		"items": {
+			"learnMore": "Learn more",
+			"1": {
+				"name": "Global Development Center",
+				"description": "",
+				"details": {
+					"0": "Frontend & Backend Development",
+					"1": "Hybrid & Native App Development",
+					"2": "UI/UX Design & Optimization",
+					"3": "Managed Global Development Center"
+				}
+			},
+			"2": {
+				"name": "System Integration (SI)",
+				"description": "",
+				"details": {
+					"0": "Integrated System Development",
+					"1": "Data Integration & Management",
+					"2": "Solution Customization & Optimization"
+				}
+			},
+			"3": {
+				"name": "IT Consulting",
+				"description": "",
+				"details": {
+					"0": "IT Strategy Development",
+					"1": "System Diagnosis & Improvement",
+					"2": "Solution Selection & Implementation Support"
+				}
+			},
+			"4": {
+				"name": "Solution Provider",
+				"description": "",
+				"details": {
+					"0": "Smart Office, Smart Factory, Banking solution",
+					"1": "Modular/Scalable Software Supply",
+					"2": "Enterprise Solutions (CRM, ERP,MES, HRM, WMS, FMS, iBEEMS, etc)"
+				}
+			},
+			"5": {
+				"name": "AI & Machine Learning",
+				"description": "Cutting-edge AI solutions for business transformation",
+				"details": {
+					"0": "Machine Learning Model Development",
+					"1": "Natural Language Processing",
+					"2": "Computer Vision Solutions",
+					"3": "AI-powered Automation",
+					"4": "Predictive Analytics"
+				}
+			},
+			"6": {
+				"name": "Big Data & Data Analysis",
+				"description": "Transform your data into actionable insights",
+				"details": {
+					"0": "Big Data Processing & Analytics",
+					"1": "Business Intelligence Solutions",
+					"2": "Data Visualization & Reporting",
+					"3": "Real-time Data Analysis",
+					"4": "Data Mining & Pattern Recognition"
+				}
+			}
+		}
+	},
+	"common": {
+		"search": "Search..."
+	},
+	"language": "Language",
+	"menu_drawer": "Menu",
+	"blog": {
+		"title": "Blog",
+		"search_placeholder": "Search blog titles...",
+		"no_blog": "No blogs found. Please check back later.",
+		"previous": "Previous",
+		"next": "Next"
+	},
+	"careers": {
+		"title": "Careers at T2 Soft",
+		"description": "Join our dynamic team and be part of a company that values innovation, collaboration, and personal growth. Explore exciting career opportunities with T2 Soft.",
+		"contact_button": "Contact Us",
+		"job_list_button": "Job List",
+		"open_positions": "Open Positions",
+		"apply_now": "Apply Now",
+		"title_cv": "Haven't found the right position yet?",
+		"description_cv": "No worries! Just leave us your resume, and we'll reach out when we find the perfect position for you.",
+		"apply_cv": "Apply CV",
+		"title_company": "Dare to Learn – Dare to Collaborate – Dare to Lead",
+		"collaborative": "Collaborative Culture",
+		"collaborative_description": "We believe in the power of working together rather than alone. Through open communication and strong teamwork, we foster a collaborative environment where everyone can grow and thrive.",
+		"learning": "Continuous Learning",
+		"learning_description": "We offer various learning opportunities such as seminars, workshops, and online courses to keep up with rapidly changing IT trends. Through continuous learning, we create an environment where everyone can grow into a skilled professional.",
+		"challenging": "Embracing Challenges",
+		"challenging_description": "We embrace a culture that encourages bold ideas and fearless experimentation. We believe that continuous challenges and innovation lead to better solutions and shared growth."
+	},
+	"contact": {
+		"title": "Contact Us",
+		"description": "Ready to Transform Your Ideas?",
+		"description2": "Let's discuss how T2Soft can help you achieve your technology goals. Our team is ready to bring your vision to life.",
+		"description_sub": {
+			"expert": "Expert consultation tailored to your business needs",
+			"cutting_edge": "Cutting-edge technology solutions",
+			"dedicated": "Dedicated support throughout your project"
+		},
+		"form": {
+			"name": "Your Name",
+			"name_placeholder": "Enter your name",
+			"email": "Your Email",
+			"email_placeholder": "Enter your email",
+			"company": "Company",
+			"company_placeholder": "Enter your company name",
+			"message": "How can we help?",
+			"message_placeholder": "Tell us about your project or inquiry...",
+			"submit": "Send Message",
+			"submitting": "Sending...",
+			"success_submit": "Message sent successfully!",
+			"success_message": "Thank you for reaching out! We will get back to you shortly."
+		}
+	},
+	"our_services": {
+		"title": "Our Services",
+		"description": "Discover our comprehensive range of technology solutions",
+		"global_development": {
+			"title": "Global Development Center",
+			"description": "Your Reliable Global Development Partner",
+			"details": {
+				"1": "Frontend & Backend Development",
+				"2": "Hybrid & Native App Development",
+				"3": "UI/UX Design & Optimization",
+				"4": "Managed Global Development Center"
+			}
+		},
+		"system_integration": {
+			"title": "System Integration (SI)",
+			"description": "Seamless System Integration for a Smarter Enterprise",
+			"details": {
+				"1": "Integrated System Development",
+				"2": "Data Integration & Management",
+				"3": "Solution Customization & Optimization"
+			}
+		},
+		"it_consulting": {
+			"title": "IT Consulting",
+			"description": "Empowering Smarter Decisions with Expert IT Consulting",
+			"details": {
+				"1": "IT Strategy Development",
+				"2": "System Diagnosis & Improvement",
+				"3": "Solution Selection & Implementation Support"
+			}
+		},
+		"solution_provider": {
+			"title": "Solution Provider",
+			"description": "Empower your business with intelligent, future-ready solutions from a partner you can trust",
+			"details": {
+				"1": "Smart Office, Smart Factory, Banking solution",
+				"2": "Modular/Scalable Software Supply",
+				"3": "Enterprise Solutions (CRM, ERP,MES, HRM, WMS, FMS, iBEEMS, etc)"
+			}
+		},
+		"ai_machine_learning": {
+			"title": "AI & Machine Learning",
+			"description": "Turning AI Innovation into Real Business Impact",
+			"details": {
+				"1": "Machine Learning Model Development",
+				"2": "Natural Language Processing",
+				"3": "Computer Vision Solutions",
+				"4": "AI-powered Automation",
+				"5": "Predictive Analytics"
+			}
+		},
+		"big_data": {
+			"title": "Big Data & Data Analytics",
+			"description": "From data to insights, from insights to successful decisions",
+			"details": {
+				"1": "Big Data Processing & Analytics",
+				"2": "Business Intelligence Solutions",
+				"3": "Data Visualization & Reporting",
+				"4": "Real-time Data Analysis",
+				"5": "Data Mining & Pattern Recognition"
+			}
+		},
+		"button_learn_more": "Learn More"
+	},
+	"hero_section": {
+		"hero_slogan": "Where Innovation Meets Execution",
+		"hero_description": "With experienced Korean IT professionals leading the projects and a dynamic team of skilled Vietnamese developers, we deliver high-quality, customized solutions quickly and reliably.",
+		"home_slogan": "From Insight to Execution — Your One-Stop IT Partner",
+		"home_description": "We support your entire digital transformation journey, from IT outsourcing and expert consulting to customized solution delivery. Our flexible and effective technology services are optimized to meet your unique business goals."
+	},
+	"challenges": {
+		"title": "Struggling with IT roadblocks ",
+		"title_2": "holding back your business growth?",
+		"description": "Talent shortages, tech gaps, and tight deadlines — internal resources aren't enough.",
+		"item": {
+			"1": [
+				{
+					"text": "Skilled tech talent",
+					"className": "text-light-blue font-bold text-3xl"
+				},
+				{
+					"text": " is harder to find and costlier than ever.",
+					"className": "text-white text-2xl"
+				}
+			],
+			"2": [
+				{
+					"text": "Skilled tech talent",
+					"className": "text-light-blue font-bold text-3xl"
+				},
+				{
+					"text": " harder to find and costlier than ever.",
+					"className": "text-dark-gray text-2xl"
+				}
+			],
+			"3": [
+				{ "text": "Hard to", "className": "text-dark-gray text-2xl" },
+				{
+					"text": " deploy talent instantly",
+					"className": "text-light-blue font-bold text-3xl"
+				},
+				{ "text": " in a rapidly changing market.", "className": "text-dark-gray text-2xl" }
+			],
+			"4": [
+				{
+					"text": "Skilled tech talent",
+					"className": "text-white font-bold text-3xl"
+				},
+				{
+					"text": " harder to find and costlier than ever.",
+					"className": "text-dark-gray text-2xl"
+				}
+			],
+			"5": [
+				{ "text": "A fast-growing", "className": "text-white text-2xl" },
+				{ "text": " tech gap", "className": "text-light-blue font-bold text-3xl" },
+				{
+					"text": " leads to a loss in competitiveness",
+					"className": "text-white text-2xl"
+				}
+			]
+		}
+	},
+	"solution": {
+		"video": {
+			"title": "Tailored Tech Products<br>for Real-World Impact",
+			"sublime": "All the solutions your business needs, in one place. From planning to implementation, we are your trusted partner every step of the way."
+		},
+		"product": {
+			"so": {
+				"kick_start": "Kickstart Your New Business",
+				"title": "Smart Office",
+				"description": "Maximize workspace efficiency and user experience with innovative technology. Our Smart Office Solutions transform office spaces into strategic assets that enhance collaboration and productivity.",
+				"learn_more": "Learn More"
+			}
+		},
+		"implementation": {
+			"title": "Implementation Process",
+			"description": "Clear Process for Trusted Results",
+			"requirement": {
+				"title": "Requirement Analysis",
+				"description": {
+					"1": "Understand specific business needs",
+					"2": "Define project scope and objectives",
+					"3": "Provide optimized solution consulting",
+					"4": "Develop implementation plan"
+				}
+			},
+			"development": {
+				"title": "Customized Development",
+				"description": {
+					"1": "Customize the system ",
+					"2": "Develop additional features as needed",
+					"3": "Internal QA and iterative enhancements",
+					"4": "Integration with existing systems"
+				}
+			},
+			"deploy_training": {
+				"title": "Deployment & Training",
+				"description": {
+					"1": "Install and configure in production",
+					"2": "Training for end-users and administrators",
+					"3": "Support initial data migration",
+					"4": "Refine system based on real-world feedback"
+				}
+			},
+			"maintenance": {
+				"title": "Maintenance",
+				"description": {
+					"1": "Regular maintenance",
+					"2": "Offer fast and flexible technical support",
+					"3": "Update based on business changes",
+					"4": "Recommend upgrades as needs grow"
+				}
+			}
+		},
+		"suggest": {
+			"title": "Got a great idea but unsure how to make it happen?",
+			"description": "Turn your idea into reality with our experts.",
+			"btn": "Leave a Message"
+		},
+		"so": {
+			"banner": {
+				"header": "In the digital age",
+				"title": [
+					{ "text": "Looking forward to work?<br>", "className": "text-white text-2xl" },
+					{
+						"text": "Imagine what a ",
+						"className": "text-white text-2xl"
+					},
+					{
+						"text": "Smart Office ",
+						"className": "text-white text-2xl"
+					},
+					{ "text": "can do", "className": "text-white text-2xl" }
+				],
+				"desc": "Say goodbye to the office you knew — a new workday begins. Take the first step toward transforming both workspace efficiency and company culture.",
+				"contact_us": "Contact Us"
+			},
+			"boxIntro": {
+				"1": {
+					"title": "Own Your Space & Time",
+					"desc": "Optimize your workspace with smart solutions to reduce costs and boost focus."
+				},
+				"2": {
+					"title": "Toward a Workplace You Love",
+					"desc": "Create flexible workplaces that improve company culture and boost employee satisfaction."
+				},
+				"3": {
+					"title": "Insight In. Strategy Out",
+					"desc": "Real-time insights into space and workflow for better decision-making."
+				}
+			},
+			"officeIntro": {
+				"title_1": "Boring commutes? Not anymore.",
+				"title_2": "Step into a smarter workday",
+				"desc": "Smart Office Solution makes every moment from check-in to check-out more convenient and flexible. It enhances not only work efficiency but also organizational culture and employee satisfaction, creating a new work environment that transforms how we perceive work and office space."
+			},
+			"video": {
+				"title": [
+					{ "text": "A better workday starts with", "className": "text-white text-2xl" },
+					{
+						"text": " Smart Office.",
+						"className": "text-[#000000] font-bold text-3xl",
+						"br": true
+					},
+					{
+						"text": "Right in your hands. Built together with T2 Soft.",
+						"className": "text-white text-2xl"
+					}
+				]
+			},
+			"tab": {
+				"1": {
+					"tab_sub": "Seat Reservation",
+					"title": "Claim Your Own Space<br>A Smart Seat Reservation System",
+					"item": {
+						"1": {
+							"title": "Support for Flexible Work Scheduling",
+							"desc": "From full-day to hourly or period-based bookings, our system flexibly adapts to your company's culture and policies."
+						},
+						"2": {
+							"title": "Seat Layout at a Glance",
+							"desc": "Easily check seat locations through an intuitive floor map and see who's reserved which seat — including your team members — all in one view."
+						},
+						"3": {
+							"title": "One Click for In & Out Management",
+							"desc": "Easily manage entry logs and attendance records with a simple click."
+						}
+					}
+				},
+				"2": {
+					"tab_sub": "Meeting Room Reservation",
+					"title": "Efficient Space Management <br>with Smart Meeting Room Booking",
+					"item": {
+						"1": {
+							"title": "Recurring Meeting Reservations ",
+							"desc": "Support for recurring reservations — daily, weekly, monthly, or yearly."
+						},
+						"2": {
+							"title": "Real-time Meeting Room Status Checking",
+							"desc": "Easily view the real-time location and availability of meeting rooms for faster, more efficient bookings."
+						},
+						"3": {
+							"title": "Effortless External Attendee Management",
+							"desc": "Easily register and manage external participants, making meeting preparation and access control more efficient than ever."
+						},
+						"4": {
+							"title": "Quick and Easy On-site Booking",
+							"desc": "Reserve meeting rooms instantly using the wall pad installed on-site — no additional devices or apps required."
+						}
+					}
+				},
+				"3": {
+					"tab_sub": "Guest Reservation",
+					"title": "Streamlined Check-in<br>with Guest Reservation System",
+					"item": {
+						"1": {
+							"title": "Batch Visitor Reservations Made Easy",
+							"desc": "Easily process multiple visitor reservations at once by entering applicant details, destination information, and application forms through a step-by-step structure."
+						},
+						"2": {
+							"title": "Seamless and Accurate Access Records with QR Code",
+							"desc": "Skip the hassle—track and manage all entry logs effortlessly with simple QR code authentication."
+						}
+					}
+				},
+				"4": {
+					"tab_sub": "Cafe Ordering",
+					"title": "Order from Your Workplace Café Anytime,<br>Anywhere—Completely Contactless",
+					"item": {
+						"1": {
+							"title": "Contactless Ordering System",
+							"desc": "No more long lines! Convenient mobile ordering and instant pickup at your fingertips."
+						},
+						"2": {
+							"title": "Meal Gifting Feature",
+							"desc": "Share gratitude through a warm meal! Strengthen team spirit by gifting meals to your colleagues. "
+						},
+						"3": {
+							"title": "Check Menus in Real Time",
+							"desc": "Wondering what's for lunch today? Easily browse the daily changing menu right from the app."
+						},
+						"4": {
+							"title": "Check Your Order History",
+							"desc": "Easily track what you've ordered and when in just a few taps!"
+						}
+					}
+				}
+			},
+			"contact": {
+				"title": "Ready to transform your workplace culture with smart office solutions?",
+				"desc": "Start your journey with our experts.",
+				"btn": "Leave a Message"
+			}
+		}
+	}
+}

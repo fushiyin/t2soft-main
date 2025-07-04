@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+	--radius: 0.625rem;
+	--background: #F9FAFB;
+	--foreground: #111827;
+	--card: #FFFFFF;
+	--card-foreground: #111827;
+	--popover: #FFFFFF;
+	--popover-foreground: #111827;
+	--primary: #0F172A;
+	--primary-foreground: #FFFFFF;
+	--secondary: #10B981;
+	--secondary-foreground: #FFFFFF;
+	--muted: #F3F4F6;
+	--muted-foreground: #6B7280;
+	--accent: #F59E0B;
+	--accent-foreground: #FFFFFF;
+	--destructive: #EF4444;
+	--success: #22C55E;
+	--border: #E5E7EB;
+	--input: #E5E7EB;
+	--ring: #2563EB;
+	--link: #2563EB;
+	--footer: #0F172A;
+	--navbar: #0F172A;
+	--icon-accent: #F59E0B;
+	--button-hover: #0E9E6E;
+	--header-active: #e6f4ff;
+	--header-hover: #0000000f;
+}
+
+@theme inline {
+	--breakpoint-500: 500px;
+	--breakpoint-400: 400px;
+	--color-primary: #0F172A;
+	--color-secondary: #10B981;
+	--color-secondary-hover: #0E9E6E;
+	--color-accent: #F59E0B;
+	--color-success: #22C55E;
+	--color-destructive: #EF4444;
+	--color-link: #2563EB;
+	--color-footer: #0F172A;
+	--color-navbar: #0F172A;
+	--color-card: #FFFFFF;
+	--color-background: #F9FAFB;
+	--color-header: #0F172A;
+	--color-button-hover: #0E9E6E;
+	--color-title: #111827;
+	--color-text: #111827;
+	--color-text-secondary: #6B7280;
+	--color-icon-accent: #F59E0B;
+	--color-border: #E5E7EB;
+	--color-input: #E5E7EB;
+	--color-ring: #2563EB;
+	--color-muted: #F3F4F6;
+	--color-muted-foreground: #6B7280;
+}
+
+.dark {
+	--background: #1F2937;
+	--foreground: #F3F4F6;
+	--card: #1F2937;
+	--card-foreground: #F3F4F6;
+	--popover: #1F2937;
+	--popover-foreground: #F3F4F6;
+	--primary: #0F172A;
+	--primary-foreground: #F3F4F6;
+	--secondary: #10B981;
+	--secondary-foreground: #F3F4F6;
+	--muted: #374151;
+	--muted-foreground: #9CA3AF;
+	--accent: #F59E0B;
+	--accent-foreground: #1F2937;
+	--destructive: #EF4444;
+	--success: #22C55E;
+	--border: #374151;
+	--input: #374151;
+	--ring: #2563EB;
+	--link: #2563EB;
+	--footer: #0F172A;
+	--navbar: #0F172A;
+	--icon-accent: #F59E0B;
+	--button-hover: #0E9E6E;
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+		/* cursor: none; */
+	}
+}
+
+.no-scrollbar {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.swiper-pagination-bullet {
+	background-color: white !important;
+	opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: #00aeef !important;
+}
+
+.korean-text {
+	word-break: keep-all;
+	line-break: auto;
+  }
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-right: 4px solid #00c3ff;
+  border-bottom: 4px solid #f3f3f3;
+  border-left: 4px solid #00c3ff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+.tox {
+  z-index: 9999 !important;
+}
+.tox-promotion{
+	display: none;
+}
