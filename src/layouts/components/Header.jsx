@@ -127,7 +127,7 @@ const Header = () => {
 			id="header"
 			className={classNames("w-full z-50 transition-all duration-300 fixed left-0 right-0", {
 				"top-10 bg-transparent": !isScrolled && isHome && !isMobile,
-				"top-0 bg-white dark:bg-dark-blue shadow-md": isScrolled,
+				"top-0 bg-white dark:bg-BasicBg shadow-md": isScrolled,
 			})}
 		>
 			<div className="w-full mx-auto px-6">
@@ -135,14 +135,21 @@ const Header = () => {
 					<div className="flex-shrink-0">
 						<Link
 							to="/"
-							className="flex items-end justify-center"
+							className="flex items-center justify-center"
 						>
 							<img
 								className="h-16 w-auto"
-								alt="Company Logo"
+								alt="Logo"
 								src={isScrolled || isDarkMode | !isHome ? light : dark}
 							/>
-							<span className="text-xl font-bold text-white">NEOEDU</span>
+							<span
+								className={classNames("text-xl font-bold", {
+									"text-black": isScrolled || isDarkMode || !isHome,
+									"text-white": !isScrolled && !isDarkMode && isHome,
+								})}
+							>
+								NEOEDU
+							</span>
 						</Link>
 					</div>
 
@@ -153,33 +160,54 @@ const Header = () => {
 									? window.location?.pathname === "/"
 									: window.location?.pathname.startsWith(link.path);
 							const isHomeTab = link.path === "/";
-
+							const hasDropdown =
+								Array.isArray(link.dropdown) && link.dropdown.length > 0;
 							return (
-								<Link
+								<div
 									key={link.path}
-									to={link.path}
-									className={classNames(
-										"relative transition-all duration-300 ease-in-out flex items-center justify-center font-medium text-base px-5 py-2 rounded-full group whitespace-nowrap",
-										{
-											"bg-black text-white shadow-md":
-												isActive && (isScrolled || !isHomeTab),
-											"text-[var(--color-dark-blue)] font-extrabold bg-white shadow-md":
-												isActive && isHomeTab && !isScrolled,
-											"text-white hover:text-[var(--color-dark-blue)]":
-												isHome && !isScrolled && !isActive,
-											"text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)]":
-												!isHome && !isActive,
-											"dark:text-SecondaryBg": isScrolled && isActive,
-										},
-									)}
+									className="relative group"
 								>
-									{isActive && (
-										<span className="h-2 w-2 bg-green-500 rounded-full mr-2"></span>
+									<Link
+										to={link.path}
+										className={classNames(
+											"relative transition-all duration-300 ease-in-out flex items-center justify-center font-medium text-base px-5 py-2 rounded-full group whitespace-nowrap",
+											{
+												"bg-black text-white shadow-md":
+													isActive && (isScrolled || !isHomeTab),
+												"text-[var(--color-dark-blue)] font-extrabold bg-white shadow-md":
+													isActive && isHomeTab && !isScrolled,
+												"text-white hover:text-[var(--color-dark-blue)]":
+													isHome && !isScrolled && !isActive,
+												"text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)]":
+													!isHome && !isActive,
+												"dark:text-SecondaryBg": isScrolled && isActive,
+											},
+										)}
+									>
+										{isActive && (
+											<span className="h-2 w-2 bg-green-500 rounded-full mr-2"></span>
+										)}
+										<span className="relative z-10">
+											{t(link?.i18nKey) || link?.name}
+											{hasDropdown && (
+												<ChevronDown className="ml-1 w-4 h-4 inline-block align-middle" />
+											)}
+										</span>
+									</Link>
+									{hasDropdown && (
+										<div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[180px] bg-white dark:bg-BasicBg shadow-lg rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all z-50">
+											{link.dropdown.map((item) => (
+												<Link
+													key={item.path}
+													to={item.path}
+													className="block px-4 py-2 text-base text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)] hover:bg-gray-100 dark:hover:bg-SecondaryBg rounded-md transition-colors"
+												>
+													{t(item.i18nKey) || item.name}
+												</Link>
+											))}
+										</div>
 									)}
-									<span className="relative z-10">
-										{t(link?.i18nKey) || link?.name}
-									</span>
-								</Link>
+								</div>
 							);
 						})}
 					</nav>
