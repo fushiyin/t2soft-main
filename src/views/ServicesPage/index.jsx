@@ -10,7 +10,6 @@ import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router";
 import { contentClass, sectionClass } from "../Home";
-import CompetitiveEdges from "../Home/components/CompetitiveEdges";
 import DevelopmentCapacity from "../Home/components/DevelopmentCapacity";
 
 const services = [
@@ -224,12 +223,6 @@ export default function ServicesPage() {
 				className={sectionClass}
 			>
 				<DevelopmentCapacity contentClass={contentClass} />
-			</section>
-			<section
-				id={SECTIONS_KEY.COMPETITIVE_EDGE.id}
-				className={sectionClass}
-			>
-				<CompetitiveEdges />
 			</section>
 			<CTA />
 		</>

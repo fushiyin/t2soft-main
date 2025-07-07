@@ -311,3 +311,12 @@
 .tox-promotion{
 	display: none;
 }
+
+@keyframes fibonacci-spin-float {
+  0% { transform: rotate(0deg) translateY(0); }
+  50% { transform: rotate(180deg) translateY(-20px); }
+  100% { transform: rotate(360deg) translateY(0); }
+}
+.animate-fibonacci-spin-float {
+  animation: fibonacci-spin-float 12s linear infinite;
+}

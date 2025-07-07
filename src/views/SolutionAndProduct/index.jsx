@@ -17,7 +17,6 @@ import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { sectionClass } from "../Home";
-import CompetitiveEdges from "../Home/components/CompetitiveEdges";
 import Slide_Swiper from "./Slide_Swiper";
 import classNames from "classnames";
 import { useState } from "react";
@@ -307,17 +306,6 @@ export default function SolutionAndProduct() {
 					)}
 				</div>
 			</section>
-
-			<motion.section
-				ref={ref4}
-				id={SECTIONS_KEY.COMPETITIVE_EDGE.id}
-				className={sectionClass}
-				initial={{ opacity: 0, y: 20 }}
-				animate={inView4 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-				transition={{ duration: 0.6 }}
-			>
-				<CompetitiveEdges isSolution={true} />
-			</motion.section>
 			<CTA />
 		</div>
 	);

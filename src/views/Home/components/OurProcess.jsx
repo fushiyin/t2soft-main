@@ -12,7 +12,6 @@ import { Handshake, Lightbulb, Rocket, SearchCode, UserRoundCheck, UserSearch } 
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-// Process steps data
 const iconClass =
 	"h-3 w-4 text-gray-600 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-3/5 z-10";
 

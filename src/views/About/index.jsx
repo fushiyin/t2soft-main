@@ -11,7 +11,6 @@ import { Award, CheckCircle2, Globe, Users } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
-import CompetitiveEdges from "../Home/components/CompetitiveEdges";
 import VisionJourney from "../Home/components/Vision";
 import DotLoader from "@/components/ui/DotLoader";
 
@@ -245,7 +244,6 @@ export default function AboutPage() {
 			</AnimatedSection>
 
 			<VisionJourney />
-			<CompetitiveEdges />
 
 			<motion.div
 				ref={faqRef}

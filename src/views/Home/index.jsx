@@ -8,7 +8,6 @@ import Services from "./components/Services";
 import SideNavigation from "./components/SideNavigation";
 import Testimonials from "./components/Testimonials";
 import WhyVietnam from "./components/WhyVietnam";
-import CompetitiveEdges from "./components/CompetitiveEdges";
 import DevelopmentCapacity from "./components/DevelopmentCapacity";
 
 export const sectionClass = "flex items-center justify-center relative overflow-hidden";
@@ -55,18 +54,6 @@ function HomePage() {
 				<DevelopmentCapacity contentClass={contentClass} />
 			</section>
 			<section
-				id={SECTIONS_KEY.COMPETITIVE_EDGE.id}
-				className={sectionClass}
-			>
-				<CompetitiveEdges />
-			</section>
-			<section
-				id={SECTIONS_KEY.OUR_PROCESS.id}
-				className={sectionClass}
-			>
-				<OurProcess contentClass={contentClass} />
-			</section>
-			<section
 				id={SECTIONS_KEY.TESTIMONIALS.id}
 				className={sectionClass}
 			>
@@ -79,12 +66,6 @@ function HomePage() {
 			>
 				<CTA />
 			</section>
-			{/* <section className="snap-start flex items-center justify-center 
-			px-16 h-[calc(100vh-64px)]">
-				<ContactCTA />
-				<LoadingDemoButton />
-				<ResetOnBoardingButton />
-			</section> */}
 			<SideNavigation />
 		</>
 	);
