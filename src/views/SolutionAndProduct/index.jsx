@@ -16,7 +16,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { sectionClass } from "../Home";
 import Slide_Swiper from "./Slide_Swiper";
 import classNames from "classnames";
 import { useState } from "react";
@@ -38,10 +37,6 @@ export default function SolutionAndProduct() {
 	});
 
 	const { ref: ref3 } = useInView({
-		threshold: 0.1,
-	});
-
-	const { ref: ref4, inView: inView4 } = useInView({
 		threshold: 0.1,
 	});
 
