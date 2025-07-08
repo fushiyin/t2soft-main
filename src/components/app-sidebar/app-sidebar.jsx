@@ -1,14 +1,19 @@
 import {
-	Calendar,
-	ChevronDown,
-	ChevronUp,
-	Home,
-	Inbox,
-	Phone,
+	Users,
+	Shield,
+	BookOpen,
+	FileText,
+	MessageSquare,
+	CreditCard,
+	BarChart2,
+	Package,
 	Settings,
-	User2,
+	FileWarning,
+	List,
+	AlertTriangle,
+	ThumbsUp,
+	ChevronUp,
 	UserRoundCog,
-	UsersRound,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -33,40 +38,47 @@ import {
 	DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 
-// Menu items.
-const items = [
+const sidebarSections = [
 	{
-		title: "Home",
-		icon: Home,
-		url: "/admin/dashboard",
+		label: "Người dùng",
+		icon: Users,
+		items: [
+			{ label: "Quản lý user", icon: List, url: "/admin/users" },
+			{
+				label: "Phân quyền (admin / giảng viên / học viên)",
+				icon: Shield,
+				url: "/admin/roles",
+			},
+		],
 	},
 	{
-		title: "Inbox",
-		icon: Inbox,
-		url: "/admin/inbox",
+		label: "Học tập",
+		icon: BookOpen,
+		items: [
+			{ label: "Post", icon: FileText, url: "/admin/posts" },
+			{ label: "Reaction", icon: ThumbsUp, url: "/admin/reactions" },
+			{ label: "Khóa học", icon: BookOpen, url: "/admin/courses" },
+			{ label: "Bài học", icon: FileText, url: "/admin/lessons" },
+			{ label: "Phòng thảo luận", icon: MessageSquare, url: "/admin/discussions" },
+		],
 	},
 	{
-		title: "Calendar",
-		icon: Calendar,
-		url: "/admin/calendar",
+		label: "Tài chính (nếu có)",
+		icon: CreditCard,
+		items: [
+			{ label: "Thanh toán", icon: CreditCard, url: "/admin/payments" },
+			{ label: "Doanh thu", icon: BarChart2, url: "/admin/revenue" },
+			{ label: "Gói học tập", icon: Package, url: "/admin/packages" },
+		],
 	},
 	{
-		title: "Careers",
-		icon: UsersRound,
-		url: "/admin/careers",
-	},
-];
-
-const itemsHelp = [
-	{
-		title: "Contact",
-		icon: Phone,
-		url: "/admin/contact",
-	},
-	{
-		title: "Settings",
+		label: "Hệ thống",
 		icon: Settings,
-		url: "/admin/settings",
+		items: [
+			{ label: "Cấu hình chung", icon: Settings, url: "/admin/settings" },
+			{ label: "Logs", icon: FileWarning, url: "/admin/logs" },
+			{ label: "Báo cáo nội dung vi phạm", icon: AlertTriangle, url: "/admin/reports" },
+		],
 	},
 ];
 
@@ -78,93 +90,47 @@ export function AppSidebar() {
 	return (
 		<Sidebar>
 			<SidebarContent>
-				<SidebarGroup>
-					<SidebarGroupLabel>Admin Dashboard</SidebarGroupLabel>
-					<SidebarGroupContent>
-						<SidebarMenu>
-							{items.map((item) => (
-								<SidebarMenuItem key={item.title}>
-									<Tooltip>
-										<TooltipTrigger asChild>
-											<SidebarMenuButton asChild>
-												<Link
-													to={item.url}
-													className={`group-data-[collapsible=icon]:justify-center ${
-														location.pathname === item.url
-															? "bg-gray-100"
-															: ""
-													}`}
-												>
-													<item.icon />
-													<span className="group-data-[collapsible=icon]:hidden">
-														{item.title}
-													</span>
-												</Link>
-											</SidebarMenuButton>
-										</TooltipTrigger>
-										<TooltipContent
-											side="right"
-											className={isCollapsed ? "block" : "hidden"}
-										>
-											{item.title}
-										</TooltipContent>
-									</Tooltip>
-								</SidebarMenuItem>
-							))}
-						</SidebarMenu>
-						<Collapsible
-							defaultOpen
-							className="group/collapsible"
-						>
-							<SidebarGroup>
-								<SidebarGroupLabel asChild>
-									<CollapsibleTrigger>
-										Help
-										<ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-									</CollapsibleTrigger>
-								</SidebarGroupLabel>
-								<CollapsibleContent className="group-data-[collapsible=icon]:hidden">
-									<SidebarGroupContent>
-										<SidebarMenu className="group-data-[collapsible=icon]:shadow-none shadow-[-4px_0_2px_-2px_rgba(0,0,0,0.3)]">
-											{itemsHelp.map((item) => (
-												<SidebarMenuItem key={item.title}>
-													<Tooltip>
-														<TooltipTrigger asChild>
-															<SidebarMenuButton asChild>
-																<Link
-																	to={item.url}
-																	className={`group-data-[collapsible=icon]:justify-center ${
-																		location.pathname ===
-																		item.url
-																			? "bg-gray-100"
-																			: ""
-																	}`}
-																>
-																	<item.icon />
-																	<span className="group-data-[collapsible=icon]:hidden">
-																		{item.title}
-																	</span>
-																</Link>
-															</SidebarMenuButton>
-														</TooltipTrigger>
-														<TooltipContent
-															side="right"
-															className={
-																isCollapsed ? "block" : "hidden"
-															}
-														>
-															{item.title}
-														</TooltipContent>
-													</Tooltip>
-												</SidebarMenuItem>
-											))}
-										</SidebarMenu>
-									</SidebarGroupContent>
-								</CollapsibleContent>
-							</SidebarGroup>
-						</Collapsible>
-					</SidebarGroupContent>
-				</SidebarGroup>
+				{sidebarSections.map((section) => (
+					<SidebarGroup key={section.label}>
+						<SidebarGroupLabel>
+							<section.icon className="w-4 h-4 mr-2 text-pink-500 inline-block" />
+							{section.label}
+						</SidebarGroupLabel>
+						<SidebarGroupContent>
+							<SidebarMenu>
+								{section.items.map((item) => (
+									<SidebarMenuItem key={item.label}>
+										<Tooltip>
+											<TooltipTrigger asChild>
+												<SidebarMenuButton asChild>
+													<Link
+														to={item.url}
+														className={`group-data-[collapsible=icon]:justify-center ${
+															location.pathname === item.url
+																? "bg-gray-100"
+																: ""
+														}`}
+													>
+														<item.icon />
+														<span className="group-data-[collapsible=icon]:hidden">
+															{item.label}
+														</span>
+													</Link>
+												</SidebarMenuButton>
+											</TooltipTrigger>
+											<TooltipContent
+												side="right"
+												className={isCollapsed ? "block" : "hidden"}
+											>
+												{item.label}
+											</TooltipContent>
+										</Tooltip>
+									</SidebarMenuItem>
+								))}
+							</SidebarMenu>
+						</SidebarGroupContent>
+					</SidebarGroup>
+				))}
 			</SidebarContent>
 			<SidebarFooter>
 				<SidebarMenu>

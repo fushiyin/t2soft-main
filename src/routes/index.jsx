@@ -16,11 +16,8 @@ const Solution = React.lazy(() => import("@/views/SolutionAndProduct"));
 const SolutionDetail = React.lazy(() => import("@/views/SolutionAndProduct/SolutionDetail"));
 const Login = React.lazy(() => import("@/views/Login"));
 const Dashboard = React.lazy(() => import("@/views/Admin/pages/Dashboard"));
-const Inbox = React.lazy(() => import("@/views/Admin/pages/Inbox"));
-const Calendar = React.lazy(() => import("@/views/Admin/pages/Calendar"));
-const CareersAdmin = React.lazy(() => import("@/views/Admin/pages/Careers"));
-const CareersDetail = React.lazy(() => import("@/views/Career/CareersDetail"));
-const Settings = React.lazy(() => import("@/views/Admin/pages/Settings"));
+const Post = React.lazy(() => import("@/views/Admin/pages/Post"));
+const PostWrite = React.lazy(() => import("@/views/Admin/pages/PostWrite"));
 
 const router = createBrowserRouter([
 	{
@@ -61,10 +58,6 @@ const router = createBrowserRouter([
 				element: <Solution />,
 			},
 			{
-				path: idRouter.careerDetail,
-				element: <CareersDetail />,
-			},
-			{
 				path: idRouter.solutionDetail,
 				element: <SolutionDetail />,
 			},
@@ -96,24 +89,16 @@ const router = createBrowserRouter([
 				element: <Dashboard />,
 			},
 			{
-				path: idRouter.adminInbox,
-				element: <Inbox />,
-			},
-			{
-				path: idRouter.adminCalendar,
-				element: <Calendar />,
-			},
-			{
-				path: idRouter.adminCareers,
-				element: <CareersAdmin />,
-			},
-			{
 				path: idRouter.adminContact,
 				element: <Contact />,
 			},
 			{
-				path: idRouter.adminSettings,
-				element: <Settings />,
+				path: idRouter.adminPosts,
+				element: <Post />,
+			},
+			{
+				path: idRouter.adminPostWrite,
+				element: <PostWrite />,
 			},
 		],
 	},

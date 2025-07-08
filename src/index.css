@@ -320,3 +320,26 @@
 .animate-fibonacci-spin-float {
   animation: fibonacci-spin-float 12s linear infinite;
 }
+
+.blog-bg-grid {
+  background-color: #060c23;
+  background-image:
+    linear-gradient(rgba(36, 54, 99, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 54, 99, 0.09) 1px, transparent 1px),
+    linear-gradient(rgba(36, 54, 99, 0.07) 40px, transparent 40px),
+    linear-gradient(90deg, rgba(36, 54, 99, 0.07) 40px, transparent 40px),
+    radial-gradient(ellipse at top, #0a1a4a 0%, #060c23 100%);
+  background-size:
+    40px 40px,
+    40px 40px,
+    200px 200px,
+    200px 200px,
+    100% 100%;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  background-repeat: repeat;
+}

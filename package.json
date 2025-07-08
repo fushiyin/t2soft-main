@@ -25,11 +25,14 @@
 		"@radix-ui/react-tooltip": "^1.2.7",
 		"@tailwindcss/vite": "^4.1.6",
 		"@tinymce/tinymce-react": "^6.2.1",
+		"@tiptap/react": "^2.25.0",
+		"@tiptap/starter-kit": "^2.25.0",
 		"@xyflow/react": "^12.6.4",
 		"axios": "^1.9.0",
 		"class-variance-authority": "^0.7.1",
 		"classnames": "^2.5.1",
 		"clsx": "^2.1.1",
+		"formik": "^2.4.6",
 		"framer-motion": "^12.18.1",
 		"gsap": "^3.13.0",
 		"i18next": "^25.1.2",
@@ -41,6 +44,7 @@
 		"react-dom": "^19.1.0",
 		"react-hook-form": "^7.57.0",
 		"react-i18next": "^15.5.1",
+		"react-icons": "^5.5.0",
 		"react-intersection-observer": "^9.16.0",
 		"react-lottie": "^1.2.10",
 		"react-responsive": "^10.0.1",
@@ -49,7 +53,9 @@
 		"swiper": "^11.2.8",
 		"tailwind-merge": "^3.3.0",
 		"tailwindcss": "^4.1.6",
-		"vaul": "^1.1.2"
+		"tinymce": "^7.9.1",
+		"vaul": "^1.1.2",
+		"yup": "^1.6.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.26.0",
