@@ -3,7 +3,8 @@ import { Editor } from "@tinymce/tinymce-react";
 
 const TinyEditor = ({ value, onEditorChange, placeholder, height }) => {
 	const editorRef = useRef(null);
-	const editorHeight = height || 400;
+	// Ensure height is a valid number, fallback to 400 if not
+	const editorHeight = typeof height === "number" && height > 0 ? height : 400;
 
 	useEffect(() => {
 		const styleId = "tinymce-borderless-style";
@@ -22,7 +23,7 @@ const TinyEditor = ({ value, onEditorChange, placeholder, height }) => {
 	}, []);
 
 	return (
-		<div style={{ height: `${editorHeight}px` }}>
+		<div style={{ height: `${editorHeight}px`, minHeight: 200 }}>
 			<Editor
 				apiKey="2hkkc1snnh0bgs5u9eb3a4t2gwsc96sil8c1kmr7cuiibg9u"
 				tinymceScriptSrc="https://cdn.tiny.cloud/1/2hkkc1snnh0bgs5u9eb3a4t2gwsc96sil8c1kmr7cuiibg9u/tinymce/6/tinymce.min.js"
@@ -62,6 +63,7 @@ const TinyEditor = ({ value, onEditorChange, placeholder, height }) => {
 					resize: false,
 					placeholder: placeholder || "Start writing...",
 					branding: false,
+					readonly: false, // Always editable
 				}}
 			/>
 		</div>

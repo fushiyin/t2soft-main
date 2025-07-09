@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Pencil, Trash, Plus } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const dummyPosts = [
 	{
@@ -27,6 +28,11 @@ const dummyPosts = [
 
 export default function Post() {
 	const [posts] = useState(dummyPosts);
+	const navigate = useNavigate();
+
+	const goToPostWrite = () => {
+		navigate("/admin/posts/write");
+	};
 
 	return (
 		<div className="w-full mx-auto flex flex-col mt-10 px-8">
@@ -37,7 +43,10 @@ export default function Post() {
 					</h1>
 					<p className="text-muted-foreground">Manage your blog posts and content</p>
 				</div>
-				<button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-pink-500 to-orange-400 text-white font-semibold shadow hover:scale-105 transition-transform">
+				<button
+					onClick={goToPostWrite}
+					className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-pink-500 to-orange-400 text-white font-semibold shadow hover:scale-105 transition-transform"
+				>
 					<Plus className="w-5 h-5" /> Add New Post
 				</button>
 			</div>
