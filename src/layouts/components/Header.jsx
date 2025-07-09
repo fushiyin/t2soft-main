@@ -17,6 +17,7 @@ import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router";
+import { SECTIONS, SECTIONS_KEY } from "@/constant/sideNavigation";
 
 const Header = () => {
 	const location = useLocation();
@@ -35,6 +36,7 @@ const Header = () => {
 	const [isOpenBlog, setIsOpenBlog] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const isHome = location.pathname === "/" ? true : false;
+	const [activeSection, setActiveSection] = useState(null);
 
 	const { isMobile } = useResponsive();
 	const LANGUAGE = [
@@ -97,11 +99,40 @@ const Header = () => {
 
 		const handleScroll = () => {
 			const scrollPosition = window.scrollY;
-			setIsScrolled(scrollPosition > 50);
+			setIsScrolled(scrollPosition > "100vh");
 		};
 
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
+	useEffect(() => {
+		const handleSectionScroll = () => {
+			const scrollY = window.scrollY;
+			const header = document.querySelector("header");
+			const headerHeight = header?.offsetHeight || 0;
+			const viewportMiddle = scrollY + window.innerHeight / 2 - headerHeight;
+			let currentSection = null;
+			for (let section of SECTIONS) {
+				const el = document.getElementById(section.id);
+				if (el) {
+					const offsetTop = el.offsetTop;
+					const offsetHeight = el.offsetHeight;
+					if (viewportMiddle >= offsetTop && viewportMiddle < offsetTop + offsetHeight) {
+						currentSection = section.id;
+						break;
+					}
+				}
+			}
+			if (currentSection) {
+				setActiveSection(currentSection);
+			} else {
+				setActiveSection(null);
+			}
+		};
+		window.addEventListener("scroll", handleSectionScroll);
+		handleSectionScroll();
+		return () => window.removeEventListener("scroll", handleSectionScroll);
 	}, []);
 
 	const toggleDarkMode = () => {
@@ -125,41 +156,22 @@ const Header = () => {
 	return (
 		<header
 			id="header"
-			className={classNames("w-full z-50 transition-all duration-300 fixed left-0 right-0", {
-				"top-10 bg-transparent": !isScrolled && isHome && !isMobile,
-				"top-0 bg-white dark:bg-BasicBg shadow-md": isScrolled,
-			})}
+			className="w-full z-50 fixed left-0 right-0 top-0 bg-black shadow-md transition-all duration-300"
 		>
 			<div className="w-full mx-auto px-6">
 				<div className="w-full flex justify-between items-center h-16">
-					<div className="flex-shrink-0">
-						<Link
-							to="/"
-							className="flex items-center justify-center"
-						>
-							<img
-								className="h-16 w-auto"
-								alt="Logo"
-								src={isScrolled || isDarkMode | !isHome ? light : dark}
-							/>
-							<span
-								className={classNames("text-xl font-bold", {
-									"text-black": isScrolled || isDarkMode || !isHome,
-									"text-white": !isScrolled && !isDarkMode && isHome,
-								})}
-							>
-								NEOEDU
-							</span>
+					<div className="flex items-center gap-2 flex-shrink-0">
+						<Link to="/" className="flex items-center gap-2">
+							<span className="text-2xl font-extrabold tracking-widest text-white font-serif">trade<span className="text-yellow-500">ly</span></span>
 						</Link>
 					</div>
 
-					<nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 xl:gap-7 rounded-full px-6 py-2">
+					<nav className="hidden md:flex flex-1 justify-center items-center gap-2 xl:gap-7">
 						{visibleLinks.map((link) => {
 							const isActive =
 								link.path === "/"
 									? window.location?.pathname === "/"
 									: window.location?.pathname.startsWith(link.path);
-							const isHomeTab = link.path === "/";
 							const hasDropdown =
 								Array.isArray(link.dropdown) && link.dropdown.length > 0;
 							return (
@@ -170,37 +182,23 @@ const Header = () => {
 									<Link
 										to={link.path}
 										className={classNames(
-											"relative transition-all duration-300 ease-in-out flex items-center justify-center font-medium text-base px-5 py-2 rounded-full group whitespace-nowrap",
+											"px-3 py-1 text-base font-medium transition-colors duration-200",
 											{
-												"bg-black text-white shadow-md":
-													isActive && (isScrolled || !isHomeTab),
-												"text-[var(--color-dark-blue)] font-extrabold bg-white shadow-md":
-													isActive && isHomeTab && !isScrolled,
-												"text-white hover:text-[var(--color-dark-blue)]":
-													isHome && !isScrolled && !isActive,
-												"text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)]":
-													!isHome && !isActive,
-												"dark:text-SecondaryBg": isScrolled && isActive,
-											},
+												"text-yellow-500 font-bold border-b-2 border-yellow-500": isActive,
+												"text-white hover:text-yellow-500": !isActive,
+											}
 										)}
 									>
-										{isActive && (
-											<span className="h-2 w-2 bg-green-500 rounded-full mr-2"></span>
-										)}
-										<span className="relative z-10">
-											{t(link?.i18nKey) || link?.name}
-											{hasDropdown && (
-												<ChevronDown className="ml-1 w-4 h-4 inline-block align-middle" />
-											)}
-										</span>
+										{t(link?.i18nKey) || link?.name}
+										{hasDropdown && <ChevronDown className="ml-1 w-4 h-4 inline-block align-middle" />}
 									</Link>
 									{hasDropdown && (
-										<div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 min-w-[180px] bg-white dark:bg-BasicBg shadow-lg rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all z-50">
+										<div className="absolute left-0 top-full mt-2 min-w-[180px] bg-black shadow-lg rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all z-50">
 											{link.dropdown.map((item) => (
 												<Link
 													key={item.path}
 													to={item.path}
-													className="block px-4 py-2 text-base text-gray-700 dark:text-gray-200 hover:text-[var(--color-dark-blue)] hover:bg-gray-100 dark:hover:bg-SecondaryBg rounded-md transition-colors"
+													className="block px-4 py-2 text-base text-white hover:text-yellow-500 hover:bg-gray-900 rounded-md transition-colors"
 												>
 													{t(item.i18nKey) || item.name}
 												</Link>
@@ -211,6 +209,15 @@ const Header = () => {
 							);
 						})}
 					</nav>
+
+					<div className="flex items-center gap-2 flex-shrink-0">
+						<Link
+							to="/get-started"
+							className="bg-yellow-600 hover:bg-yellow-500 text-black font-semibold rounded-md px-6 py-3 transition-colors duration-200 shadow-md text-base"
+						>
+							Get Started <span className="ml-1">&rarr;</span>
+						</Link>
+					</div>
 
 					{isOpenBlog &&
 						(() => {
@@ -494,7 +501,6 @@ export const ChangeLanguages = ({
 				)}
 				onClick={toggleLanguageDropdown}
 			>
-				{/* <Globe className="h-5 w-5 mr-1" /> */}
 				<img
 					src={language.imageUrl}
 					alt={language.label}

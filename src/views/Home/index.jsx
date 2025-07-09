@@ -9,6 +9,8 @@ import SideNavigation from "./components/SideNavigation";
 import Testimonials from "./components/Testimonials";
 import WhyVietnam from "./components/WhyVietnam";
 import DevelopmentCapacity from "./components/DevelopmentCapacity";
+import VideoIntro from "./components/VideoIntro";
+import Blog from "./components/Blog";
 
 export const sectionClass = "flex items-center justify-center relative overflow-hidden";
 export const contentClass = "container h-full px-4 py-16 md:px-6 max-w-[1440px]";
@@ -16,55 +18,23 @@ export const contentClass = "container h-full px-4 py-16 md:px-6 max-w-[1440px]"
 function HomePage() {
 	return (
 		<>
-			<section
-				id={SECTIONS_KEY.HERO.id}
-				className={sectionClass + " h-screen"}
-			>
+			<section id={SECTIONS_KEY.HERO.id}>
 				<Hero />
 			</section>
-			<section
-				id={SECTIONS_KEY.CHALLENGES.id}
-				className={`${sectionClass} h-auto md:min-h-[960px] xl:h-screen`}
-			>
+			<section>
+				<VideoIntro />
+			</section>
+			<section>
+				<Blog />
+			</section>
+			<section id={SECTIONS_KEY.CHALLENGES.id}>
 				<Challenges />
 			</section>
-			<section
-				id={SECTIONS_KEY.WHY_VIETNAM.id}
-				// className={sectionClass}
-			>
+			<section id={SECTIONS_KEY.WHY_VIETNAM.id}>
 				<WhyVietnam />
 			</section>
-			<section
-				id={SECTIONS_KEY.SERVICES.id}
-				className={sectionClass}
-			>
-				<Services contentClass={contentClass} />
-			</section>
-			<section
-				id={SECTIONS_KEY.FOCUSED_INDUSTRIES.id}
-				className={sectionClass}
-			>
-				<FocusedIndustries contentClass={contentClass} />
-			</section>
-
-			<section
-				id={SECTIONS_KEY.DEVELOPMENT_CAPACITY.id}
-				className={sectionClass}
-			>
-				<DevelopmentCapacity contentClass={contentClass} />
-			</section>
-			<section
-				id={SECTIONS_KEY.TESTIMONIALS.id}
-				className={sectionClass}
-			>
+			<section id={SECTIONS_KEY.TESTIMONIALS.id}>
 				<Testimonials contentClass={contentClass} />
-			</section>
-
-			<section
-				id="contact-section"
-				className="flex items-center justify-center"
-			>
-				<CTA />
 			</section>
 			<SideNavigation />
 		</>
