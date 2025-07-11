@@ -163,7 +163,7 @@ export default function ServicesPage() {
 						</div>
 					</motion.div>
 				</AnimatedSection>
-				<section className="w-full pt-4 pb-12 bg-background">
+				<section className="w-full pt-4 pb-12 bg-[var(--color-background)]">
 					<div className="container max-w-[1440px] mx-auto px-4">
 						<div className="text-center mb-16">
 							<h2 className="text-4xl md:text-5xl font-bold mb-4 font-sans break-keep whitespace-normal break-words">

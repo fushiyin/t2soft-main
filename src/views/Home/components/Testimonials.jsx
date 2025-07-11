@@ -69,7 +69,7 @@ export default function Testimonials({ contentClass }) {
 	const duplicatedTestimonials = testimonials.map((row) => [...row, ...row, ...row, ...row]);
 
 	return (
-		<div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white w-full flex items-center justify-center h-full">
+		<div className="relative bg-home-transparent text-white w-full flex items-center justify-center h-full">
 			<div
 				className={classNames(
 					"relative w-full flex items-center justify-center max-w-[1440px] h-full",

@@ -99,10 +99,11 @@ const Header = () => {
 
 		const handleScroll = () => {
 			const scrollPosition = window.scrollY;
-			setIsScrolled(scrollPosition > "100vh");
+			setIsScrolled(scrollPosition > 50);
 		};
 
 		window.addEventListener("scroll", handleScroll);
+		handleScroll();
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
@@ -156,13 +157,23 @@ const Header = () => {
 	return (
 		<header
 			id="header"
-			className="w-full z-50 fixed left-0 right-0 top-0 bg-black shadow-md transition-all duration-300"
+			className={classNames(
+				"w-full z-50 fixed left-0 right-0 top-0 shadow-md transition-all duration-300",
+				isScrolled
+					? "bg-primary dark:bg-[var(--color-secondary)]/95 backdrop-blur"
+					: "bg-transparent",
+			)}
 		>
 			<div className="w-full mx-auto px-6">
 				<div className="w-full flex justify-between items-center h-16">
 					<div className="flex items-center gap-2 flex-shrink-0">
-						<Link to="/" className="flex items-center gap-2">
-							<span className="text-2xl font-extrabold tracking-widest text-white font-serif">trade<span className="text-yellow-500">ly</span></span>
+						<Link
+							to="/"
+							className="flex items-center gap-2"
+						>
+							<span className="text-2xl font-extrabold tracking-widest text-white font-serif">
+								trade<span className="text-yellow-500">ly</span>
+							</span>
 						</Link>
 					</div>
 
@@ -184,13 +195,16 @@ const Header = () => {
 										className={classNames(
 											"px-3 py-1 text-base font-medium transition-colors duration-200",
 											{
-												"text-yellow-500 font-bold border-b-2 border-yellow-500": isActive,
+												"text-yellow-500 font-bold border-b-2 border-yellow-500":
+													isActive,
 												"text-white hover:text-yellow-500": !isActive,
-											}
+											},
 										)}
 									>
 										{t(link?.i18nKey) || link?.name}
-										{hasDropdown && <ChevronDown className="ml-1 w-4 h-4 inline-block align-middle" />}
+										{hasDropdown && (
+											<ChevronDown className="ml-1 w-4 h-4 inline-block align-middle" />
+										)}
 									</Link>
 									{hasDropdown && (
 										<div className="absolute left-0 top-full mt-2 min-w-[180px] bg-black shadow-lg rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all z-50">
@@ -209,16 +223,6 @@ const Header = () => {
 							);
 						})}
 					</nav>
-
-					<div className="flex items-center gap-2 flex-shrink-0">
-						<Link
-							to="/get-started"
-							className="bg-yellow-600 hover:bg-yellow-500 text-black font-semibold rounded-md px-6 py-3 transition-colors duration-200 shadow-md text-base"
-						>
-							Get Started <span className="ml-1">&rarr;</span>
-						</Link>
-					</div>
-
 					{isOpenBlog &&
 						(() => {
 							const contactLink = NAV_LINKS.find((link) => link.path === "/contact");
@@ -291,41 +295,6 @@ const Header = () => {
 								setIsOpenBlog={setIsOpenBlog}
 							/>
 						</div>
-						<button
-							onClick={toggleDarkMode}
-							className={classNames("ml-2 p-2 rounded-full transition-colors", {
-								"bg-[var(--primary)] text-white hover:bg-[var(--button-hover)]":
-									isDarkMode,
-								"bg-white text-[var(--primary)] hover:bg-[var(--button-hover)] hover:text-white":
-									!isDarkMode,
-							})}
-							aria-label="Toggle dark mode"
-						>
-							{isDarkMode ? (
-								<Sun className="h-5 w-5" />
-							) : (
-								<Moon className="h-5 w-5" />
-							)}
-						</button>
-						<button
-							className="ml-2 p-2 rounded-full hover:bg-[var(--muted)] transition-colors"
-							aria-label="Search"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								strokeWidth={1.5}
-								stroke="currentColor"
-								className="w-5 h-5 text-[var(--primary)] dark:text-white"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
-								/>
-							</svg>
-						</button>
 					</div>
 
 					{isCompactNav && (

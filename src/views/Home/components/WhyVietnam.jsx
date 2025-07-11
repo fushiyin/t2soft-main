@@ -49,7 +49,7 @@ export default function WhyVietnam() {
 	];
 
 	return (
-		<div className="flex flex-col pt-6">
+		<div className="flex flex-col pt-6 bg-home-transparent">
 			<div className="w-full h-[250px] relative flex justify-center">
 				<img
 					src={bg_whyVietnam}

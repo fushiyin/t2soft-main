@@ -5,39 +5,28 @@
 
 :root {
 	--radius: 0.625rem;
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.129 0.042 264.695);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.129 0.042 264.695);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.129 0.042 264.695);
-	--primary: oklch(0.208 0.042 265.755);
-	--primary-foreground: oklch(0.984 0.003 247.858);
-	--secondary: oklch(0.968 0.007 247.896);
-	--secondary-foreground: oklch(0.208 0.042 265.755);
-	--muted: oklch(0.968 0.007 247.896);
-	--muted-foreground: oklch(0.554 0.046 257.417);
-	--accent: oklch(0.968 0.007 247.896);
-	--accent-foreground: oklch(0.208 0.042 265.755);
-	--destructive: oklch(0.577 0.245 27.325);
-	--border: oklch(0.929 0.013 255.508);
-	--input: oklch(0.929 0.013 255.508);
-	--ring: oklch(0.704 0.04 256.788);
-	--chart-1: oklch(0.646 0.222 41.116);
-	--chart-2: oklch(0.6 0.118 184.704);
-	--chart-3: oklch(0.398 0.07 227.392);
-	--chart-4: oklch(0.828 0.189 84.429);
-	--chart-5: oklch(0.769 0.188 70.08);
-	--sidebar: oklch(0.984 0.003 247.858);
-	--sidebar-foreground: oklch(0.129 0.042 264.695);
-	--sidebar-primary: oklch(0.208 0.042 265.755);
-	--sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-	--sidebar-accent: oklch(0.968 0.007 247.896);
-	--sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-	--sidebar-border: oklch(0.929 0.013 255.508);
-	--sidebar-ring: oklch(0.704 0.04 256.788);
-	--header-active: #e6f4ff;
-	--header-hover: #0000000f;
+	--color-primary: #1A73E8;
+	--color-secondary: #0F172A;
+	--color-accent: #60A5FA;
+	--color-background: #F8FAFC;
+	--color-surface: #FFFFFF;
+	--color-text-primary: #1E293B;
+	--color-text-muted: #64748B;
+	--color-border: #E2E8F0;
+	--color-success: #10B981;
+	--color-error: #EF4444;
+
+	/* For backward compatibility with Tailwind and custom classes */
+	--primary: var(--color-primary);
+	--secondary: var(--color-secondary);
+	--accent: var(--color-accent);
+	--background: var(--color-background);
+	--surface: var(--color-surface);
+	--text-primary: var(--color-text-primary);
+	--text-muted: var(--color-text-muted);
+	--border: var(--color-border);
+	--success: var(--color-success);
+	--error: var(--color-error);
 }
 @theme inline {
 	--breakpoint-500: 500px;
@@ -123,7 +112,6 @@
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
-	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--color-card: var(--card);
 	--color-card-foreground: var(--card-foreground);
@@ -157,6 +145,7 @@
 }
 
 .dark {
+	--color-background: #0a1020;
 	/*custom color */
 	--color-SecondaryBg: #5087f7;
 	--color-SecondaryBg-gray: #dae4ed;
@@ -229,37 +218,16 @@
     --color-GreenAlpha10: rgba(46, 189, 133, 0.1);
     --color-GreenAlpha20: rgba(46, 189, 133, 0.2);
 
-	--background: oklch(0.129 0.042 264.695);
-	--foreground: oklch(0.984 0.003 247.858);
-	--card: oklch(0.208 0.042 265.755);
-	--card-foreground: oklch(0.984 0.003 247.858);
-	--popover: oklch(0.208 0.042 265.755);
-	--popover-foreground: oklch(0.984 0.003 247.858);
-	--primary: oklch(0.929 0.013 255.508);
-	--primary-foreground: oklch(0.208 0.042 265.755);
-	--secondary: oklch(0.279 0.041 260.031);
-	--secondary-foreground: oklch(0.984 0.003 247.858);
-	--muted: oklch(0.279 0.041 260.031);
-	--muted-foreground: oklch(0.704 0.04 256.788);
-	--accent: oklch(0.279 0.041 260.031);
-	--accent-foreground: oklch(0.984 0.003 247.858);
-	--destructive: oklch(0.704 0.191 22.216);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.551 0.027 264.364);
-	--chart-1: oklch(0.488 0.243 264.376);
-	--chart-2: oklch(0.696 0.17 162.48);
-	--chart-3: oklch(0.769 0.188 70.08);
-	--chart-4: oklch(0.627 0.265 303.9);
-	--chart-5: oklch(0.645 0.246 16.439);
-	--sidebar: oklch(0.208 0.042 265.755);
-	--sidebar-foreground: oklch(0.984 0.003 247.858);
-	--sidebar-primary: oklch(0.488 0.243 264.376);
-	--sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-	--sidebar-accent: oklch(0.279 0.041 260.031);
-	--sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.551 0.027 264.364);
+	--primary: var(--color-primary);
+	--secondary: var(--color-secondary);
+	--accent: var(--color-accent);
+	--background: var(--color-background);
+	--surface: var(--color-surface);
+	--text-primary: var(--color-text-primary);
+	--text-muted: var(--color-text-muted);
+	--border: var(--color-border);
+	--success: var(--color-success);
+	--error: var(--color-error);
 }
 
 @layer base {
@@ -268,8 +236,8 @@
 	}
 	body {
 		@apply bg-background text-foreground;
-		background: #0a1020;
-		background-image:
+		/* background: #0a1020; */
+		/* background-image:
 			linear-gradient(115deg, rgba(0,255,255,0.07) 0%, rgba(255,0,234,0.07) 100%),
 			repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 40px),
 			repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 40px),
@@ -288,7 +256,7 @@
 			0 calc(var(--bg-scroll-y, 0px) * 0.3),
 			0 calc(var(--bg-scroll-y, 0px) * 0.6),
 			0 0,
-			0 0;
+			0 0; */
 	}
 }
 
@@ -333,15 +301,6 @@
 	display: none;
 }
 
-@keyframes fibonacci-spin-float {
-  0% { transform: rotate(0deg) translateY(0); }
-  50% { transform: rotate(180deg) translateY(-20px); }
-  100% { transform: rotate(360deg) translateY(0); }
-}
-.animate-fibonacci-spin-float {
-  animation: fibonacci-spin-float 12s linear infinite;
-}
-
 .blog-bg-grid {
   background-color: #060c23;
   background-image:
@@ -364,3 +323,107 @@
     0 0;
   background-repeat: repeat;
 }
+
+@keyframes home-bg-gradient {
+  0% {
+    background: linear-gradient(120deg, var(--color-background), var(--color-accent) 60%, var(--color-primary));
+    opacity: 0.9;
+  }
+  50% {
+    background: linear-gradient(240deg, var(--color-background), var(--color-primary) 60%, var(--color-accent));
+    opacity: 1;
+  }
+  100% {
+    background: linear-gradient(120deg, var(--color-background), var(--color-accent) 60%, var(--color-primary));
+    opacity: 0.9;
+  }
+}
+.animate-home-bg-gradient {
+  animation: home-bg-gradient 18s ease-in-out infinite;
+  background-size: 200% 200%;
+  background-position: center;
+  will-change: background;
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+}
+
+.animate-home-bg-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 12px,
+    var(--color-accent) 12px 16px,
+    transparent 16px 44px
+  );
+  opacity: 0.35;
+  animation: wave-bg-move 12s linear infinite;
+}
+
+@keyframes wave-bg-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 120px 60px;
+  }
+}
+
+.bg-home-transparent {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.network-dot {
+  transform-origin: center;
+  animation: network-dot-pulse 3.5s ease-in-out infinite;
+}
+@keyframes network-dot-pulse {
+  0%, 100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.32;
+    transform: scale(1.25);
+  }
+}
+
+.animated-line {
+  opacity: 0.18;
+  animation: network-line-fade 4.5s ease-in-out infinite;
+}
+
+/* Staggered delays for lines */
+.delay-0 { animation-delay: 0s; }
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+.delay-4 { animation-delay: 1.2s; }
+.delay-5 { animation-delay: 1.5s; }
+.delay-6 { animation-delay: 1.8s; }
+.delay-7 { animation-delay: 2.1s; }
+.delay-8 { animation-delay: 2.4s; }
+.delay-9 { animation-delay: 2.7s; }
+.delay-10 { animation-delay: 3.0s; }
+.delay-11 { animation-delay: 3.3s; }
+.delay-12 { animation-delay: 3.6s; }
+
+@keyframes network-line-fade {
+  0%, 100% { opacity: 0.18; }
+  50% { opacity: 0.38; }
+}
+
+/* Stagger dot pulse as well */
+.network-dot { animation: network-dot-pulse 3.5s ease-in-out infinite; }
+.network-dot.delay-0 { animation-delay: 0s; }
+.network-dot.delay-1 { animation-delay: 0.3s; }
+.network-dot.delay-2 { animation-delay: 0.6s; }
+.network-dot.delay-3 { animation-delay: 0.9s; }
+.network-dot.delay-4 { animation-delay: 1.2s; }
+.network-dot.delay-5 { animation-delay: 1.5s; }
+.network-dot.delay-6 { animation-delay: 1.8s; }

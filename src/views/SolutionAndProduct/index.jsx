@@ -116,7 +116,7 @@ export default function SolutionAndProduct() {
 			</AnimatedSection>
 			<motion.section
 				ref={ref1}
-				className="w-full pt-4 pb-4 bg-background"
+				className="w-full pt-4 pb-4 bg-[var(--color-background)]"
 				initial={{ opacity: 0, y: 20 }}
 				animate={inView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 				transition={{ duration: 0.6 }}
