@@ -143,12 +143,8 @@ const VisionJourney = () => {
 	return (
 		<div
 			ref={containerRef}
-			className="h-[600px] md:h-[870px] w-full overflow-hidden relative snap-start snap-always bg-[#30323d]"
-			style={{
-				scrollSnapAlign: "start",
-				backgroundImage: `url(${wallpaper})`,
-				backgroundSize: "contain",
-			}}
+			className="h-[600px] md:h-[870px] w-full overflow-hidden relative snap-start snap-always"
+			style={{ scrollSnapAlign: "start" }}
 		>
 			<Stars />
 			<motion.div

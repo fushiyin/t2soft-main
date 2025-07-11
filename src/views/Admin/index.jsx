@@ -18,7 +18,7 @@ export default function Admin() {
 				navigate("/login", { replace: true });
 			} else if (
 				user.providerData[0]?.providerId === "google.com" &&
-				!['thehungdzhome@gmail.com', 'trucongftu@gmail.com'].includes(user.email)
+				!["thehungdzhome@gmail.com", "trucongftu@gmail.com"].includes(user.email)
 			) {
 				alert("Access denied: Only specific Google accounts can access admin.");
 				auth.signOut();

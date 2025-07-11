@@ -32,7 +32,13 @@ export default function PostWrite() {
 				</h1>
 			</div>
 			<Formik
-				initialValues={{ title: "", status: "Draft", content: "", type: "post", course_id: "" }}
+				initialValues={{
+					title: "",
+					status: "Draft",
+					content: "",
+					type: "post",
+					course_id: "",
+				}}
 				validationSchema={PostSchema}
 				onSubmit={async (values, { setSubmitting, resetForm }) => {
 					try {
@@ -52,7 +58,7 @@ export default function PostWrite() {
 						const docRef = await addDoc(collection(db, "posts"), postData);
 						await updateDoc(docRef, { id: docRef.id });
 						alert(
-							`Post ${submitType === "publish" ? "published" : "scheduled"} successfully!`
+							`Post ${submitType === "publish" ? "published" : "scheduled"} successfully!`,
 						);
 						resetForm();
 						navigate(-1);

@@ -21,8 +21,7 @@ export default function Hero() {
 
 	return (
 		<section
-			className="relative w-full min-h-[80vh] flex flex-col justify-center bg-black overflow-hidden"
-			style={{ background: `url(${background}) center/cover no-repeat` }}
+			className="relative w-full min-h-[80vh] flex flex-col justify-center overflow-hidden"
 		>
 			<div className="absolute inset-0 bg-black/70 z-10" />
 			<div className="relative z-20 flex flex-col lg:flex-row items-center justify-between w-full max-w-[1440px] mx-auto px-6 py-16 gap-8">

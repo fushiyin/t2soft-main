@@ -37,7 +37,7 @@ export default function VideoIntro() {
 	}, []);
 
 	return (
-		<section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] py-12 md:py-20">
+		<section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden py-12 md:py-20">
 			<div
 				className="absolute top-0 left-0 w-full h-1/4 z-10 pointer-events-none"
 				style={{

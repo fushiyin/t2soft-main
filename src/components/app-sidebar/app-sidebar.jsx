@@ -107,9 +107,7 @@ export function AppSidebar() {
 	};
 
 	return (
-		<Sidebar
-			className="backdrop-blur-lg bg-white/60 dark:bg-[#181a20]/60 border-r border-gray-200 dark:border-gray-800 shadow-xl transition-all duration-300"
-		>
+		<Sidebar className="backdrop-blur-lg bg-white/60 dark:bg-[#181a20]/60 border-r border-gray-200 dark:border-gray-800 shadow-xl transition-all duration-300">
 			<SidebarContent>
 				{sidebarSections.map((section) => (
 					<SidebarGroup key={section.label}>
@@ -127,7 +125,9 @@ export function AppSidebar() {
 													<Link
 														to={item.url}
 														className={`group-data-[collapsible=icon]:justify-center ${
-															location.pathname === item.url ? "bg-gradient-to-r from-pink-500/10 to-orange-400/10 dark:from-pink-700/20 dark:to-orange-700/20" : ""
+															location.pathname === item.url
+																? "bg-gradient-to-r from-pink-500/10 to-orange-400/10 dark:from-pink-700/20 dark:to-orange-700/20"
+																: ""
 														}`}
 													>
 														<item.icon />
@@ -138,11 +138,11 @@ export function AppSidebar() {
 												</SidebarMenuButton>
 											</TooltipTrigger>
 											<TooltipContent
-													 side="right"
-													 className={isCollapsed ? "block" : "hidden"}
+												side="right"
+												className={isCollapsed ? "block" : "hidden"}
 											>
-													{item.label}
-												</TooltipContent>
+												{item.label}
+											</TooltipContent>
 										</Tooltip>
 									</SidebarMenuItem>
 								))}
@@ -187,8 +187,23 @@ export function AppSidebar() {
 								<Settings className="text-gray-500" />
 								<span>Settings</span>
 							</DropdownMenuItem>
-							<DropdownMenuItem className="cursor-pointer hover:bg-red-100 dark:hover:bg-red-900/30 rounded flex items-center gap-2" onClick={handleSignOut}>
-								<svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1" /></svg>
+							<DropdownMenuItem
+								className="cursor-pointer hover:bg-red-100 dark:hover:bg-red-900/30 rounded flex items-center gap-2"
+								onClick={handleSignOut}
+							>
+								<svg
+									className="w-5 h-5 text-red-500"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="2"
+									viewBox="0 0 24 24"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1"
+									/>
+								</svg>
 								<span className="text-red-500">Sign out</span>
 							</DropdownMenuItem>
 						</DropdownMenuContent>
