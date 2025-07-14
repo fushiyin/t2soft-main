@@ -1,88 +1,61 @@
 import bg_whyVietnam_2 from "@/assets/img/bg-text-why_vn.png";
-import bg_whyVietnam from "@/assets/img/why-vn-bg.png";
 import logo_t2 from "@/assets/logos/T2_light_Logo.png";
 import HoverCard from "@/components/HoverCard";
-import { idRouter } from "@/routes/idRouter";
+import CourseCard from "@/components/cards/CourseCard";
 import classNames from "classnames";
-import { motion } from "framer-motion";
 import { ArrowRight, Award, HandCoins, Handshake, HeartHandshakeIcon, Scale } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function WhyVietnam() {
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 
-	const item1 = t("why_vietnam.text_header.title", { returnObjects: true });
 	const item2 = t("why_vietnam.text_footer.title", { returnObjects: true });
+
+	const [playlists, setPlaylists] = useState([
+		{ playListId: "PLsGBXDsQw_r4-62k404iSBvPpixyPCI2u" },
+		{ playListId: "PLsGBXDsQw_r4hwYSS27PqLR4M3lgFs2RE" },
+		{ playListId: "PLsGBXDsQw_r6IIs2AAaauS0P_LrLgaaPP" },
+		{ playListId: "PLsGBXDsQw_r4BRx4Edlk4MHuhzya6tPQD" },
+	]);
+	const [playlistData, setPlaylistData] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+
+	useEffect(() => {
+		fetchAllPlaylists();
+	}, [playlists]);
+
+	const fetchAllPlaylists = async () => {
+		setLoading(true);
+			setError(null);
+			try {
+				const results = await Promise.all(
+					playlists.map(async (pl) => {
+						const res = await axios.get(`/api/youtube/playlist?playlistId=${pl.playListId}&maxResults=1`);
+						return { ...pl, data: res.data.items?.[0], total: res.data.pageInfo?.totalResults };
+					})
+				);
+				console.log(results)
+				setPlaylistData(results);
+			} catch (e) {
+				setError("Failed to fetch playlists");
+			} finally {
+				setLoading(false);
+			}
+	}
 
 	const whyVietnam = [
 		{
 			title: t("why_vietnam.title"),
 			description: t("why_vietnam.description"),
 		},
-		{
-			icon: <Award className="h-8 w-8 rounded-full" />,
-			title: t("why_vietnam.talent.title"),
-			description: t("why_vietnam.talent.description"),
-		},
-		{
-			icon: <HandCoins className="h-8 w-8 rounded-full" />,
-			title: t("why_vietnam.cost.title"),
-			description: t("why_vietnam.cost.description"),
-		},
-		{
-			icon: <Handshake className="h-8 w-8 rounded-full" />,
-			title: t("why_vietnam.geo_n_culture.title"),
-			description: t("why_vietnam.geo_n_culture.description"),
-		},
-		{
-			icon: <Scale className="h-8 w-8 rounded-full" />,
-			title: t("why_vietnam.politic_n_eco.title"),
-			description: t("why_vietnam.politic_n_eco.description"),
-		},
-		{
-			icon: <HeartHandshakeIcon className="h-8 w-8 rounded-full" />,
-			title: t("why_vietnam.experience.title"),
-			description: t("why_vietnam.experience.description"),
-		},
 	];
 
 	return (
 		<div className="flex flex-col pt-6 bg-home-transparent">
-			<div className="w-full h-[250px] relative flex justify-center">
-				<img
-					src={bg_whyVietnam}
-					alt=""
-					className="w-full h-full object-cover"
-				/>
-
-				<div className="max-w-[1440px] absolute top-1/2 w-full h-auto transform -translate-y-1/2 flex items-center justify-between font-sans px-4 sm:px-6 md:px-8">
-					<p className="text-white font-bold leading-relaxed text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%] font-sans break-keep whitespace-normal break-words">
-						{item1.map((part, idx) => (
-							<span
-								key={idx}
-								className={part.className}
-							>
-								{part.text}
-							</span>
-						))}
-					</p>
-					<motion.button
-						whileHover={{ scale: 1.05 }}
-						whileTap={{ scale: 0.95 }}
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5, delay: 1 }}
-						onClick={() => navigate(idRouter?.contact)}
-						className="cursor-pointer hidden sm:inline-flex absolute right-[5%] font-bold items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 text-sm md:text-base lg:text-lg text-heading-black hover:text-white bg-gradient-to-r from-pale-blue to-SecondaryBg rounded-xl hover:bg-primary/90 duration-300 transform hover:scale-105 shadow-xl"
-					>
-						{t("our_services.button_learn_more")}
-						<ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-					</motion.button>
-				</div>
-			</div>
-
 			<div className="w-full bg-white flex justify-center items-center">
 				<div className="flex justify-center container h-full py-6 sm:py-10 px-4 sm:px-6 md:px-10 max-w-[1440px]">
 					<div className="w-full">
@@ -102,6 +75,17 @@ export default function WhyVietnam() {
 									)}
 								/>
 							))}
+							{/* Playlist HoverCards */}
+							{loading ? (
+								<div className="col-span-full text-center py-8">Loading playlists...</div>
+							) : error ? (
+								<div className="col-span-full text-center text-red-500 py-8">{error}</div>
+							) : (
+								playlistData.map((pl, idx) => (
+									<CourseCard
+									/>
+								))
+							)}
 						</div>
 					</div>
 				</div>

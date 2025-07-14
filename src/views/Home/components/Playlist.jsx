@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
-const YOUTUBE_API_KEY = "AIzaSyCWALP3sa9w3zAVnTC_dfbxOEtrbNJPRhA"; // <-- Replace with your API key
-const CHANNEL_ID = "UCC-Kp74w4KD6_jl7umkFgzQ"; // Tradingneoakathehung channel ID
 const CHANNEL_NAME = "Tradingneoakathehung";
 
 export default function PlayList() {
@@ -19,9 +17,7 @@ export default function PlayList() {
     const fetchPlaylist = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(
-                `https://www.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&channelId=${CHANNEL_ID}&maxResults=24&key=${YOUTUBE_API_KEY}`
-            );
+            const response = await axios.get(`/api/youtube/playlists`);
             setPlaylists(response.data.items);
         } catch (err) {
             setError("Failed to fetch playlists. Please try again later.");
@@ -103,7 +99,7 @@ export default function PlayList() {
                                         <div
                                             ref={el => subscribeRefs.current[playlist.id] = el}
                                             className="g-ytsubscribe"
-                                            data-channelid={CHANNEL_ID}
+                                            data-channelid={playlist.snippet.channelId}
                                             data-layout="default"
                                             data-count="default"
                                         ></div>

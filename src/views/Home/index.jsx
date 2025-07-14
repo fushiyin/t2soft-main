@@ -17,6 +17,7 @@ import background from "@/assets/image/pxfuel.jpg";
 import video from "@/assets/video/trading.mp4";
 import MyHero from "./components/MyHero";
 import YouTubePlaylist from "./components/YouTubePlaylist";
+import Courses from "./components/Courses"
 
 export const sectionClass = "flex items-center justify-center relative overflow-hidden";
 export const contentClass = "container h-full px-4 py-16 md:px-6 max-w-[1440px]";
@@ -27,19 +28,20 @@ function HomePage() {
 			<section>
 				<MyHero />
 			</section>
-			<YouTubePlaylist />
-			<section id={SECTIONS_KEY.HERO.id}>
-				<Hero />
+			<section id={SECTIONS_KEY.WHY_VIETNAM.id}>
+				<WhyVietnam />
 			</section>
+			<section>
+				<Courses/>
+			</section>
+			<YouTubePlaylist />
 			<section>
 				<Blog />
 			</section>
 			<section id={SECTIONS_KEY.CHALLENGES.id}>
 				<Challenges />
 			</section>
-			<section id={SECTIONS_KEY.WHY_VIETNAM.id}>
-				<WhyVietnam />
-			</section>
+			
 			<section id={SECTIONS_KEY.TESTIMONIALS.id}>
 				<Testimonials contentClass={contentClass} />
 			</section>

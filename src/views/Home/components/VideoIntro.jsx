@@ -7,10 +7,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { FaPlay } from "react-icons/fa";
 
-const YOUTUBE_API_KEY = "AIzaSyCWALP3sa9w3zAVnTC_dfbxOEtrbNJPRhA";
-const CHANNEL_ID = "UCC-Kp74w4KD6_jl7umkFgzQ";
-const MAX_RESULTS = 10;
-
 export default function VideoIntro() {
 	const [videos, setVideos] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -18,9 +14,7 @@ export default function VideoIntro() {
 	useEffect(() => {
 		async function fetchVideos() {
 			try {
-				const res = await fetch(
-					`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=${MAX_RESULTS}`,
-				);
+				const res = await fetch(`/api/youtube`);
 				const data = await res.json();
 				const videoItems = (data.items || []).filter(
 					(item) => item.id.kind === "youtube#video",

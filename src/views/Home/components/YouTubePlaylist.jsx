@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-
-const DEFAULT_PLAYLIST_ID = "PLsGBXDsQw_r4hwYSS27PqLR4M3lgFs2RE";
-const YOUTUBE_API_KEY = "AIzaSyBaTM7Gh3iXcqfDRpxSwbT92o3jVhcMDQg";
-const CHANNEL_ID = "UCC-Kp74w4KD6_jl7umkFgzQ";
-const MAX_RESULTS = 6;
+import axios from "axios";
 
 export default function YouTubePlaylist() {
 	const [videos, setVideos] = useState([]);
@@ -13,18 +9,16 @@ export default function YouTubePlaylist() {
 	useEffect(() => {
 		async function fetchVideos() {
 			try {
-				const res = await fetch(
-					`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=${MAX_RESULTS}`,
-				);
-				const data = await res.json();
+				const res = await axios.get('/api/youtube');
+				console.log(res);
+				const data = res.data;
 				const videoItems = (data.items || []).filter(
-					(item) => item.id.kind === "youtube#video",
+					(item) => item.id.kind === "youtube#video"
 				);
 				setVideos(videoItems);
 			} catch (e) {
 				setVideos([]);
 				setError("Failed to fetch YouTube videos.");
-				console.error("Failed to fetch YouTube videos:", e);
 			} finally {
 				setLoading(false);
 			}
@@ -33,7 +27,7 @@ export default function YouTubePlaylist() {
 	}, []);
 
 	return (
-		<section className="w-full flex flex-col items-center justify-center py-6 md:py-10 bg-gradient-to-b from-black/70 via-black/30 to-transparent relative z-30 -mt-12 md:-mt-20">
+		<section className="w-full flex flex-col items-center justify-center py-6 md:py-10 relative z-30">
 			<h2 className="text-xl md:text-2xl font-bold text-white mb-4 tracking-wide">
 				YouTube Playlist
 			</h2>
