@@ -160,7 +160,7 @@ const Header = () => {
 			className={classNames(
 				"w-full z-50 fixed left-0 right-0 top-0 shadow-md transition-all duration-300",
 				isScrolled
-					? "bg-primary dark:bg-[var(--color-secondary)]/95 backdrop-blur"
+					? "bg-[#01070c] backdrop-blur"
 					: "bg-transparent",
 			)}
 		>

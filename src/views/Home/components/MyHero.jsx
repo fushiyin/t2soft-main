@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import video from "@/assets/video/herovideo.mp4";
 
-const TEXT = "NEO AKA THE HUNG";
-const SLOGAN = "Đừng mãi mãi làm trader.";
+const TEXT = "TEN WEBSITE";
+const SLOGAN = "SLOGAN HERE";
 
 function MyHero() {
 	const [showSlogan, setShowSlogan] = useState(false);

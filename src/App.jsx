@@ -29,7 +29,13 @@ function App() {
 		return null;
 	}
 
-	return <AppRouter />;
+	return (
+		<>
+			{/* <div className="aurora-bg" /> */}
+			<div className="bg-[#01070c]"/>
+			<AppRouter />
+		</>
+	);
 }
 
 export default App;

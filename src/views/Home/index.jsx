@@ -18,6 +18,9 @@ import video from "@/assets/video/trading.mp4";
 import MyHero from "./components/MyHero";
 import YouTubePlaylist from "./components/YouTubePlaylist";
 import Courses from "./components/Courses"
+import WebIntro from "./component/WebIntro";
+import ContactMe from "./component/ContactMe";
+import MyCourses from "./component/MyCourses";
 
 export const sectionClass = "flex items-center justify-center relative overflow-hidden";
 export const contentClass = "container h-full px-4 py-16 md:px-6 max-w-[1440px]";
@@ -25,27 +28,19 @@ export const contentClass = "container h-full px-4 py-16 md:px-6 max-w-[1440px]"
 function HomePage() {
 	return (
 		<>
-			<section>
-				<MyHero />
-			</section>
+			<WebIntro />
+			<ContactMe />
+			<MyCourses />
 			<section id={SECTIONS_KEY.WHY_VIETNAM.id}>
 				<WhyVietnam />
 			</section>
 			<section>
-				<Courses/>
+				<Courses />
 			</section>
 			<YouTubePlaylist />
 			<section>
 				<Blog />
 			</section>
-			<section id={SECTIONS_KEY.CHALLENGES.id}>
-				<Challenges />
-			</section>
-			
-			<section id={SECTIONS_KEY.TESTIMONIALS.id}>
-				<Testimonials contentClass={contentClass} />
-			</section>
-			<SideNavigation />
 		</>
 	);
 }

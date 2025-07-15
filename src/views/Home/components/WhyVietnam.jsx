@@ -55,7 +55,7 @@ export default function WhyVietnam() {
 	];
 
 	return (
-		<div className="flex flex-col pt-6 bg-home-transparent">
+		<div className="flex flex-col bg-home-transparent">
 			<div className="w-full bg-white flex justify-center items-center">
 				<div className="flex justify-center container h-full py-6 sm:py-10 px-4 sm:px-6 md:px-10 max-w-[1440px]">
 					<div className="w-full">
