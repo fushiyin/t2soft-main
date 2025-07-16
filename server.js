@@ -16,6 +16,8 @@ if (!API_KEY) {
 }
 
 app.use(cors());
+// IMPORTANT: express.json() must be before all routes to parse JSON bodies
+app.use(express.json());
 
 app.get('/api/youtube', async (req, res) => {
   try {
@@ -50,6 +52,30 @@ app.get('/api/youtube/playlist', async (req, res) => {
       error: 'Failed to fetch playlist from YouTube',
       details: err.response?.data || err.message,
     });
+  }
+});
+
+// POST endpoint to fetch multiple playlists by array of playlistIds
+app.post('/api/youtube/playlists', async (req, res) => {
+  const { playlistIds, maxResults = 4 } = req.body;
+  if (!Array.isArray(playlistIds) || playlistIds.length === 0) {
+    return res.status(400).json({ error: 'playlistIds must be a non-empty array' });
+  }
+  try {
+    const results = await Promise.all(
+      playlistIds.map(async (playlistId) => {
+        try {
+          const url = `https://www.googleapis.com/youtube/v3/playlistItems?key=${API_KEY}&playlistId=${playlistId}&part=snippet,contentDetails&maxResults=${maxResults}`;
+          const response = await axios.get(url);
+          return { playlistId, data: response.data };
+        } catch (err) {
+          return { playlistId, error: err.response?.data || err.message };
+        }
+      })
+    );
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch playlists', details: err.message });
   }
 });
 

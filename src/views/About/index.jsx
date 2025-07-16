@@ -1,291 +1,212 @@
-import about_img from "@/assets/img/About_us.png";
-import image from "@/assets/img/bg-about-us.png";
-import video_about from "@/assets/video/About_us.mp4";
-import AnimatedSection from "@/components/AnimatedSection";
-import CTA from "@/components/sections/ContactCTA";
-import FAQ from "@/components/sections/FAQ";
-import { FAQs } from "@/constant/common";
-import useResponsive from "@/hooks/useResponsive";
-import { motion } from "framer-motion";
-import { Award, CheckCircle2, Globe, Users } from "lucide-react";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useInView } from "react-intersection-observer";
-import VisionJourney from "../Home/components/Vision";
-import DotLoader from "@/components/ui/DotLoader";
+import React from 'react';
+import { Award, Target, Users, TrendingUp, Star, Linkedin, Twitter, Github } from 'lucide-react';
 
-export default function AboutPage() {
-	const { t } = useTranslation();
-	const { isMobile, isLg } = useResponsive();
-	const iconList = [CheckCircle2, Users, Globe, Award];
-	const [videoLoading, setVideoLoading] = useState(true);
+const About = () => {
+  const instructors = [
+    {
+      name: "Sarah Johnson",
+      role: "Lead Forex Instructor",
+      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400",
+      bio: "Former Wall Street trader with 15+ years experience. Specialized in currency markets and risk management.",
+      expertise: ["Forex Trading", "Risk Management", "Market Analysis"],
+      rating: 4.9,
+      students: 25000,
+      social: {
+        linkedin: "#",
+        twitter: "#"
+      }
+    },
+    {
+      name: "Michael Chen",
+      role: "Cryptocurrency Expert",
+      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+      bio: "Blockchain pioneer and crypto trading specialist. Founded multiple DeFi projects and trading platforms.",
+      expertise: ["Cryptocurrency", "Blockchain", "DeFi"],
+      rating: 4.8,
+      students: 18000,
+      social: {
+        linkedin: "#",
+        github: "#"
+      }
+    },
+    {
+      name: "Emma Rodriguez",
+      role: "Technical Analysis Specialist",
+      image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400",
+      bio: "Quantitative analyst with expertise in algorithmic trading and technical analysis systems.",
+      expertise: ["Technical Analysis", "Algorithmic Trading", "Quantitative Analysis"],
+      rating: 4.7,
+      students: 12000,
+      social: {
+        linkedin: "#",
+        twitter: "#"
+      }
+    }
+  ];
 
-	const [titleRef, titleInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-	const [contentRef, contentInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-	const [imageRef, imageInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-	const [experienceRef, experienceInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-	const [faqRef, faqInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const values = [
+    {
+      icon: <Target className="h-8 w-8" />,
+      title: "Excellence",
+      description: "We strive for the highest quality in education and trading strategies."
+    },
+    {
+      icon: <Users className="h-8 w-8" />,
+      title: "Community",
+      description: "Building a supportive community of successful traders worldwide."
+    },
+    {
+      icon: <TrendingUp className="h-8 w-8" />,
+      title: "Innovation",
+      description: "Staying ahead with cutting-edge trading technologies and methods."
+    },
+    {
+      icon: <Award className="h-8 w-8" />,
+      title: "Integrity",
+      description: "Honest, transparent, and ethical approach to trading education."
+    }
+  ];
 
-	return (
-		<div className="w-full flex flex-col gap-6 md:gap-10 items-center mt-[64px]">
-			<AnimatedSection className="w-full flex flex-col items-center">
-				<motion.div
-					ref={titleRef}
-					initial={{ opacity: 0, y: -20 }}
-					animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-					transition={{ duration: 0.6 }}
-					className="relative mb-8 flex flex-col items-center justify-center text-center h-[500px] md:h-[700px] w-full"
-				>
-					{/* Background video */}
-					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.6 }}
-						className="absolute inset-0 w-full h-full bg-cover bg-center overflow-hidden"
-					>
-						{videoLoading && (
-							<div className="absolute inset-0 flex items-center justify-center bg-dark-blue/80 z-20">
-								<DotLoader />
-							</div>
-						)}
+  return (
+    <section className="py-20 bg-gray-900">
+      <div className="container mx-auto px-4">
+        {/* Hero Section */}
+        <div className="text-center mb-20">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            About TradeMaster
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            We're on a mission to democratize trading education and empower individuals to achieve financial independence through comprehensive, practical trading courses.
+          </p>
+        </div>
 
-						<video
-							src={video_about}
-							autoPlay
-							loop
-							muted
-							playsInline
-							className={`w-full h-full object-cover transition-opacity duration-500 ${
-								videoLoading ? "opacity-0" : "opacity-100"
-							}`}
-							onLoadedData={() => setVideoLoading(false)}
-							onCanPlay={() => setVideoLoading(false)}
-							onPlaying={() => setVideoLoading(false)}
-							onWaiting={() => setVideoLoading(true)}
-							onError={() => setVideoLoading(false)}
-						/>
-					</motion.div>
+        {/* Story Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+          <div>
+            <h2 className="text-3xl font-bold text-white mb-6">Our Story</h2>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                Founded in 2019, TradeMaster emerged from a simple observation: most trading education was either too theoretical or too expensive for the average person. Our founders, all successful traders themselves, decided to change that.
+              </p>
+              <p>
+                We started with a vision to create comprehensive, practical trading courses that actually work in real markets. Today, we've helped over 50,000 students achieve their trading goals and build sustainable income streams.
+              </p>
+              <p>
+                Our platform combines cutting-edge technology with proven trading strategies, creating an environment where both beginners and experienced traders can thrive.
+              </p>
+            </div>
+          </div>
+          <div className="bg-gray-800 rounded-2xl p-8 border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-6">By the Numbers</h3>
+            <div className="grid grid-cols-2 gap-6">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-400 mb-2">50,000+</div>
+                <div className="text-gray-400">Students Taught</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-400 mb-2">98%</div>
+                <div className="text-gray-400">Success Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-400 mb-2">25+</div>
+                <div className="text-gray-400">Expert Instructors</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-400 mb-2">5</div>
+                <div className="text-gray-400">Years Experience</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-					{/* Overlay */}
-					<div className="absolute inset-0 bg-black/30" />
+        {/* Mission & Values */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Our Mission & Values</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              We believe everyone deserves access to quality trading education that can transform their financial future.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="bg-gray-800 rounded-2xl p-6 border border-gray-700 text-center">
+                <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                <p className="text-gray-400">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
-					{/* Content */}
-					<div className="relative z-10 flex flex-col justify-center items-center h-full max-w-3xl mx-auto text-center space-y-3">
-						<h2
-							className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight font-sans break-keep whitespace-normal break-words text-white"
-							style={{
-								textShadow:
-									"0 2px 8px rgba(0,0,0,0.9), 0 0px 2px rgba(0,0,0,0.8), 0 4px 16px rgba(0,0,0,0.7)",
-							}}
-						>
-							{t("about.title")}
-						</h2>
-						<p
-							className="p-2 text-xl md:text-2xl tracking-tighter font-sans break-keep whitespace-normal break-words text-white"
-							style={{ textShadow: "0 2px 8px rgba(0,0,0,0.7)" }}
-						>
-							{t("about.title_sub")}
-						</p>
-					</div>
-				</motion.div>
+        {/* Instructors */}
+        <div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Meet Our Expert Instructors</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Learn from industry professionals with decades of combined trading experience.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {instructors.map((instructor, index) => (
+              <div key={index} className="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700">
+                <img
+                  src={instructor.image}
+                  alt={instructor.name}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-2">{instructor.name}</h3>
+                  <p className="text-green-400 font-medium mb-3">{instructor.role}</p>
+                  <p className="text-gray-400 mb-4">{instructor.bio}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {instructor.expertise.map(skill => (
+                      <span key={skill} className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <div className="flex items-center space-x-1">
+                      <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                      <span>{instructor.rating}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Users className="h-4 w-4" />
+                      <span>{instructor.students.toLocaleString()} students</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex space-x-3">
+                    {instructor.social.linkedin && (
+                      <a href={instructor.social.linkedin} className="text-gray-400 hover:text-green-400 transition-colors">
+                        <Linkedin className="h-5 w-5" />
+                      </a>
+                    )}
+                    {instructor.social.twitter && (
+                      <a href={instructor.social.twitter} className="text-gray-400 hover:text-green-400 transition-colors">
+                        <Twitter className="h-5 w-5" />
+                      </a>
+                    )}
+                    {instructor.social.github && (
+                      <a href={instructor.social.github} className="text-gray-400 hover:text-green-400 transition-colors">
+                        <Github className="h-5 w-5" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-				<div className="max-w-[1440px] container px-[20px] md:px-0 flex flex-col justify-center min-h-[50vh]">
-					<div className="flex flex-col lg:flex-row">
-						{isMobile && (
-							<div className="w-[90%] border-l-4 border-dark-blue pl-4">
-								<motion.h2
-									initial={{ opacity: 0, y: 20 }}
-									animate={
-										isMobile
-											? { opacity: 1, y: 0 }
-											: imageInView
-												? { opacity: 1, y: 0 }
-												: { opacity: 0, y: 20 }
-									}
-									transition={{ duration: 0.5, delay: 0.3 }}
-									className="text-3xl md:text-4xl font-bold tracking-tighter pb-2 bg-gradient-to-r from-[var(--color-light-mint)] to-[var(--color-light-green)] bg-clip-text text-transparent font-sans break-keep whitespace-normal break-words"
-								>
-									{t("about.description.title")}
-								</motion.h2>
-								<motion.p
-									initial={{ opacity: 0, y: 20 }}
-									animate={
-										isMobile
-											? { opacity: 1, y: 0 }
-											: imageInView
-												? { opacity: 1, y: 0 }
-												: { opacity: 0, y: 20 }
-									}
-									transition={{ duration: 0.5, delay: 0.4 }}
-									className="text-left text-gray-900 text-3xl md:text-4xl font-bold font-sans break-keep whitespace-normal break-words"
-								>
-									{t("about.description.explain")}
-								</motion.p>
-							</div>
-						)}
-
-						<motion.div
-							ref={contentRef}
-							initial={{ opacity: 0, x: -50 }}
-							animate={contentInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-							transition={{ duration: 0.6, delay: 0.2 }}
-							className={`w-full ${isMobile ? "px-0" : "px-4 2xl:px-0"} lg:w-[50%] order-2 lg:order-1`}
-						>
-							{!isMobile && (
-								<div className="w-[90%] border-l-4 border-dark-blue pl-4">
-									<motion.h2
-										initial={{ opacity: 0, y: 20 }}
-										animate={
-											contentInView
-												? { opacity: 1, y: 0 }
-												: { opacity: 0, y: 20 }
-										}
-										transition={{ duration: 0.5, delay: 0.3 }}
-										className="text-3xl md:text-4xl font-bold tracking-tighter pb-4 bg-gradient-to-r from-[var(--color-light-mint)] to-[var(--color-light-green)] bg-clip-text text-transparent font-sans break-keep whitespace-normal break-words"
-									>
-										{t("about.description.title")}
-									</motion.h2>
-									<motion.p
-										initial={{ opacity: 0, y: 20 }}
-										animate={
-											contentInView
-												? { opacity: 1, y: 0 }
-												: { opacity: 0, y: 20 }
-										}
-										transition={{ duration: 0.5, delay: 0.4 }}
-										className="text-left text-gray-900 font-bold text-3xl md:text-4xl font-sans break-keep whitespace-normal break-words"
-									>
-										{t("about.description.explain")}
-									</motion.p>
-								</div>
-							)}
-
-							<motion.p
-								initial={{ opacity: 0, y: 20 }}
-								animate={
-									contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-								}
-								transition={{ duration: 0.5, delay: 0.5 }}
-								className="ml-0 md:ml-6 mt-6 w-full md:w-[90%] text-muted-foreground text-sx text-left font-sans break-keep whitespace-normal break-words"
-							>
-								{t("about.content")}
-							</motion.p>
-
-							<motion.h2
-								ref={experienceRef}
-								initial={{ opacity: 0, y: 20 }}
-								animate={
-									experienceInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-								}
-								transition={{ duration: 0.5, delay: 0.6 }}
-								className="w-full md:w-[90%] flex font-bold mt-4 md:mt-8 text-2xl sm:text-3xl md:text-4xl tracking-tighter justify-center font-sans break-keep whitespace-normal break-words"
-							>
-								{t("about.experience")}
-							</motion.h2>
-
-							<motion.div
-								initial={{ opacity: 0, y: 30 }}
-								animate={
-									experienceInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-								}
-								transition={{ duration: 0.6, delay: 0.7 }}
-								className="flex w-full md:w-[90%] flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 mt-4 sm:mt-8"
-							>
-								{iconList.map((Icon, i) => (
-									<motion.p
-										key={i}
-										initial={{ opacity: 0, y: 20 }}
-										animate={
-											experienceInView
-												? { opacity: 1, y: 0 }
-												: { opacity: 0, y: 20 }
-										}
-										transition={{ duration: 0.5, delay: 0.8 + i * 0.1 }}
-										className="text-sm md:text-base lg:text-xl/relaxed font-sans text-left break-keep whitespace-normal break-words w-full sm:w-[calc(50%-12px)] flex gap-3"
-									>
-										<Icon className="w-6 h-6 sm:w-7 sm:h-7 text-light-green shrink-0" />
-										{t(`about.experience_list.${i + 1}`)}
-									</motion.p>
-								))}
-							</motion.div>
-						</motion.div>
-
-						<motion.div
-							ref={imageRef}
-							initial={{ opacity: 0, x: 50 }}
-							animate={imageInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-							transition={{ duration: 0.6, delay: 0.3 }}
-							className={`${isLg ? "pl-8 lg:pl-12" : isMobile ? "pl-0 pt-6" : "pl-6 pb-6"} w-full lg:w-[50%] relative h-[300px] md:h-[400px] lg:h-[600px] order-1 lg:order-2`}
-						>
-							<div className="relative w-full h-full">
-								<img
-									src={about_img}
-									alt="Mobile Screen"
-									className="absolute left-0 w-full h-full object-cover"
-									style={{
-										clipPath:
-											"polygon(100% 0, 60% 0, 40% 50%, 60% 100%, 100% 100%)",
-										transform: "translateX(5px)",
-									}}
-								/>
-								<img
-									src={about_img}
-									alt="Mobile Screen"
-									className="absolute right-0 w-full h-full object-cover"
-									style={{
-										clipPath: "polygon(0 0, 60% 0, 40% 50%, 60% 100%, 0 100%)",
-										transform: "translateX(-5px)",
-									}}
-								/>
-							</div>
-						</motion.div>
-					</div>
-				</div>
-			</AnimatedSection>
-
-			<VisionJourney />
-
-			<motion.div
-				ref={faqRef}
-				initial={{ opacity: 0, y: 30 }}
-				animate={faqInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-				transition={{ duration: 0.6 }}
-				className="flex flex-col items-center px-[20px] md:px-4 lg:px-0"
-			>
-				<motion.h2
-					initial={{ opacity: 0, y: 20 }}
-					animate={faqInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-					transition={{ duration: 0.5, delay: 0.2 }}
-					className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-4xl text-center"
-				>
-					{t("faq.title")}
-				</motion.h2>
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					animate={faqInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-					transition={{ duration: 0.6, delay: 0.3 }}
-					className="max-w-[1440px] grid gap-6 lg:grid-cols-2 sm:mt-8 md:mt-16 lg:gap-12 items-start mt-6 lg:px-0 md:px-4"
-				>
-					<motion.img
-						initial={{ opacity: 0, x: -30 }}
-						animate={faqInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-						transition={{ duration: 0.6, delay: 0.4 }}
-						src={image}
-						alt={t("about.faq.imageAlt")}
-						whileHover={{ scale: 1.02 }}
-						className="transition-all duration-300"
-					/>
-					<motion.div
-						initial={{ opacity: 0, x: 30 }}
-						animate={faqInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-						transition={{ duration: 0.6, delay: 0.5 }}
-					>
-						<FAQ faqs={FAQs} />
-					</motion.div>
-				</motion.div>
-			</motion.div>
-
-			<CTA />
-		</div>
-	);
-}
+export default About;

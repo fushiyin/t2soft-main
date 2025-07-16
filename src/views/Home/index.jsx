@@ -6,19 +6,22 @@ import Hero from "./components/Hero";
 import OurProcess from "./components/OurProcess";
 import Services from "./components/Services";
 import SideNavigation from "./components/SideNavigation";
-import Testimonials from "./components/Testimonials";
 import WhyVietnam from "./components/WhyVietnam";
 import DevelopmentCapacity from "./components/DevelopmentCapacity";
 import VideoIntro from "./components/VideoIntro";
-import Blog from "./components/Blog";
 import particle from "@/assets/image/particle.gif";
 import bg from "@/assets/image/bg.jpg";
-import background from "@/assets/image/pxfuel.jpg";
+import bg1 from "@/assets/image/bg1.jpg";
+import background from "@/assets/image/background.jpg";
 import video from "@/assets/video/trading.mp4";
 import MyHero from "./components/MyHero";
 import YouTubePlaylist from "./components/YouTubePlaylist";
 import Courses from "./components/Courses"
+import CoursesHighlight from "./component/CoursesHighlight"
+import CoursesSlider from "./component/CoursesSlider"
 import WebIntro from "./component/WebIntro";
+import Testimonials from "./component/Testimonials";
+import Partner from "./component/Partner";
 import ContactMe from "./component/ContactMe";
 import MyCourses from "./component/MyCourses";
 
@@ -29,18 +32,11 @@ function HomePage() {
 	return (
 		<>
 			<WebIntro />
+			<Partner />
+			<CoursesSlider />
+			<CoursesHighlight />
+			<Testimonials />
 			<ContactMe />
-			<MyCourses />
-			<section id={SECTIONS_KEY.WHY_VIETNAM.id}>
-				<WhyVietnam />
-			</section>
-			<section>
-				<Courses />
-			</section>
-			<YouTubePlaylist />
-			<section>
-				<Blog />
-			</section>
 		</>
 	);
 }

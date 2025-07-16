@@ -3,6 +3,7 @@ import AppRouter from "@/routes";
 import "lenis/dist/lenis.css";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import Newsletter from '@/views/Home/component/Newsletter'
 
 function App() {
 	const { i18n } = useTranslation();

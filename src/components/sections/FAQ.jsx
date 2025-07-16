@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import bg from "@/assets/image/bg.jpg";
 
 export default function FAQ() {
 	const [openIndex, setOpenIndex] = useState(null);
@@ -67,7 +68,10 @@ export default function FAQ() {
 	};
 
 	return (
-		<section className="w-full max-w-2xl mx-auto">
+		<section className="w-full max-w-5xl mx-auto">
+			<div className="text-4xl font-semibold mb-10 text-center">
+				Câu Hỏi Thường Gặp
+			</div>
 			<div className="divide-y divide-gray-200">
 				{faqs.map((faq, idx) => (
 					<motion.div

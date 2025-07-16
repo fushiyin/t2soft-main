@@ -11,9 +11,10 @@ const About = React.lazy(() => import("@/views/About"));
 const Contact = React.lazy(() => import("@/views/Contact"));
 const Careers = React.lazy(() => import("@/views/Career"));
 const Services = React.lazy(() => import("@/views/ServicesPage"));
-const Blog = React.lazy(() => import("@/views/Blog"));
+const Blog = React.lazy(() => import("@/views/MyBlog"));
 const Solution = React.lazy(() => import("@/views/SolutionAndProduct"));
 const SolutionDetail = React.lazy(() => import("@/views/SolutionAndProduct/SolutionDetail"));
+const Courses = React.lazy(() => import("@/views/Courses"));
 const Login = React.lazy(() => import("@/views/Login"));
 const Dashboard = React.lazy(() => import("@/views/Admin/pages/Dashboard"));
 const Post = React.lazy(() => import("@/views/Admin/pages/Post"));
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
 			{
 				path: idRouter.solutionDetail,
 				element: <SolutionDetail />,
+			},
+			{
+				path: idRouter.courses,
+				element: <Courses />,
 			},
 		],
 	},
