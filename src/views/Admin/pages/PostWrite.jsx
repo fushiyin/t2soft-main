@@ -14,6 +14,24 @@ const PostSchema = Yup.object().shape({
 	course_id: Yup.string().nullable(),
 });
 
+async function submitPostToFirestore(values, submitType, scheduledTime, user) {
+	const postData = {
+		title: values.title || "",
+		content: values.content || "",
+		status: submitType === "publish" ? "Published" : "Scheduled",
+		schedule: submitType === "schedule" ? scheduledTime : null,
+		created_at: serverTimestamp(),
+		updated_at: serverTimestamp(),
+		author_id: user ? user.uid : "",
+		course_id: values.course_id || "",
+		is_pinned: false,
+		type: values.type || "post",
+	};
+	const docRef = await addDoc(collection(db, "posts"), postData);
+	await updateDoc(docRef, { id: docRef.id });
+	return docRef;
+}
+
 export default function PostWrite() {
 	const navigate = useNavigate();
 	const [showScheduleModal, setShowScheduleModal] = useState(false);
@@ -43,20 +61,7 @@ export default function PostWrite() {
 				onSubmit={async (values, { setSubmitting, resetForm }) => {
 					try {
 						const user = auth.currentUser;
-						const postData = {
-							title: values.title || "",
-							content: values.content || "",
-							status: submitType === "publish" ? "Published" : "Scheduled",
-							schedule: submitType === "schedule" ? scheduledTime : null,
-							created_at: serverTimestamp(),
-							updated_at: serverTimestamp(),
-							author_id: user ? user.uid : "",
-							course_id: values.course_id || "",
-							is_pinned: false,
-							type: values.type || "post",
-						};
-						const docRef = await addDoc(collection(db, "posts"), postData);
-						await updateDoc(docRef, { id: docRef.id });
+						await submitPostToFirestore(values, submitType, scheduledTime, user);
 						alert(
 							`Post ${submitType === "publish" ? "published" : "scheduled"} successfully!`,
 						);

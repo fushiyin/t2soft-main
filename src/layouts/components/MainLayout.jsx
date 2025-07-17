@@ -9,7 +9,6 @@ import {
 	Onboarding,
 	OnboardingProvider,
 } from "..";
-import CallPhoneButton from "./CallPhoneButton";
 
 export default function MainLayout() {
 	const location = useLocation();
@@ -31,7 +30,6 @@ export default function MainLayout() {
 						<Footer />
 					</main>
 					<ButtonScrollToTop />
-					<CallPhoneButton phoneNumber="02439333868" />
 				</OnboardingProvider>
 			</LenisProvider>
 		</>

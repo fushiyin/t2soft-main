@@ -22,6 +22,7 @@ const CourseHighlight = () => {
         playlistIds: PLAYLIST_IDs,
         maxResults: 1 // Only fetch the first video for thumbnail/title/desc
       });
+      // Each result: { playlistId, data }
       const validPlaylists = res.data.filter(p => p.data && p.data.items && p.data.items.length > 0);
       setPlaylists(validPlaylists);
     } catch (e) {
