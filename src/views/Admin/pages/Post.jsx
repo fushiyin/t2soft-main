@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Pencil, Trash, Plus } from "lucide-react";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const dummyPosts = [
 	{
@@ -29,6 +30,7 @@ const dummyPosts = [
 export default function Post() {
 	const [posts] = useState(dummyPosts);
 	const navigate = useNavigate();
+	const { t } = useTranslation();
 
 	const goToPostWrite = () => {
 		navigate("/admin/posts/write");
@@ -39,26 +41,26 @@ export default function Post() {
 			<div className="flex justify-between items-center mb-8">
 				<div>
 					<h1 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-1">
-						Post Management
+						{t('admin.post.title')}
 					</h1>
-					<p className="text-muted-foreground">Manage your blog posts and content</p>
+					<p className="text-muted-foreground">{t('admin.post.description')}</p>
 				</div>
 				<button
 					onClick={goToPostWrite}
 					className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-pink-500 to-orange-400 text-white font-semibold shadow hover:scale-105 transition-transform"
 				>
-					<Plus className="w-5 h-5" /> Add New Post
+					<Plus className="w-5 h-5" /> {t('admin.post.add_new')}
 				</button>
 			</div>
 			<div className="overflow-x-auto">
 				<table className="min-w-full bg-white dark:bg-[#181a20] rounded-xl shadow-lg overflow-hidden">
 					<thead>
 						<tr className="text-left text-gray-700 dark:text-gray-200 text-sm border-b border-gray-200 dark:border-gray-700">
-							<th className="py-4 px-6 font-semibold">Title</th>
-							<th className="py-4 px-6 font-semibold">Author</th>
-							<th className="py-4 px-6 font-semibold">Status</th>
-							<th className="py-4 px-6 font-semibold">Date</th>
-							<th className="py-4 px-6 font-semibold text-center">Actions</th>
+							<th className="py-4 px-6 font-semibold">{t('admin.post.table.title')}</th>
+							<th className="py-4 px-6 font-semibold">{t('admin.post.table.author')}</th>
+							<th className="py-4 px-6 font-semibold">{t('admin.post.table.status')}</th>
+							<th className="py-4 px-6 font-semibold">{t('admin.post.table.date')}</th>
+							<th className="py-4 px-6 font-semibold text-center">{t('admin.post.table.actions')}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -77,7 +79,7 @@ export default function Post() {
 									<span
 										className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${post.status === "Published" ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200" : "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-200"}`}
 									>
-										{post.status}
+										{t(`admin.post.status.${post.status.toLowerCase()}`)}
 									</span>
 								</td>
 								<td className="py-4 px-6 text-gray-500 dark:text-gray-400">
