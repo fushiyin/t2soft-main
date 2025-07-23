@@ -16,6 +16,8 @@ const Header = () => {
 	const { i18n, t } = useTranslation();
 	const [langDropdown, setLangDropdown] = useState(false);
 
+	const isHomePage = location.pathname === "/";
+
 	useEffect(() => {
 		const handleScroll = () => {
 			setScrolled(window.scrollY > 50);
@@ -40,11 +42,20 @@ const Header = () => {
 		setLangDropdown(false);
 	};
 
+	// Determine header background based on page and scroll position
+	const getHeaderBackground = () => {
+		if (isHomePage) {
+			// On home page: transparent for first 50px, then solid background
+			return scrolled ? "bg-[#070e20] shadow-lg backdrop-blur-md" : "bg-transparent";
+		} else {
+			// On other pages: always solid background
+			return "bg-[#070e20] shadow-lg backdrop-blur-md";
+		}
+	};
+
 	return (
 		<header
-			className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-				scrolled ? "bg-[#070e20] shadow-lg backdrop-blur-md" : "bg-transparent"
-			}`}
+			className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${getHeaderBackground()}`}
 		>
 			<div className="container mx-auto px-4 py-4">
 				<div className="flex items-center justify-between">
