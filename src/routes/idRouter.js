@@ -10,6 +10,8 @@ export const idRouter = Object.freeze({
 	vision: "/vision",
 	login: "/login",
 	courses: "courses",
+	document: "document",
+	documentDetail: "/document/:id",
 	careerDetail: "/career/:id",
 	admin: "/admin",
 	adminDashboard: "dashboard",

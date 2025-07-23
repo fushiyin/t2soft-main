@@ -28,8 +28,10 @@ const Header = () => {
 		{ name: t("menu.home", "Home"), path: "/" },
 		{ name: t("menu.courses", "Courses"), path: "/courses" },
 		{ name: t("menu.blog", "Blog"), path: "/blog" },
+		{ name: t("menu.documents", "Documents"), path: "/document" },
 		{ name: t("menu.about", "About"), path: "/about" },
 		{ name: t("menu.contact", "Contact"), path: "/contact" },
+		{ name: t("menu.forum", "Forum"), path: "/forum" },
 	];
 
 	const isActive = (path) => location.pathname === path;
@@ -43,7 +45,9 @@ const Header = () => {
 	return (
 		<header
 			className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-				scrolled ? "bg-[#070e20] shadow-lg backdrop-blur-md" : "bg-transparent"
+				scrolled || location.pathname !== "/"
+					? "bg-[#070e20] shadow-lg backdrop-blur-md"
+					: "bg-transparent"
 			}`}
 		>
 			<div className="container mx-auto px-4 py-4">

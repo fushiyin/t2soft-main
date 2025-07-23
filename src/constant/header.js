@@ -29,6 +29,12 @@ export const NAV_LINKS = [
 		],
 	},
 	{
+		name: "Documents",
+		path: idRouter?.category,
+		i18nKey: "menu.documents",
+		icon: Newspaper,
+	},
+	{
 		name: "Community",
 		path: "/community",
 		i18nKey: "menu.community",

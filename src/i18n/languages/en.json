@@ -75,7 +75,9 @@
 		"community": "Community",
 		"community_forum": "Forum",
 		"community_events": "Events",
-		"member": "Member"
+		"member": "Member",
+		"documents": "Documents",
+		"forum": "Forum"
 	},
 	"why_vietnam": {
 		"title": "Why Vietnam?",

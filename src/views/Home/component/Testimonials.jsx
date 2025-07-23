@@ -67,7 +67,7 @@ export default function Testimonials({ contentClass }) {
 	const duplicatedTestimonials = testimonials.map((row) => [...row, ...row, ...row, ...row]);
 
 	return (
-		<div className="relative bg-gray-900 text-white w-full flex items-center justify-center h-full">
+		<div className="relative bg-gray-100/90 text-white w-full flex items-center justify-center h-full">
 			<div
 				className={classNames(
 					"relative w-full flex items-center justify-center max-w-[1440px] h-full",
@@ -75,10 +75,10 @@ export default function Testimonials({ contentClass }) {
 				)}
 			>
 				{/* Absolutely positioned title with box shadow */}
-				<div className="absolute inset-10 md:inset-0 z-10 m-auto aspect-[1051/375] w-full max-w-[1051px] rounded-[300px]  blur-[97px] bg-dark-gray/80"></div>
-				<div className="absolute inset-10 md:inset-0 z-20 m-auto aspect-[639/229] w-full max-w-[639px] rounded-[300px] blur-[52px] bg-dark-gray/80"></div>
+				<div className="absolute inset-10 md:inset-0 z-10 m-auto aspect-[1051/375] w-full max-w-[1051px] rounded-[300px]  blur-[97px] bg-white/80"></div>
+				<div className="absolute inset-10 md:inset-0 z-20 m-auto aspect-[639/229] w-full max-w-[639px] rounded-[300px] blur-[52px] bg-white/80"></div>
 				<div className="absolute inset-10 md:inset-0 flex items-center justify-center">
-					<h2 className="z-30 w-full max-w-[600px] text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold  bg-gradient-to-r from-light-blue via-light-blue-gray to-pale-blue bg-clip-text text-transparent text-center px-6 py-4 sm:px-8 sm:py-5 md:px-[30px] md:py-[25px] rounded-[10px]">
+					<h2 className="z-30 w-full max-w-[600px] text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold  bg-gradient-to-r from-green-400 via-light-blue-gray to-blue-500 bg-clip-text text-transparent text-center px-6 py-4 sm:px-8 sm:py-5 md:px-[30px] md:py-[25px] rounded-[10px]">
 						{t("testimonials.title")}
 					</h2>
 				</div>
@@ -130,7 +130,7 @@ function TestimonialCard({ testimonial }) {
 	const { t } = useTranslation();
 
 	return (
-		<Card className="bg-via-gray text-white shadow-md h-[300px] w-[400px] border border-white/[0.08] rounded-xl">
+		<Card className="bg-white text-white shadow-md h-[300px] w-[400px] border border-white/[0.08] rounded-xl">
 			<CardContent className="p-6">
 				<div className="flex items-start space-x-4">
 					<Avatar className="border-2 border-white/[0.3]">
@@ -143,11 +143,11 @@ function TestimonialCard({ testimonial }) {
 						</AvatarFallback>
 					</Avatar>
 					<div>
-						<div className="font-medium text-white">{testimonial.name}</div>
-						<div className="text-sm text-gray-400">{testimonial.username}</div>
+						<div className="font-medium text-black">{testimonial.name}</div>
+						<div className="text-sm text-gray-900">{testimonial.username}</div>
 					</div>
 				</div>
-				<p className="mt-4 text-gray-300 leading-relaxed line-clamp-4">
+				<p className="mt-4 text-gray-900 leading-relaxed line-clamp-4">
 					{testimonial.content}
 				</p>
 				<div className="mt-4 flex items-center space-x-4 text-gray-400 text-sm">

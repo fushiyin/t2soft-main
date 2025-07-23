@@ -13,6 +13,9 @@ const Services = React.lazy(() => import("@/views/ServicesPage"));
 const Blog = React.lazy(() => import("@/views/MyBlog"));
 const Courses = React.lazy(() => import("@/views/Courses"));
 const Login = React.lazy(() => import("@/views/Login"));
+const Document = React.lazy(() => import("@/views/CategoryPage"));
+const DocumentDetail = React.lazy(() => import("@/views/CategoryPage/CategoryDetail.jsx"));
+
 const Dashboard = React.lazy(() => import("@/views/Admin/pages/Dashboard"));
 const Post = React.lazy(() => import("@/views/Admin/pages/Post"));
 const PostWrite = React.lazy(() => import("@/views/Admin/pages/PostWrite"));
@@ -50,6 +53,14 @@ const router = createBrowserRouter([
 			{
 				path: idRouter.courses,
 				element: <Courses />,
+			},
+			{
+				path: idRouter.document,
+				element: <Document />,
+			},
+			{
+				path: idRouter.documentDetail,
+				element: <DocumentDetail />,
 			},
 		],
 	},
