@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Play, Clock, Users, Star, ArrowRight, ExternalLink } from "lucide-react";
-import axios from "axios";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner.jsx";
 import { PLAYLIST_IDs } from "@/constant/common";
 import classNames from "classnames";
+import { fetchPlaylists } from "@/lib/api";
 
 const MyCourses = () => {
 	const [courses, setCourses] = useState([]);
@@ -18,10 +18,7 @@ const MyCourses = () => {
 		setLoading(true);
 		setError(null);
 		try {
-			const res = await axios.post("/api/youtube/playlists", {
-				playlistIds: PLAYLIST_IDs,
-				maxResults: 1,
-			});
+			const res = await fetchPlaylists(PLAYLIST_IDs, 1);
 			const validPlaylists = res.data.filter(
 				(p) => p.data && p.data.items && p.data.items.length > 0,
 			);

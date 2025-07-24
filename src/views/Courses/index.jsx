@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Clock, Users, Star, Filter, Search } from "lucide-react";
-import axios from "axios";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner.jsx";
 import bg2 from "@/assets/image/bg_2.webp";
 import { PLAYLIST_IDs } from "@/constant/common";
+import { fetchPlaylists } from "@/lib/api";
 
 const Courses = () => {
 	const [selectedLevel, setSelectedLevel] = useState("All");
@@ -20,10 +20,7 @@ const Courses = () => {
 		setLoading(true);
 		setError(null);
 		try {
-			const res = await axios.post("/api/youtube/playlists", {
-				playlistIds: PLAYLIST_IDs,
-				maxResults: 1,
-			});
+			const res = await fetchPlaylists(PLAYLIST_IDs, 1);
 			const validPlaylists = res.data.filter(
 				(p) => p.data && p.data.items && p.data.items.length > 0,
 			);
@@ -35,9 +32,9 @@ const Courses = () => {
 					title: snippet.title,
 					description: snippet.description,
 					image: snippet.thumbnails?.high?.url || snippet.thumbnails?.default?.url,
-					duration: "N/A", // YouTube API does not provide playlist duration directly
-					students: "N/A", // Not available
-					rating: 4.8, // Placeholder or calculate if you have data
+					duration: "N/A",
+					students: "N/A",
+					rating: 4.8,
 					price: "Free",
 					level: "All Levels",
 					category: "YouTube",
@@ -97,64 +94,8 @@ const Courses = () => {
 				</div>
 			</section>
 			{/* Main Section */}
-			<section className="py-20 min-h-screen bg-gradient-to-br from-white via-blue-50 to-cyan-50 relative overflow-hidden">
-				{/* Glassmorphism animated pattern background */}
-				<div className="absolute inset-0 z-0 pointer-events-none">
-					<svg
-						width="100%"
-						height="100%"
-						viewBox="0 0 1440 720"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="w-full h-full opacity-10"
-					>
-						<defs>
-							<pattern
-								id="grid"
-								width="60"
-								height="60"
-								patternUnits="userSpaceOnUse"
-							>
-								<rect
-									x="0"
-									y="0"
-									width="60"
-									height="60"
-									fill="none"
-								/>
-								<path
-									d="M0 0L60 60M60 0L0 60"
-									stroke="#38bdf8"
-									strokeWidth="0.5"
-									opacity="0.12"
-								/>
-								<circle
-									cx="30"
-									cy="30"
-									r="2"
-									fill="#38bdf8"
-									opacity="0.12"
-								/>
-							</pattern>
-						</defs>
-						<rect
-							width="1440"
-							height="720"
-							fill="url(#grid)"
-						/>
-					</svg>
-				</div>
-				<div className="container mx-auto px-4 relative z-10">
-					<div className="text-center mb-12">
-						<h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight drop-shadow font-mono">
-							Trading Courses
-						</h1>
-						<p className="text-2xl text-cyan-700 max-w-2xl mx-auto font-mono">
-							Choose from our comprehensive selection of trading courses designed for
-							all skill levels
-						</p>
-					</div>
-
+			<section className="py-20 bg-white">
+				<div className="container mx-auto px-4">
 					{/* Filters */}
 					<div className="flex flex-col md:flex-row gap-4 mb-12 items-center justify-between">
 						<div className="flex-1 w-full max-w-xl">

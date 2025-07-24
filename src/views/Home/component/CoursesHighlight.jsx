@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Clock, Users, Star } from 'lucide-react';
-import { useState, useEffect } from 'react';
 import { PLAYLIST_IDs } from "@/constant/common.js";
-import axios from 'axios';
+import { fetchPlaylists } from "@/lib/api";
 
 const CourseHighlight = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -10,19 +9,15 @@ const CourseHighlight = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchPlaylists();
+    fetchPlaylistsData();
     // eslint-disable-next-line
   }, []);
 
-  const fetchPlaylists = async () => {
+  const fetchPlaylistsData = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.post('/api/youtube/playlists', {
-        playlistIds: PLAYLIST_IDs,
-        maxResults: 1 // Only fetch the first video for thumbnail/title/desc
-      });
-      // Each result: { playlistId, data }
+      const res = await fetchPlaylists(PLAYLIST_IDs, 1);
       const validPlaylists = res.data.filter(p => p.data && p.data.items && p.data.items.length > 0);
       setPlaylists(validPlaylists);
     } catch (e) {
