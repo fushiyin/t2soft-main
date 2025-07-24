@@ -1,12 +1,15 @@
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
-const coursesRouter = require("./api/courses");
-const youtubeRouter = require("./api/youtube");
 
 const app = express();
+
+// 🛡️ Allow cross-origin requests from any origin
 app.use(cors({ origin: true }));
 app.use(express.json());
+
+const coursesRouter = require("./api/courses");
+const youtubeRouter = require("./api/youtube");
 
 app.use("/courses", coursesRouter);
 app.use("/youtube", youtubeRouter);

@@ -1,7 +1,7 @@
 // uploadImage.js
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
-import { storage, db } from "./firebase";
+import { storage, db } from "../lib/firebase";
 
 export async function uploadImageAndSaveMetadata(file) {
 	const storageRef = ref(storage, `images/${file.name}`);
