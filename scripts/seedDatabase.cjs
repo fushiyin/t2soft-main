@@ -18,7 +18,7 @@ const { getFirestore } = require("firebase-admin/firestore");
 // Import seeders
 const { seedCourses } = require("./seeders/courseSeeder.cjs");
 const { seedPosts } = require("./seeders/postSeeder.cjs");
-const { seedUsers } = require("./seeders/userSeeder.cjs");
+const { seedUsers: seedAuthUsers } = require("./seeders/authUserSeeder.cjs");
 const { seedEnrollments } = require("./seeders/enrollmentSeeder.cjs");
 const { seedCategories } = require("./seeders/categorySeeder.cjs");
 const { seedDocuments } = require("./seeders/documentSeeder.cjs");
@@ -46,7 +46,7 @@ const SEEDERS = {
 	categories: seedCategories,
 	courses: seedCourses,
 	posts: seedPosts,
-	users: seedUsers,
+	users: seedAuthUsers,
 	enrollments: seedEnrollments,
 	documents: seedDocuments,
 };

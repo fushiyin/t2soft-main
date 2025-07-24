@@ -2,6 +2,7 @@ import { CustomLoading, MainLayout } from "@/layouts";
 import Admin from "@/views/Admin";
 import ErrorBoundary from "@/views/ErrorBoundary";
 import PageNotFound from "@/views/PageNotFound";
+import { AdminRoute } from "@/components/auth/ProtectedRoute";
 import React, { Suspense } from "react";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { idRouter } from "./idRouter";
@@ -13,6 +14,9 @@ const Services = React.lazy(() => import("@/views/ServicesPage"));
 const Blog = React.lazy(() => import("@/views/MyBlog"));
 const Courses = React.lazy(() => import("@/views/Courses"));
 const Login = React.lazy(() => import("@/views/Login"));
+const UserLogin = React.lazy(() => import("@/views/UserLogin"));
+const ForgotPassword = React.lazy(() => import("@/views/ForgotPassword"));
+const EmailVerification = React.lazy(() => import("@/views/EmailVerification"));
 const Document = React.lazy(() => import("@/views/CategoryPage"));
 const DocumentDetail = React.lazy(() => import("@/views/CategoryPage/CategoryDetail.jsx"));
 
@@ -73,8 +77,24 @@ const router = createBrowserRouter([
 		element: <Login />,
 	},
 	{
+		path: idRouter.userLogin,
+		element: <UserLogin />,
+	},
+	{
+		path: idRouter.forgotPassword,
+		element: <ForgotPassword />,
+	},
+	{
+		path: idRouter.verifyEmail,
+		element: <EmailVerification />,
+	},
+	{
 		path: idRouter.admin,
-		element: <Admin />,
+		element: (
+			<AdminRoute requiredRole="admin">
+				<Admin />
+			</AdminRoute>
+		),
 		children: [
 			{
 				index: true,

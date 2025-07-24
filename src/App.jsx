@@ -3,7 +3,8 @@ import AppRouter from "@/routes";
 import "lenis/dist/lenis.css";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Newsletter from '@/views/Home/component/Newsletter'
+import Newsletter from "@/views/Home/component/Newsletter";
+import ErrorBoundary from "@/components/error/ErrorBoundary";
 
 function App() {
 	const { i18n } = useTranslation();
@@ -31,11 +32,11 @@ function App() {
 	}
 
 	return (
-		<>
+		<ErrorBoundary>
 			{/* <div className="aurora-bg" /> */}
-			<div className="bg-[#01070c]"/>
+			<div className="bg-[#01070c]" />
 			<AppRouter />
-		</>
+		</ErrorBoundary>
 	);
 }
 

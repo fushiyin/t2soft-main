@@ -20,8 +20,11 @@ export default defineConfig([
 			"*.config.cjs",
 			"*.config.mjs",
 			"README.md"
-		],
-		files: ["**/*.{js,mjs,cjs,jsx}"],
+		]
+	},
+	// Browser/React configuration
+	{
+		files: ["**/*.{js,mjs,jsx}"],
 		languageOptions: {
 			ecmaVersion: "latest",
 			sourceType: "module",
@@ -60,6 +63,43 @@ export default defineConfig([
 			"react/react-in-jsx-scope": "off",
 			"react-hooks/exhaustive-deps": "warn",
 			"react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+			"no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+			quotes: ["error", "double"],
+			"max-len": [
+				"warn",
+				{
+					code: 100,
+					tabWidth: 4,
+					ignoreUrls: true,
+					ignoreStrings: true,
+					ignoreTemplateLiterals: true,
+					ignoreRegExpLiterals: true,
+				},
+			],
+		},
+	},
+	// Node.js/CommonJS configuration for scripts
+	{
+		files: ["scripts/**/*.{js,cjs}"],
+		languageOptions: {
+			ecmaVersion: "latest",
+			sourceType: "commonjs",
+			globals: {
+				...globals.node,
+			},
+		},
+		plugins: {
+			prettier,
+		},
+		rules: {
+			...js.configs.recommended.rules,
+			"prettier/prettier": [
+				"error",
+				{
+					"usePrettierrc": true,
+					"endOfLine": "auto",
+				}
+			],
 			"no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
 			quotes: ["error", "double"],
 			"max-len": [

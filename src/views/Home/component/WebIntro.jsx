@@ -1,8 +1,13 @@
 import React from "react";
-import { ArrowRight, Play, TrendingUp, Shield, Award } from "lucide-react";
+import { ArrowRight, Play, TrendingUp, Shield, Award, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useRole";
+import { idRouter } from "@/routes/idRouter";
 import video from "@/assets/video/hero-video.mp4";
 
 const Hero = () => {
+	const { user, isAdmin } = useAuth();
+
 	return (
 		<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 			<div className="absolute inset-0">
@@ -54,6 +59,18 @@ const Hero = () => {
 							<span>Start Trading Today</span>
 							<ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
 						</button>
+						
+						{/* Admin Backoffice Access */}
+						{isAdmin && (
+							<Link
+								to={`${idRouter.admin}/${idRouter.adminDashboard}`}
+								className="group bg-gradient-to-r from-purple-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-purple-400 hover:to-purple-500 transition-all duration-300 flex items-center space-x-3 transform hover:scale-105 shadow-lg hover:shadow-purple-400/25 border border-purple-400/20"
+							>
+								<Settings className="h-6 w-6 group-hover:rotate-90 transition-transform duration-300" />
+								<span>Admin Dashboard</span>
+							</Link>
+						)}
+						
 						{/* <button className="group border-2 border-white/30 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center space-x-3 backdrop-blur-sm">
               <Play className="h-6 w-6 group-hover:scale-110 transition-transform" />
               <span>Watch Demo</span>

@@ -9,6 +9,8 @@ import {
 	Onboarding,
 	OnboardingProvider,
 } from "..";
+import AdminFloatingButton from "@/components/AdminFloatingButton";
+import AuthDebugger from "@/components/AuthDebugger";
 
 export default function MainLayout() {
 	const location = useLocation();
@@ -30,6 +32,8 @@ export default function MainLayout() {
 						<Footer />
 					</main>
 					<ButtonScrollToTop />
+					<AdminFloatingButton />
+					<AuthDebugger />
 				</OnboardingProvider>
 			</LenisProvider>
 		</>

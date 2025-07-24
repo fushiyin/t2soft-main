@@ -17,12 +17,14 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { Loader2Icon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { toast } from "react-hot-toast";
 
 export default function FormLogin() {
 	const navigate = useNavigate();
@@ -34,11 +36,46 @@ export default function FormLogin() {
 	});
 	const [loading, setLoading] = useState(false);
 
+	// Get user role-based redirect URL
+	const getRoleBasedRedirect = async (user) => {
+		try {
+			const userDocRef = doc(db, "users", user.uid);
+			const userDoc = await getDoc(userDocRef);
+			
+			if (userDoc.exists()) {
+				const userData = userDoc.data();
+				// Redirect based on user role
+				switch (userData.role) {
+					case "admin":
+						return "/admin/dashboard";
+					case "instructor":
+						return "/"; // Could be instructor dashboard in future
+					default:
+						return "/"; // Regular user to home page
+				}
+			}
+			return "/"; // Default to home if no user data found
+		} catch (error) {
+			console.error("Error getting user role:", error);
+			return "/"; // Default to home on error
+		}
+	};
+
 	const onSubmit = async (values) => {
 		setLoading(true);
 		try {
-			await signInWithEmailAndPassword(auth, values.email, values.password);
-			navigate("/admin/dashboard");
+			const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+			
+			// Check email verification
+			if (!userCredential.user.emailVerified) {
+				await auth.signOut();
+				toast.error("Please verify your email before logging in.");
+				return;
+			}
+			
+			// Get role-based redirect
+			const redirectUrl = await getRoleBasedRedirect(userCredential.user);
+			navigate(redirectUrl);
 		} catch (e) {
 			console.error("Login error:", e);
 			form.setError("email", { message: "Invalid email or password" });
@@ -52,10 +89,13 @@ export default function FormLogin() {
 		setLoading(true);
 		try {
 			const provider = new GoogleAuthProvider();
-			await signInWithPopup(auth, provider);
-			navigate("/admin/dashboard");
+			const result = await signInWithPopup(auth, provider);
+			
+			// Get role-based redirect
+			const redirectUrl = await getRoleBasedRedirect(result.user);
+			navigate(redirectUrl);
 		} catch (e) {
-			alert(e.message);
+			toast.error(e.message || "Google sign-in failed");
 		} finally {
 			setLoading(false);
 		}
