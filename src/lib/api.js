@@ -30,4 +30,14 @@ export const fetchChannelVideos = () =>
   apiClient.get("/youtube");
 
 export const fetchCourses = () =>
-  apiClient.get("/courses"); 
+  apiClient.get("/courses");
+
+// Documents API
+export const fetchDocuments = (params = {}) =>
+  apiClient.get("/documents", { params });
+
+export const fetchDocumentById = (id) =>
+  apiClient.get(`/documents/${id}`);
+
+export const incrementDocumentDownload = (id) =>
+  apiClient.post(`/documents/${id}/download`); 

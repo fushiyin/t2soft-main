@@ -35,20 +35,8 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: idRouter?.contact,
-				element: <Contact />,
-			},
-			{
-				path: idRouter.about,
-				element: <About />,
-			},
-			{
 				path: idRouter.contact,
 				element: <Contact />,
-			},
-			{
-				path: idRouter.service,
-				element: <Services />,
 			},
 			{
 				path: idRouter.blog,

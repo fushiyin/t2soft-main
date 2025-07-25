@@ -33,7 +33,6 @@ const Header = () => {
 		{ name: t("menu.courses", "Courses"), path: "/courses" },
 		{ name: t("menu.blog", "Blog"), path: "/blog" },
 		{ name: t("menu.documents", "Documents"), path: "/document" },
-		{ name: t("menu.about", "About"), path: "/about" },
 		{ name: t("menu.contact", "Contact"), path: "/contact" },
 		{ name: t("menu.forum", "Forum"), path: "/forum" },
 	];
@@ -64,7 +63,7 @@ const Header = () => {
 					: "bg-transparent"
 			}`}
 		>
-			<div className="container mx-auto px-4 py-4">
+			<div className="container mx-auto px-4 py-3">
 				<div className="flex items-center justify-between">
 					<Link
 						to="/"
@@ -201,7 +200,7 @@ const Header = () => {
 				</div>
 
 				{isMenuOpen && (
-					<nav className="md:hidden mt-4 pt-4 border-t border-gray-800">
+					<nav className="lg:hidden mt-4 pt-4 border-t border-gray-800">
 						{navItems.map((item) => (
 							<Link
 								key={item.name}

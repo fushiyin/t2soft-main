@@ -67,9 +67,6 @@
 		"services": "Services",
 		"solutions": "Solution",
 		"testimonials": "Testimonials",
-		"courses": "Courses",
-		"courses_all": "All Courses",
-		"courses_my": "My Courses",
 		"blog_all": "All Posts",
 		"blog_categories": "Categories",
 		"community": "Community",
@@ -77,7 +74,8 @@
 		"community_events": "Events",
 		"member": "Member",
 		"documents": "Documents",
-		"forum": "Forum"
+		"forum": "Forum",
+		"courses": "Courses"
 	},
 	"why_vietnam": {
 		"title": "Why Vietnam?",
@@ -993,6 +991,97 @@
 				"desc": "Start your journey with our experts.",
 				"btn": "Leave a Message"
 			}
+		}
+	},
+	"courses": "Courses",
+	"courses_all": "All Courses",
+	"courses_my": "My Courses",
+	"courses_page": {
+		"title": "Trading",
+		"title_accent": "Courses",
+		"subtitle": "Master financial markets with our comprehensive collection of professional trading courses",
+		"subtitle_continued": "professional trading courses",
+		"demo_mode": "Demo Mode - Sample Content",
+		"search_placeholder": "Search",
+		"filter_all": "All",
+		"filter_beginner": "Beginner",
+		"filter_intermediate": "Intermediate",
+		"filter_advanced": "Advanced",
+		"filter_all_levels": "All Levels",
+		"video_count": "videos",
+		"view_course": "View Course",
+		"price_free": "Free",
+		"no_courses_found": "No courses found matching your criteria.",
+		"loading": "Loading courses...",
+		"stats": {
+			"students": "students",
+			"rating": "rating"
+		}
+	},
+	"documents_page": {
+		"title": "Document",
+		"title_accent": "Library",
+		"subtitle": "Explore our comprehensive collection of financial analysis, market insights, and trading guides",
+		"search_placeholder": "Search documents...",
+		"filter_all": "All",
+		"filter_crypto": "Crypto",
+		"filter_trading": "Trading",
+		"filter_defi": "DeFi",
+		"filter_nft": "NFT",
+		"filter_technology": "Technology",
+		"filter_market_analysis": "Market Analysis",
+		"download": "Download",
+		"view": "View",
+		"no_documents_found": "No documents found",
+		"try_different_search": "Try adjusting your search or filter criteria.",
+		"loading": "Loading documents...",
+		"stats": {
+			"downloads": "downloads",
+			"size": "size",
+			"author": "by"
+		}
+	},
+	"documents": {
+		"header": {
+			"title": "Educational",
+			"subtitle": "Resource Library",
+			"description": "Access our comprehensive collection of trading guides, market analysis, and educational materials curated by industry experts"
+		},
+		"stats": {
+			"documents": "Documents",
+			"categories": "Categories",
+			"freeValue": "Free",
+			"access": "Access"
+		},
+		"search": {
+			"placeholder": "Search for trading guides, analysis, tutorials..."
+		},
+		"categories": {
+			"all": "All",
+			"trading": "Trading",
+			"analysis": "Analysis",
+			"education": "Education",
+			"research": "Research",
+			"market": "Market"
+		},
+		"readTime": {
+			"default": "5 min read"
+		},
+		"fileSize": {
+			"zero": "0 Bytes",
+			"bytes": "Bytes",
+			"kb": "KB",
+			"mb": "MB",
+			"gb": "GB"
+		},
+		"actions": {
+			"download": "Download",
+			"view": "View",
+			"resetFilters": "Reset Filters"
+		},
+		"noResults": {
+			"title": "No documents found",
+			"description": "Try adjusting your search terms or browse different categories."
 		}
 	}
 }

@@ -67,9 +67,6 @@
 		"services": "Dịch vụ",
 		"solutions": "Giải pháp",
 		"testimonials": "Lời chứng thực",
-		"courses": "Khóa học",
-		"courses_all": "Tất cả khóa học",
-		"courses_my": "Khóa học của tôi",
 		"blog_all": "Tất cả bài viết",
 		"blog_categories": "Danh mục bài viết",
 		"community": "Cộng đồng",
@@ -77,7 +74,8 @@
 		"community_events": "Sự kiện",
 		"member": "Thành viên",
 		"documents": "Tài liệu",
-		"forum": "Diễn đàn"
+		"forum": "Diễn đàn",
+		"courses": "Khóa học"
 	},
 	"why_vietnam": {
 		"title": "Why Vietnam?",
@@ -993,6 +991,74 @@
 				"desc": "Start your journey with our experts.",
 				"btn": "Leave a Message"
 			}
+		}
+	},
+	"courses": "Khóa học",
+	"courses_all": "Tất cả khóa học",
+	"courses_my": "Khóa học của tôi",
+	"courses_page": {
+		"title": "Khóa học",
+		"title_accent": "Trading",
+		"subtitle": "Nắm vững thị trường tài chính với bộ sưu tập toàn diện các khóa học trading chuyên nghiệp",
+		"subtitle_continued": "khóa học trading chuyên nghiệp",
+		"demo_mode": "Chế độ Demo - Nội dung mẫu",
+		"search_placeholder": "Tìm kiếm",
+		"filter_all": "Tất cả",
+		"filter_beginner": "Cơ bản",
+		"filter_intermediate": "Trung cấp",
+		"filter_advanced": "Nâng cao",
+		"filter_all_levels": "Mọi cấp độ",
+		"video_count": "video",
+		"view_course": "Xem khóa học",
+		"price_free": "Miễn phí",
+		"no_courses_found": "Không tìm thấy khóa học phù hợp với tiêu chí của bạn.",
+		"loading": "Đang tải khóa học...",
+		"stats": {
+			"students": "học viên",
+			"rating": "đánh giá"
+		}
+	},
+	"documents": {
+		"header": {
+			"title": "Thư viện",
+			"subtitle": "Tài nguyên Giáo dục",
+			"description": "Truy cập bộ sưu tập toàn diện các hướng dẫn giao dịch, phân tích thị trường và tài liệu giáo dục được tuyển chọn bởi các chuyên gia trong ngành"
+		},
+		"stats": {
+			"documents": "Tài liệu",
+			"categories": "Danh mục",
+			"freeValue": "Miễn phí",
+			"access": "Truy cập"
+		},
+		"search": {
+			"placeholder": "Tìm kiếm hướng dẫn giao dịch, phân tích, bài học..."
+		},
+		"categories": {
+			"all": "Tất cả",
+			"trading": "Giao dịch",
+			"analysis": "Phân tích",
+			"education": "Giáo dục",
+			"research": "Nghiên cứu",
+			"market": "Thị trường"
+		},
+		"readTime": {
+			"default": "5 phút đọc"
+		},
+		"fileSize": {
+			"zero": "0 Byte",
+			"bytes": "Byte",
+			"kb": "KB",
+			"mb": "MB",
+			"gb": "GB"
+		},
+		"actions": {
+			"download": "Tải xuống",
+			"view": "Xem",
+			"resetFilters": "Đặt lại bộ lọc"
+		},
+		"noResults": {
+			"title": "Không tìm thấy tài liệu",
+			"description": "Hãy thử điều chỉnh từ khóa tìm kiếm hoặc duyệt các danh mục khác."
 		}
 	}
 }

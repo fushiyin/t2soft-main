@@ -5,10 +5,55 @@ import { PLAYLIST_IDs } from "@/constant/common";
 import classNames from "classnames";
 import { fetchPlaylists } from "@/lib/api";
 
+// Mock data for when API is not available
+const MOCK_COURSES = [
+	{
+		id: "PLsGBXDsQw_r4-62k404iSBvPpixyPCI2u",
+		title: "Forex Trading Fundamentals",
+		description: "Master the basics of forex trading with comprehensive lessons covering market analysis, trading strategies, and risk management.",
+		thumbnail: "https://i.ytimg.com/vi/0pXnvfAJ4q4/hqdefault.jpg",
+		videoCount: 15,
+		channelTitle: "TradeMaster Academy",
+		publishedAt: "2024-01-15T10:00:00Z",
+		level: "Beginner"
+	},
+	{
+		id: "PLsGBXDsQw_r4hwYSS27PqLR4M3lgFs2RE",
+		title: "Advanced Cryptocurrency Trading",
+		description: "Deep dive into cryptocurrency markets, DeFi protocols, and advanced trading strategies for digital assets.",
+		thumbnail: "https://i.ytimg.com/vi/1YyAzVmP9xQ/hqdefault.jpg",
+		videoCount: 22,
+		channelTitle: "TradeMaster Academy",
+		publishedAt: "2024-02-01T14:30:00Z",
+		level: "Advanced"
+	},
+	{
+		id: "PLsGBXDsQw_r6IIs2AAaauS0P_LrLgaaPP",
+		title: "Technical Analysis Masterclass",
+		description: "Learn to read charts, identify patterns, and use technical indicators to make informed trading decisions.",
+		thumbnail: "https://i.ytimg.com/vi/3MnK7XT-oPA/hqdefault.jpg",
+		videoCount: 18,
+		channelTitle: "TradeMaster Academy",
+		publishedAt: "2024-01-28T09:15:00Z",
+		level: "Intermediate"
+	},
+	{
+		id: "PLsGBXDsQw_r4_5UroEpd5d-U0l0Tu7-N2",
+		title: "Risk Management & Psychology",
+		description: "Develop the mental discipline and risk management skills essential for successful trading careers.",
+		thumbnail: "https://i.ytimg.com/vi/CqrYHGqyMJc/hqdefault.jpg",
+		videoCount: 12,
+		channelTitle: "TradeMaster Academy",
+		publishedAt: "2024-02-10T16:45:00Z",
+		level: "All Levels"
+	}
+];
+
 const MyCourses = () => {
 	const [courses, setCourses] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [usingMockData, setUsingMockData] = useState(false);
 
 	useEffect(() => {
 		fetchCourses();
@@ -17,11 +62,18 @@ const MyCourses = () => {
 	const fetchCourses = async () => {
 		setLoading(true);
 		setError(null);
+		
 		try {
+			console.log("🔄 Attempting to fetch courses from YouTube API...");
 			const res = await fetchPlaylists(PLAYLIST_IDs, 1);
 			const validPlaylists = res.data.filter(
 				(p) => p.data && p.data.items && p.data.items.length > 0,
 			);
+			
+			if (validPlaylists.length === 0) {
+				throw new Error("No valid playlists found");
+			}
+			
 			const mapped = validPlaylists.map((playlist) => {
 				const item = playlist.data.items[0];
 				const snippet = item.snippet;
@@ -36,11 +88,18 @@ const MyCourses = () => {
 					level: "All Levels",
 				};
 			});
+			
 			setCourses(mapped);
+			console.log("✅ Successfully fetched courses from YouTube API");
 		} catch (e) {
-			console.error("Failed to fetch courses:", e);
-			setError("Failed to fetch courses.");
-			setCourses([]);
+			console.warn("⚠️ YouTube API failed, falling back to mock data:", e.message);
+			
+			// Fallback to mock data
+			setCourses(MOCK_COURSES);
+			setUsingMockData(true);
+			
+			// Show a subtle warning instead of error
+			setError(null);
 		} finally {
 			setLoading(false);
 		}
@@ -89,6 +148,14 @@ const MyCourses = () => {
 				{/* Header */}
 				<div className="text-center mb-16">
 					<h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">KHÓA HỌC</h2>
+					
+					{/* Mock Data Indicator */}
+					{usingMockData && (
+						<div className="inline-flex items-center bg-yellow-100 border border-yellow-300 text-yellow-800 px-4 py-2 rounded-lg text-sm mb-4">
+							<div className="w-2 h-2 bg-yellow-500 rounded-full mr-2 animate-pulse"></div>
+							Demo content (API temporarily unavailable)
+						</div>
+					)}
 					<div className="h-2 w-14 mx-auto bg-gradient-to-r from-green-400 to-blue-500"></div>
 				</div>
 

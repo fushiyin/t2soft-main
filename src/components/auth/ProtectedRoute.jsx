@@ -1,21 +1,37 @@
 import React from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useRole";
 import { CustomLoading } from "@/layouts";
 import { toast } from "react-hot-toast";
 
 const ProtectedRoute = ({ children, requiredRole = null }) => {
-	const { user, userProfile, loading, isAuthenticated, isAdmin } = useAuth();
-	console.log(isAdmin);
-	const location = useLocation();
+	const { user, userProfile, loading, isAuthenticated } = useAuth();
 
-	// Show loading while authentication state is being determined
 	if (loading) {
 		return <CustomLoading defaultLoading />;
 	}
 
-	// Check email verification for regular users (admins might be pre-verified)
-	if (user && !user.emailVerified) {
+	if (!isAuthenticated) {
+		toast.error("Please log in to access this page");
+		return (
+			<Navigate
+				to="/user-login"
+				replace
+			/>
+		);
+	}
+
+	if (!userProfile) {
+		toast.error("User profile not found. Please contact support.");
+		return (
+			<Navigate
+				to="/user-login"
+				replace
+			/>
+		);
+	}
+
+	if (user && !user.emailVerified && userProfile.role !== "admin") {
 		toast.error("Please verify your email before accessing this page");
 		return (
 			<Navigate
@@ -25,8 +41,8 @@ const ProtectedRoute = ({ children, requiredRole = null }) => {
 		);
 	}
 
-	// Check role-based access
-	if (requiredRole && !isAdmin) {
+	if (requiredRole && userProfile.role !== requiredRole) {
+		toast.error(`Access denied. ${requiredRole} role required.`);
 		return (
 			<Navigate
 				to="/"
@@ -35,7 +51,6 @@ const ProtectedRoute = ({ children, requiredRole = null }) => {
 		);
 	}
 
-	// Check if user account is active
 	if (userProfile.isActive === false) {
 		toast.error("Your account has been deactivated. Please contact support.");
 		return (
@@ -49,7 +64,6 @@ const ProtectedRoute = ({ children, requiredRole = null }) => {
 	return children;
 };
 
-// Specific component for admin routes
 export const AdminRoute = ({ children }) => {
 	return <ProtectedRoute requiredRole="admin">{children}</ProtectedRoute>;
 };
