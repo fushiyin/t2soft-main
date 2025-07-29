@@ -64,7 +64,7 @@ const Hero = () => {
 						{isAdmin && (
 							<Link
 								to={`${idRouter.admin}/${idRouter.adminDashboard}`}
-								className="group bg-gradient-to-r from-purple-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-purple-400 hover:to-purple-500 transition-all duration-300 flex items-center space-x-3 transform hover:scale-105 shadow-lg hover:shadow-purple-400/25 border border-purple-400/20"
+								className="group bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-purple-400 hover:to-purple-500 transition-all duration-300 flex items-center space-x-3 transform hover:scale-105 shadow-lg hover:shadow-purple-400/25 border border-purple-400/20"
 							>
 								<Settings className="h-6 w-6 group-hover:rotate-90 transition-transform duration-300" />
 								<span>Admin Dashboard</span>
@@ -88,16 +88,16 @@ const Hero = () => {
             </div>
             
             <div className="group text-center bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:bg-gray-800/70 transition-all duration-300">
-              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="bg-gradient-to-r from-green-400 to-blue-600 p-4 rounded-2xl w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Shield className="h-10 w-10 text-white" />
               </div>
               <h3 className="text-4xl font-bold text-white mb-3">98%</h3>
               <p className="text-gray-400 text-lg">Success Rate</p>
-              <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-green-400 mx-auto mt-4 rounded-full"></div>
+              <div className="w-12 h-1 bg-gradient-to-r from-green-400 to-green-400 mx-auto mt-4 rounded-full"></div>
             </div>
             
             <div className="group text-center bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:bg-gray-800/70 transition-all duration-300">
-              <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-4 rounded-2xl w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-4 rounded-2xl w-20 h-20 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Award className="h-10 w-10 text-white" />
               </div>
               <h3 className="text-4xl font-bold text-white mb-3">5+</h3>

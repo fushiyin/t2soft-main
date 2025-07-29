@@ -4,6 +4,9 @@ import LoadingSpinner from "@/components/Loading/LoadingSpinner.jsx";
 import { auth } from "@/lib/firebase";
 import FormLogin from "@/views/Login/FormLogin.jsx";
 import { fetchPlaylists } from "@/lib/api";
+import MobileCourseSlider from "./MobileCourseSlider.jsx";
+import TabletCourseSlider from "./TabletCourseSlider.jsx";
+import DesktopCourseSlider from "./DesktopCourseSlider.jsx";
 
 function CoursesSlider() {
 	const [courses, setCourses] = useState([]);
@@ -11,7 +14,7 @@ function CoursesSlider() {
 	const [showLogin, setShowLogin] = useState(false);
 	const [user, setUser] = useState(null);
 	const [active, setActive] = useState(0);
-	const [slideDirection, setSlideDirection] = useState(null); // 'left' or 'right'
+	const [slideDirection, setSlideDirection] = useState(null);
 	const [isAnimating, setIsAnimating] = useState(false);
 	const touchStartX = useRef(null);
 	const touchEndX = useRef(null);
@@ -22,14 +25,25 @@ function CoursesSlider() {
 	}, []);
 
 	const fetchCourses = async () => {
+		setLoading(true);
 		try {
 			const res = await fetchPlaylists(PLAYLIST_IDs, 1);
-			const validPlaylists = res.data.filter(
-				(p) => p.data && p.data.items && p.data.items.length > 0,
-			);
-			setCourses(validPlaylists);
-		} catch (e) {
-			setCourses([]);
+
+			if (res && res.data && Array.isArray(res.data)) {
+				const validPlaylists = res.data.filter(
+					(p) => p && p.data && p.data.items && p.data.items.length > 0,
+				);
+
+				if (validPlaylists.length > 0) {
+					setCourses(validPlaylists);
+					console.log("YouTube API data loaded successfully");
+					return;
+				}
+			}
+
+			throw new Error("No valid playlist data received");
+		} catch (error) {
+			console.warn("YouTube API failed, falling back to mock data:", error.message);
 		} finally {
 			setLoading(false);
 		}
@@ -46,7 +60,11 @@ function CoursesSlider() {
 			id: playlist.playlistId,
 			title: snippet.title,
 			description: snippet.description,
-			thumbnail: snippet.thumbnails?.high?.url || snippet.thumbnails?.default?.url,
+			thumbnail:
+				snippet.thumbnails?.maxres?.url ||
+				snippet.thumbnails?.high?.url ||
+				snippet.thumbnails?.medium?.url ||
+				snippet.thumbnails?.default?.url,
 			videoCount: playlist.data.pageInfo?.totalResults || playlist.data.items.length,
 			channelTitle: snippet.channelTitle,
 			publishedAt: snippet.publishedAt,
@@ -57,7 +75,7 @@ function CoursesSlider() {
 
 	const handlePrev = () => {
 		if (isAnimating) return;
-		setSlideDirection('left');
+		setSlideDirection("left");
 		setIsAnimating(true);
 		setTimeout(() => {
 			setActive((prev) => (prev === 0 ? mappedCourses.length - 1 : prev - 1));
@@ -66,7 +84,7 @@ function CoursesSlider() {
 	};
 	const handleNext = () => {
 		if (isAnimating) return;
-		setSlideDirection('right');
+		setSlideDirection("right");
 		setIsAnimating(true);
 		setTimeout(() => {
 			setActive((prev) => (prev === mappedCourses.length - 1 ? 0 : prev + 1));
@@ -97,143 +115,153 @@ function CoursesSlider() {
 	};
 
 	return (
-		<section className="w-full min-h-[60vh] flex items-center justify-center bg-white">
-			<div className="w-full mx-auto flex flex-col md:flex-row overflow-hidden h-full">
-				{/* Left Info Panel */}
-				<div className="md:w-2/5 w-full bg-teal-800/95 text-white flex flex-col justify-center items-center relative py-8 md:py-0">
-					<div className="w-full px-4 md:px-0">
-						<h2 className="text-2xl xs:text-3xl md:text-4xl font-bold mb-2 tracking-tight">
-							PREMIUM <span className="text-4xl xs:text-5xl align-top font-extrabold">7</span>
-						</h2>
-						<p className="text-base xs:text-lg font-light mb-8">
-							업계최초 프리미엄 7선정
-							<br />
-							최고의 가치를 선사합니다
-						</p>
-						<div className="flex gap-3 mt-8 justify-center">
-							<button
-								onClick={handlePrev}
-								disabled={isAnimating}
-								className={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center ${isAnimating ? "opacity-50" : "hover:bg-white hover:text-teal-800"} transition`}
-								aria-label="Previous Course"
-							>
-								&lt;
-							</button>
-							<button
-								onClick={handleNext}
-								disabled={isAnimating}
-								className={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center ${isAnimating ? "opacity-50" : "hover:bg-white hover:text-teal-800"} transition`}
-								aria-label="Next Course"
-							>
-								&gt;
-							</button>
-						</div>
-						{/* Dots */}
-						<div className="flex gap-2 mt-6 justify-center">
-							{mappedCourses.map((_, idx) => (
-								<span
-									key={idx}
-									className={`w-3 h-3 rounded-full border-2 border-white ${active === idx ? "bg-white" : "bg-transparent"}`}
-								></span>
-							))}
-						</div>
-					</div>
-				</div>
-				{/* Right Cards Panel */}
-				<div
-					className="md:w-3/5 w-full bg-white flex items-center justify-center px-2 py-8 md:py-0 relative"
-					onTouchStart={handleTouchStart}
-					onTouchMove={handleTouchMove}
-					onTouchEnd={handleTouchEnd}
-				>
-					<div className="flex gap-2 xs:gap-4 w-full max-w-xs xs:max-w-md sm:max-w-lg md:max-w-3xl justify-center items-center relative h-[340px] xs:h-[380px] md:h-[420px]">
-						{/* Left Card */}
-						{mappedCourses[active - 1] && (
-							<div
-								className={`hidden xs:flex w-28 xs:w-40 md:w-56 h-44 xs:h-60 md:h-72 bg-gray-100 rounded-xl shadow-md flex-col items-center justify-center p-2 xs:p-4 opacity-80 scale-95 z-0 transition-all duration-300
-								${slideDirection === 'left' && isAnimating ? 'animate-slideInLeft' : ''}
-								${slideDirection === 'right' && isAnimating ? 'animate-slideOutRight' : ''}
-							`}
-						>
-							<img
-								src={mappedCourses[active - 1].thumbnail}
-								alt=""
-								className="w-10 xs:w-14 h-10 xs:h-14 object-cover rounded-full mb-2 xs:mb-3"
-							/>
-							<div className="text-teal-700 font-semibold mb-1 text-xs">
-								PREMIUM 0{active}
-							</div>
-							<div className="text-gray-700 text-xs xs:text-sm font-bold mb-1 line-clamp-2 text-center">
-								{mappedCourses[active - 1].title}
-							</div>
-							<div className="text-gray-500 text-xs text-center line-clamp-2">
-								{mappedCourses[active - 1].description}
-							</div>
-						</div>
-						)}
-						{/* Center Card */}
-						{mappedCourses[active] && (
-							<div
-								className={`w-40 xs:w-60 md:w-80 h-60 xs:h-80 md:h-96 bg-teal-900 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-4 xs:p-8 z-10 border-4 border-white scale-105 transition-all duration-300
-								${slideDirection === 'left' && isAnimating ? 'animate-slideInLeft' : ''}
-								${slideDirection === 'right' && isAnimating ? 'animate-slideOutRight' : ''}
-							`}
-						>
-							<img
-								src={mappedCourses[active].thumbnail}
-								alt=""
-								className="w-14 xs:w-20 h-14 xs:h-20 object-cover rounded-full mb-4 xs:mb-6 border-4 border-white"
-							/>
-							<div className="text-white font-bold mb-2 text-base xs:text-lg">
-								PREMIUM 0{active + 1}
-							</div>
-							<div className="text-white text-lg xs:text-xl font-extrabold mb-2 xs:mb-3 text-center line-clamp-2">
-								{mappedCourses[active].title}
-							</div>
-							<div className="text-teal-100 text-xs xs:text-base text-center mb-2 xs:mb-4 line-clamp-3">
-								{mappedCourses[active].description}
-							</div>
-							<button className="mt-auto bg-white text-teal-900 font-bold px-4 xs:px-6 py-2 rounded shadow hover:bg-teal-100 transition">
-								View Course
-							</button>
-						</div>
-						)}
-						{/* Right Card */}
-						{mappedCourses[active + 1] && (
-							<div
-								className={`hidden xs:flex w-28 xs:w-40 md:w-56 h-44 xs:h-60 md:h-72 bg-gray-100 rounded-xl shadow-md flex-col items-center justify-center p-2 xs:p-4 opacity-80 scale-95 z-0 transition-all duration-300
-								${slideDirection === 'right' && isAnimating ? 'animate-slideInRight' : ''}
-								${slideDirection === 'left' && isAnimating ? 'animate-slideOutLeft' : ''}
-							`}
-						>
-							<img
-								src={mappedCourses[active + 1].thumbnail}
-								alt=""
-								className="w-10 xs:w-14 h-10 xs:h-14 object-cover rounded-full mb-2 xs:mb-3"
-							/>
-							<div className="text-teal-700 font-semibold mb-1 text-xs">
-								PREMIUM 0{active + 2}
-							</div>
-							<div className="text-gray-700 text-xs xs:text-sm font-bold mb-1 line-clamp-2 text-center">
-								{mappedCourses[active + 1].title}
-							</div>
-							<div className="text-gray-500 text-xs text-center line-clamp-2">
-								{mappedCourses[active + 1].description}
-							</div>
-						</div>
-						)}
-					</div>
+		<section className="w-full min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 relative overflow-hidden">
+			{/* Enhanced Animated Background */}
+			<div className="absolute inset-0">
+				{/* Primary gradient overlay */}
+				<div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-teal-900/20"></div>
+
+				{/* Animated orbs with better colors */}
+				<div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-600/15 to-blue-500/15 rounded-full blur-3xl animate-pulse"></div>
+				<div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-600/10 to-pink-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-teal-600/12 to-blue-600/12 rounded-full blur-3xl animate-pulse delay-500"></div>
+
+				{/* Additional subtle orbs */}
+				<div className="absolute top-10 right-1/3 w-64 h-64 bg-gradient-to-r from-indigo-600/8 to-blue-500/8 rounded-full blur-2xl animate-pulse delay-700"></div>
+				<div className="absolute bottom-10 left-1/3 w-48 h-48 bg-gradient-to-r from-teal-600/10 to-cyan-600/10 rounded-full blur-2xl animate-pulse delay-300"></div>
+
+				{/* Subtle grid pattern */}
+				<div className="absolute inset-0 opacity-5">
+					<div
+						className="absolute inset-0"
+						style={{
+							backgroundImage:
+								"radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)",
+							backgroundSize: "50px 50px",
+						}}
+					></div>
 				</div>
 			</div>
-			{loading && <LoadingSpinner />}
+
+			<div className="relative z-10 container mx-auto px-4 md:px-6 py-8 md:py-12 min-h-screen flex flex-col">
+				{/* Responsive Header Section */}
+				<div className="text-center mb-8 md:mb-16">
+					<div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-green-400 to-blue-500 rounded-full mb-4 md:mb-6 shadow-xl">
+						<svg
+							className="w-8 h-8 md:w-10 md:h-10 text-white"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+						>
+							<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+					</div>
+					<h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-4 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent drop-shadow-lg">
+						Khóa học
+					</h1>
+				</div>
+
+				{/* Responsive Main Content Area */}
+				<div className="flex-1 flex items-center justify-center">
+					{mappedCourses.length === 0 && !loading ? (
+						<div className="text-center text-white/70 py-12 md:py-20">
+							<div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 md:mb-6 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20 shadow-lg">
+								<svg
+									className="w-10 h-10 md:w-12 md:h-12"
+									fill="currentColor"
+									viewBox="0 0 20 20"
+								>
+									<path
+										fillRule="evenodd"
+										d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+										clipRule="evenodd"
+									/>
+								</svg>
+							</div>
+							<h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-gray-200">
+								No Courses Available
+							</h3>
+							<p className="text-base md:text-lg text-gray-300">
+								Please try again later.
+							</p>
+						</div>
+					) : (
+						<>
+							{/* Mobile Layout - sm and below */}
+							<div className="block md:hidden w-full">
+								<MobileCourseSlider
+									courses={mappedCourses}
+									active={active}
+									setActive={setActive}
+									handlePrev={handlePrev}
+									handleNext={handleNext}
+									isAnimating={isAnimating}
+									slideDirection={slideDirection}
+									handleTouchStart={handleTouchStart}
+									handleTouchMove={handleTouchMove}
+									handleTouchEnd={handleTouchEnd}
+								/>
+							</div>
+
+							{/* Tablet Layout - md to lg */}
+							<div className="hidden md:block lg:hidden w-full">
+								<TabletCourseSlider
+									courses={mappedCourses}
+									active={active}
+									setActive={setActive}
+									handlePrev={handlePrev}
+									handleNext={handleNext}
+									isAnimating={isAnimating}
+									slideDirection={slideDirection}
+									handleTouchStart={handleTouchStart}
+									handleTouchMove={handleTouchMove}
+									handleTouchEnd={handleTouchEnd}
+								/>
+							</div>
+
+							{/* Desktop Layout - lg and above */}
+							<div className="hidden lg:block w-full">
+								<DesktopCourseSlider
+									courses={mappedCourses}
+									active={active}
+									setActive={setActive}
+									handlePrev={handlePrev}
+									handleNext={handleNext}
+									isAnimating={isAnimating}
+									slideDirection={slideDirection}
+									handleTouchStart={handleTouchStart}
+									handleTouchMove={handleTouchMove}
+									handleTouchEnd={handleTouchEnd}
+								/>
+							</div>
+						</>
+					)}
+				</div>
+			</div>
+
+			{loading && (
+				<div className="absolute inset-0 bg-gray-900/90 backdrop-blur-sm z-30 flex items-center justify-center">
+					<LoadingSpinner />
+				</div>
+			)}
+
 			{showLogin && (
-				<div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-					<div className="bg-white rounded-xl p-0 max-w-lg w-full shadow-2xl relative overflow-hidden">
+				<div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+					<div className="bg-white rounded-3xl p-0 max-w-lg w-full shadow-2xl relative overflow-hidden transform transition-all duration-300 scale-100">
 						<button
-							className="absolute top-4 right-4 text-gray-400 hover:text-black z-10"
+							className="absolute top-6 right-6 text-gray-400 hover:text-gray-600 z-10 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
 							onClick={() => setShowLogin(false)}
 						>
-							&times;
+							<svg
+								className="w-6 h-6"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+							>
+								<path
+									fillRule="evenodd"
+									d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+									clipRule="evenodd"
+								/>
+							</svg>
 						</button>
 						<FormLogin />
 					</div>
@@ -242,17 +270,5 @@ function CoursesSlider() {
 		</section>
 	);
 }
-
-// Add sliding animations
-// Add these to your global CSS or Tailwind config if not present
-// .animate-slideInLeft { animation: slideInLeft 0.35s forwards; }
-// .animate-slideOutRight { animation: slideOutRight 0.35s forwards; }
-// .animate-slideInRight { animation: slideInRight 0.35s forwards; }
-// .animate-slideOutLeft { animation: slideOutLeft 0.35s forwards; }
-//
-// @keyframes slideInLeft { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: translateX(0); } }
-// @keyframes slideOutRight { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(60px); } }
-// @keyframes slideInRight { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
-// @keyframes slideOutLeft { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(-60px); } }
 
 export default CoursesSlider;

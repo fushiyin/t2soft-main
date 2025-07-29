@@ -10,7 +10,7 @@ const HoverCard = ({ icon, title, description, className = "" }) => {
 			className={`flex flex-col ${icon ? "items-center text-center" : "items-start text-left"} w-full h-full gap-4 ${className}`}
 		>
 			{icon && (
-				<div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full inline-flex items-center justify-center text-white">
+				<div className="bg-gradient-to-r from-green-400 to-blue-600 p-3 rounded-full inline-flex items-center justify-center text-white">
 					{icon}
 				</div>
 			)}

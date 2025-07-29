@@ -138,7 +138,7 @@ export default function PostWrite() {
 							</button>
 							<button
 								type="button"
-								className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-400 text-white font-bold shadow-md hover:scale-105 transition-transform border border-transparent"
+								className="px-6 py-2.5 bg-gradient-to-r from-green-400 to-purple-400 text-white font-bold shadow-md hover:scale-105 transition-transform border border-transparent"
 								onClick={() => setShowScheduleModal(true)}
 							>
 								<span className="inline-block align-middle">Schedule</span>
@@ -173,7 +173,7 @@ export default function PostWrite() {
 										</button>
 										<button
 											type="button"
-											className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-400 text-white font-bold shadow-md border border-transparent disabled:opacity-60"
+											className="px-4 py-2 bg-gradient-to-r from-green-400 to-purple-400 text-white font-bold shadow-md border border-transparent disabled:opacity-60"
 											disabled={!scheduledTime}
 											onClick={() => {
 												setSubmitType("schedule");

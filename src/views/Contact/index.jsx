@@ -1,9 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { ADDRESS_SITE } from "@/constant/common";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const containerVariants = {
@@ -22,192 +18,108 @@ const itemVariants = {
 
 export default function Contact() {
 	const { t } = useTranslation();
-	const [formState, setFormState] = useState({
-		name: "",
-		email: "",
-		company: "",
-		message: "",
-	});
-	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [isSubmitted, setIsSubmitted] = useState(false);
-
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormState((prev) => ({ ...prev, [name]: value }));
-	};
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		setIsSubmitting(true);
-		await new Promise((resolve) => setTimeout(resolve, 1000));
-
-		console.log("Form submitted:", formState);
-
-		setIsSubmitting(false);
-		setIsSubmitted(true);
-		setFormState({ name: "", email: "", company: "", message: "" });
-
-		setTimeout(() => setIsSubmitted(false), 5000);
-	};
 
 	return (
-		<div className="w-full h-full bg-white py-[64px] mt-[64px]">
-			<div className="mx-auto max-w-[1440px]">
-				<div className="flex flex-col md:flex-row-reverse">
-					<div className="w-full h-full bg-white flex items-center justify-center">
-						<div className="container px-0 md:px-4 h-full flex flex-col justify-center">
-							<motion.div
-								variants={containerVariants}
-								initial="hidden"
-								whileInView="visible"
-								viewport={{ once: true, amount: 0.2 }}
-								className="grid gap-10 lg:grid-cols-2 items-center"
-							>
-								<motion.div
-									variants={itemVariants}
-									className="space-y-4 p-3 md:p-3 lg:p-6 xl:p-6"
-								>
-									<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-dark-gray font-sans break-keep whitespace-normal break-words">
-										{t("contact.description")}
-									</h2>
-									<p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed font-sans break-keep whitespace-normal break-words">
-										{t("contact.description2")}
-									</p>
-									<ul className="space-y-2 text-muted-foreground">
-										{["expert", "cutting_edge", "dedicated"].map((key) => (
-											<li
-												className="flex items-center gap-2"
-												key={key}
-											>
-												<span className="h-2 w-2 rounded-full bg-near-black-blue" />
-												<span className="font-sans break-keep whitespace-normal break-words">
-													{t(`contact.description_sub.${key}`)}
-												</span>
-											</li>
-										))}
-									</ul>
-								</motion.div>
+		<div className="w-full min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 relative overflow-hidden py-20 mt-[64px]">
+			{/* Enhanced Animated Background */}
+			<div className="absolute inset-0">
+				{/* Primary gradient overlay */}
+				<div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-teal-900/20"></div>
 
-								<motion.div
-									variants={itemVariants}
-									className="bg-white/80 rounded-lg border-t shadow-lg"
-								>
-									{isSubmitted ? (
-										<motion.div
-											className="flex flex-col items-center justify-center h-full py-8 text-center"
-											initial={{ opacity: 0, scale: 0.9 }}
-											animate={{ opacity: 1, scale: 1 }}
-											transition={{ duration: 0.3 }}
-										>
-											<div className="rounded-full bg-green-100 p-3 mb-4">
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													className="h-6 w-6 text-green-600"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke="currentColor"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth={2}
-														d="M5 13l4 4L19 7"
-													/>
-												</svg>
-											</div>
-											<h3 className="text-xl font-bold mb-2 text-dark-gray font-sans break-keep whitespace-normal break-words">
-												{t("contact.form.success_submit")}
-											</h3>
-											<p className="text-muted-foreground font-sans break-keep whitespace-normal break-words">
-												{t("contact.form.success_message")}
-											</p>
-										</motion.div>
-									) : (
-										<motion.form
-											variants={containerVariants}
-											initial="hidden"
-											animate="visible"
-											onSubmit={handleSubmit}
-											className="space-y-4 p-3 md:p-3 lg:p-6 xl:p-6"
-										>
-											{["name", "email", "company", "message"].map(
-												(field) => (
-													<motion.div
-														key={field}
-														variants={itemVariants}
-													>
-														<label
-															htmlFor={field}
-															className="block text-sm font-medium mb-1 text-dark-gray"
-														>
-															{t(`contact.form.${field}`)}
-														</label>
-														{field === "message" ? (
-															<Textarea
-																id={field}
-																name={field}
-																required
-																value={formState[field]}
-																onChange={handleChange}
-																placeholder={t(
-																	`contact.form.${field}_placeholder`,
-																)}
-																className="font-sans break-keep whitespace-normal break-words min-h-[120px] border-t2-grayBlue focus:outline-none focus:ring-0 focus-visible:shadow-none focus-visible:outline-none focus-visible:ring-0 focus-visible:border-SecondaryBg"
-															/>
-														) : (
-															<Input
-																id={field}
-																name={field}
-																type={
-																	field === "email"
-																		? "email"
-																		: "text"
-																}
-																required={field !== "company"}
-																value={formState[field]}
-																onChange={handleChange}
-																placeholder={t(
-																	`contact.form.${field}_placeholder`,
-																)}
-																className="focus:outline-none focus:ring-0 focus-visible:shadow-none focus-visible:outline-none focus-visible:ring-0 border-t2-grayBlue focus-visible:border-SecondaryBg"
-															/>
-														)}
-													</motion.div>
-												),
-											)}
+				{/* Animated orbs */}
+				<div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-600/15 to-blue-500/15 rounded-full blur-3xl animate-pulse"></div>
+				<div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-600/10 to-pink-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-teal-600/12 to-blue-600/12 rounded-full blur-3xl animate-pulse delay-500"></div>
 
-											<motion.div variants={itemVariants}>
-												<Button
-													type="submit"
-													className="w-full bg-dark-blue hover:bg-SecondaryBg cursor-pointer text-white transition-colors duration-300"
-													disabled={isSubmitting}
-												>
-													{isSubmitting
-														? t("contact.form.submitting")
-														: t("contact.form.submit")}
-												</Button>
-											</motion.div>
-										</motion.form>
-									)}
-								</motion.div>
-							</motion.div>
-						</div>
-					</div>
+				{/* Additional subtle orbs */}
+				<div className="absolute top-10 right-1/3 w-64 h-64 bg-gradient-to-r from-indigo-600/8 to-blue-500/8 rounded-full blur-2xl animate-pulse delay-700"></div>
+				<div className="absolute bottom-10 left-1/3 w-48 h-48 bg-gradient-to-r from-teal-600/10 to-cyan-600/10 rounded-full blur-2xl animate-pulse delay-300"></div>
+
+				{/* Subtle grid pattern */}
+				<div className="absolute inset-0 opacity-5">
+					<div
+						className="absolute inset-0"
+						style={{
+							backgroundImage:
+								"radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)",
+							backgroundSize: "50px 50px",
+						}}
+					></div>
 				</div>
-				{/* Map Section */}
-				<div className="w-full flex flex-col items-center mt-12 px-2 md:px-4">
-					<div className="w-full h-[700px] rounded-lg overflow-hidden shadow-lg border ">
-						<iframe
-							title={ADDRESS_SITE.title}
-							src={ADDRESS_SITE.map}
-							width="100%"
-							height="100%"
-							style={{ border: 0 }}
-							allowFullScreen=""
-							loading="lazy"
-							referrerPolicy="no-referrer-when-downgrade"
-						></iframe>
+			</div>
+
+			<div className="relative z-10 mx-auto max-w-[1440px] px-4 md:px-6">
+				{/* Header Section */}
+				<div className="text-center mb-12">
+					<div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6 shadow-xl">
+						<svg
+							className="w-8 h-8 text-white"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+						>
+							<path
+								fillRule="evenodd"
+								d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+								clipRule="evenodd"
+							/>
+						</svg>
 					</div>
+					<h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent drop-shadow-lg">
+						Khảo sát và Liên hệ
+					</h1>
+				</div>
+
+				<div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+					{/* Survey Form Section */}
+					<motion.div
+						variants={containerVariants}
+						initial="hidden"
+						whileInView="visible"
+						viewport={{ once: true, amount: 0.2 }}
+						className="lg:w-full"
+					>
+						<motion.div
+							variants={itemVariants}
+							className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl overflow-hidden"
+						>
+							<div className="p-6 md:p-8 border-b border-white/10">
+								<h2 className="text-2xl md:text-3xl font-bold text-white mb-2 flex items-center">
+									<svg
+										className="w-6 h-6 mr-3 text-blue-400"
+										fill="currentColor"
+										viewBox="0 0 20 20"
+									>
+										<path
+											fillRule="evenodd"
+											d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+											clipRule="evenodd"
+										/>
+									</svg>
+									Khảo sát học viên
+								</h2>
+								<p className="text-gray-300">
+									Vui lòng dành vài phút để hoàn thành khảo sát bên dưới
+								</p>
+							</div>
+
+							{/* Google Forms Iframe Container */}
+							<div className="relative">
+								<div className="w-full h-[800px] md:h-[900px] bg-white/5 backdrop-blur-sm">
+									<iframe
+										src="https://docs.google.com/forms/d/e/1FAIpQLSfTS702r_PqhgPVXgHauJO2XN0zP-2PYGFop3L91QYytRn5-A/viewform?embedded=true"
+										width="100%"
+										height="100%"
+										frameBorder="0"
+										marginHeight="0"
+										marginWidth="0"
+										title="Khảo sát học viên"
+									>
+										Đang tải…
+									</iframe>
+								</div>
+							</div>
+						</motion.div>
+					</motion.div>
 				</div>
 			</div>
 		</div>
