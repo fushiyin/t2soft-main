@@ -135,7 +135,7 @@ const Header = () => {
 												className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-700 transition-colors duration-150 flex items-center"
 											>
 												<LogOut className="h-4 w-4 mr-2" />
-												Sign Out
+												Đăng xuất
 											</button>
 										</div>
 									</div>
@@ -150,7 +150,7 @@ const Header = () => {
 								<span className="text-sm font-medium">Sign In</span>
 							</Link>
 						)}
-						
+
 						{/* Language Switcher */}
 						<div className="relative">
 							<button
@@ -192,7 +192,7 @@ const Header = () => {
 					</div>
 
 					<button
-						className="lg:hidden text-white"
+						className="md:hidden text-white"
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
 					>
 						{isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -200,7 +200,7 @@ const Header = () => {
 				</div>
 
 				{isMenuOpen && (
-					<nav className="lg:hidden mt-4 pt-4 border-t border-gray-800">
+					<nav className="md:hidden mt-4 pt-4 border-t border-gray-800">
 						{navItems.map((item) => (
 							<Link
 								key={item.name}
@@ -247,7 +247,7 @@ const Header = () => {
 									</div>
 								</Link>
 							)}
-							
+
 							{/* Language Switcher for mobile */}
 							<div className="relative">
 								<button

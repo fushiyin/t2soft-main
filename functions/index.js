@@ -11,9 +11,11 @@ app.use(express.json());
 const coursesRouter = require("./api/courses");
 const youtubeRouter = require("./api/youtube");
 const documentsRouter = require("./api/documents");
+const blogRoutes = require("./api/blog");
 
 app.use("/courses", coursesRouter);
 app.use("/youtube", youtubeRouter);
 app.use("/documents", documentsRouter);
+app.use("/posts", blogRoutes);
 
 exports.api = functions.https.onRequest(app);

@@ -178,10 +178,10 @@ function CoursesSlider() {
 								</svg>
 							</div>
 							<h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-gray-200">
-								No Courses Available
+								Hiện không có khóa học nào
 							</h3>
 							<p className="text-base md:text-lg text-gray-300">
-								Please try again later.
+								Vui lòng thử lại sau.
 							</p>
 						</div>
 					) : (

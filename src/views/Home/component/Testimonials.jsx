@@ -11,54 +11,52 @@ export default function Testimonials({ contentClass }) {
 	const testimonials = [
 		[
 			{
-				name: "Kim Ji Won",
-				username: "@kjw",
+				name: "Nguyễn Minh Anh",
+				username: "@minhanh",
 				avatar: "/placeholder.svg?height=40&width=40",
 				content:
-					" T2 Soft delivered beyond our expectations. Their team was responsive, professional, and deeply knowledgeable.",
+					"Khóa học Forex của TradeMaster thực sự tuyệt vời! Các video bài giảng rất dễ hiểu, từ cơ bản đến nâng cao. Tôi đã áp dụng được kiến thức vào trading thực tế và có lợi nhuận ổn định sau 3 tháng học.",
 			},
 			{
-				name: "Shine",
-				username: "@shine",
+				name: "Trần Quang Huy",
+				username: "@quanghuy",
 				avatar: "/placeholder.svg?height=40&width=40",
 				content:
-					"Working with T2 Soft was a game-changer for our technical transformation. Their team was proactive, communicative, and technically sound. They didn’t just follow our requirements — they enhanced them with smart suggestions that improved both user experience and system performance.",
-			},
-		],
-
-		// Second row (scrolls left to right)
-		[
-			{
-				name: "Lee Hoon",
-				username: "@leehoon",
-				avatar: "/placeholder.svg?height=40&width=40",
-				content:
-					"The T2 Soft team brought our vision to life with professionalism and agility. Their understanding of modern frameworks and attention to detail helped us launch a stable, scalable web platform on time. We look forward to future collaborations.",
-			},
-			{
-				name: "Jong Bok",
-				username: "@jongbok",
-				avatar: "/placeholder.svg?height=40&width=40",
-				content:
-					"T2 Soft delivered not just a product, but a complete solution. They took the time to understand our goals and provided valuable input throughout the development cycle. The final system was efficient, user-friendly, and exceeded our expectations.",
+					"Các bài viết về phân tích kỹ thuật crypto của TradeMaster rất chất lượng. Giảng viên giải thích rõ ràng các indicator, pattern chart và psychology trading. Tôi đã hiểu rõ hơn về thị trường và cải thiện đáng kể kết quả giao dịch Bitcoin và Ethereum.",
 			},
 		],
 
-		// Third row (scrolls right to left)
 		[
 			{
-				name: "Lee Kang",
-				username: "@leekang",
+				name: "Lê Thị Mai",
+				username: "@thimai",
 				avatar: "/placeholder.svg?height=40&width=40",
 				content:
-					"We were amazed by how T2 Soft balanced speed and reliability. Even with tight deadlines, their team ensured a stable rollout and provided responsive technical support throughout the entire process.",
+					"Khóa học Fintech và blockchain của TradeMaster mở ra tầm nhìn mới về tương lai tài chính. Video bài giảng về DeFi, NFT và smart contract được trình bày một cách dễ hiểu. Tôi đã có thể tự tin đầu tư vào các dự án DeFi sau khi hoàn thành khóa học.",
 			},
 			{
-				name: "Kim dade",
-				username: "@dade",
+				name: "Phạm Văn Nam",
+				username: "@vannam",
 				avatar: "/placeholder.svg?height=40&width=40",
 				content:
-					"From planning to deployment, T2 Soft worked with agility and precision. The system was up and running smoothly, and their technical support team was always available when we needed them!'",
+					"Series bài viết về risk management trong trading forex của TradeMaster rất hữu ích. Tôi đã học được cách quản lý vốn, đặt stop loss hiệu quả và kiểm soát cảm xúc khi giao dịch. Portfolio của tôi đã ổn định hơn nhiều.",
+			},
+		],
+
+		[
+			{
+				name: "Hoàng Thị Lan",
+				username: "@thilan",
+				avatar: "/placeholder.svg?height=40&width=40",
+				content:
+					"Nội dung về cryptocurrency analysis của TradeMaster rất cập nhật và chính xác. Các video phân tích altcoin, market trend và on-chain data giúp tôi đưa ra quyết định đầu tư thông minh. Đặc biệt ấn tượng với series về trading psychology.",
+			},
+			{
+				name: "Đỗ Minh Tuấn",
+				username: "@minhtuan",
+				avatar: "/placeholder.svg?height=40&width=40",
+				content:
+					"TradeMaster có bộ tài liệu trading forex hoàn chỉnh nhất mà tôi từng thấy. Từ scalping, swing trading đến position trading đều được giải thích chi tiết qua video và bài viết. Community support cũng rất nhiệt tình!",
 			},
 		],
 	];
@@ -130,10 +128,12 @@ function TestimonialCard({ testimonial }) {
 	const { t } = useTranslation();
 
 	return (
-		<Card className="bg-white text-white shadow-md h-[300px] w-[400px] border border-white/[0.08] rounded-xl">
-			<CardContent className="p-6">
+		<Card className="bg-white text-white shadow-md h-[300px] w-[400px] border border-white/[0.08] rounded-xl relative overflow-hidden group transition-all duration-500 hover:shadow-xl">
+			<div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-blue-500/20 via-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+			<CardContent className="p-6 relative z-10">
 				<div className="flex items-start space-x-4">
-					<Avatar className="border-2 border-white/[0.3]">
+					<Avatar className="border-2 border-white/[0.3] group-hover:border-blue-400/50 transition-colors duration-300">
 						<AvatarImage
 							src={testimonial.avatar || "/placeholder.svg"}
 							alt={testimonial.name}
@@ -143,21 +143,25 @@ function TestimonialCard({ testimonial }) {
 						</AvatarFallback>
 					</Avatar>
 					<div>
-						<div className="font-medium text-black">{testimonial.name}</div>
-						<div className="text-sm text-gray-900">{testimonial.username}</div>
+						<div className="font-medium text-black group-hover:text-blue-800 transition-colors duration-300">
+							{testimonial.name}
+						</div>
+						<div className="text-sm text-gray-900 group-hover:text-purple-700 transition-colors duration-300">
+							{testimonial.username}
+						</div>
 					</div>
 				</div>
-				<p className="mt-4 text-gray-900 leading-relaxed line-clamp-4">
+				<p className="mt-4 text-gray-900 leading-relaxed line-clamp-4 group-hover:text-gray-800 transition-colors duration-300">
 					{testimonial.content}
 				</p>
 				<div className="mt-4 flex items-center space-x-4 text-gray-400 text-sm">
-					<button className="hover:text-gray-200 transition-colors">
+					<button className="hover:text-blue-600 transition-colors duration-300 group-hover:text-gray-600">
 						{t("testimonials.actions.reply")}
 					</button>
-					<button className="hover:text-gray-200 transition-colors">
+					<button className="hover:text-purple-600 transition-colors duration-300 group-hover:text-gray-600">
 						{t("testimonials.actions.share")}
 					</button>
-					<button className="hover:text-gray-200 transition-colors">
+					<button className="hover:text-teal-600 transition-colors duration-300 group-hover:text-gray-600">
 						<Ellipsis size={18} />
 					</button>
 				</div>

@@ -40,4 +40,44 @@ export const fetchDocumentById = (id) =>
   apiClient.get(`/documents/${id}`);
 
 export const incrementDocumentDownload = (id) =>
-  apiClient.post(`/documents/${id}/download`); 
+  apiClient.post(`/documents/${id}/download`);
+
+// Blog Posts API - Direct API calls
+export const fetchPinnedPosts = (limit = 3) =>
+  apiClient.get("/posts/pinned", { params: { limit } });
+
+export const fetchPostById = (id) =>
+  apiClient.get(`/posts/${id}`);
+
+export const fetchPostsByCategory = (category, params = {}) =>
+  apiClient.get(`/posts/category/${category}`, { params });
+
+export const fetchPostsByAuthor = (author_id, params = {}) =>
+  apiClient.get(`/posts/author/${author_id}`, { params });
+
+export const fetchPostsByCourse = (course_id, params = {}) =>
+  apiClient.get(`/posts/course/${course_id}`, { params });
+
+export const incrementPostReadCount = (id) =>
+  apiClient.patch(`/posts/${id}/increment-read`);
+
+export const createPost = (postData) =>
+  apiClient.post("/posts", postData);
+
+export const updatePost = (id, postData) =>
+  apiClient.put(`/posts/${id}`, postData);
+
+export const deletePost = (id) =>
+  apiClient.delete(`/posts/${id}`);
+
+export const togglePostPin = (id) =>
+  apiClient.patch(`/posts/${id}/toggle-pin`);
+
+export const fetchPopularPosts = (limit = 6) =>
+  apiClient.get("/posts/popular", { params: { limit } });
+
+export const fetchRecentPosts = (limit = 6) =>
+  apiClient.get("/posts/recent", { params: { limit } });
+
+
+export { apiClient };
