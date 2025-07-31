@@ -16,7 +16,7 @@ const Loading = ({ defaultLoading }) => {
 					transition={{ duration: 0.3, ease: "easeOut" }}
 					className="fixed inset-0 z-[999] flex items-center justify-center bg-gradient-to-br from-gray-900/95 via-slate-900/95 to-black/95 backdrop-blur-lg"
 				>
-					<div className="text-center">
+					<div className="text-center w-full flex flex-col items-center justify-center">
 						{/* Loading animation */}
 						<motion.div
 							className="relative mb-6"
