@@ -48,14 +48,26 @@ const BlogPostMobile = ({ post, isOpen, onClose, handleShare }) => {
 		}
 	};
 
+	const handleCommentFocus = () => {
+		if (!user) {
+			navigate("/user-login");
+		} else {
+			setIsFocused(true);
+		}
+	};
+
 	const handleCommentChange = (e) => {
+		if (!user) {
+			navigate("/user-login");
+			return;
+		}
 		setCommentText(e.target.value);
 
+		// Auto-resize textarea
 		if (textareaRef.current) {
 			textareaRef.current.style.height = "auto";
-			const scrollHeight = textareaRef.current.scrollHeight;
-			const maxHeight = 5 * 24;
-			textareaRef.current.style.height = Math.min(scrollHeight, maxHeight) + "px";
+			textareaRef.current.style.height =
+				Math.min(textareaRef.current.scrollHeight, 120) + "px";
 		}
 	};
 
@@ -247,10 +259,18 @@ const BlogPostMobile = ({ post, isOpen, onClose, handleShare }) => {
 					</div>
 
 					{/* Fixed Comment Input - Improved */}
-					<div className="p-4 bg-white border-t border-gray-200 sticky bottom-0">
+					<div className="p-4 bg-white border-t border-gray-200 sticky bottom-0 z-20">
 						<div className="flex space-x-3 items-end">
 							<div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-								<User className="w-4 h-4 text-white" />
+								{user?.avatar ? (
+									<img
+										src={user.avatar}
+										alt={user.name}
+										className="w-8 h-8 rounded-full object-cover"
+									/>
+								) : (
+									<User className="w-4 h-4 text-white" />
+								)}
 							</div>
 							<div className="flex-1">
 								<div className="flex items-end space-x-2">
@@ -258,9 +278,13 @@ const BlogPostMobile = ({ post, isOpen, onClose, handleShare }) => {
 										ref={textareaRef}
 										value={commentText}
 										onChange={handleCommentChange}
-										onFocus={() => setIsFocused(true)}
+										onFocus={handleCommentFocus}
 										onBlur={() => setIsFocused(false)}
-										placeholder="Viết bình luận..."
+										placeholder={
+											user
+												? "Viết bình luận..."
+												: "Nhấn để đăng nhập và bình luận"
+										}
 										className={`flex-1 p-3 border border-gray-300 rounded-2xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 ${
 											isFocused ? "min-h-[48px]" : "h-12"
 										}`}
@@ -270,13 +294,12 @@ const BlogPostMobile = ({ post, isOpen, onClose, handleShare }) => {
 											maxHeight: "120px",
 											overflowY: "auto",
 										}}
-										disabled={submittingComment}
 									/>
 									<button
 										onClick={handleSubmitComment}
-										disabled={!commentText.trim() || submittingComment}
+										disabled={!commentText.trim() || submittingComment || !user}
 										className={`p-3 rounded-full transition-all duration-200 ${
-											commentText.trim() && !submittingComment
+											commentText.trim() && !submittingComment && user
 												? "bg-blue-600 hover:bg-blue-700 text-white transform hover:scale-105"
 												: "bg-gray-300 text-gray-500 cursor-not-allowed"
 										}`}

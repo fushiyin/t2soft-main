@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
@@ -7,6 +7,14 @@ import ErrorBoundary from "@/components/error/ErrorBoundary";
 import AuthErrorFallback from "@/components/error/AuthErrorFallback";
 
 const AuthContext = createContext({});
+
+export const useAuth = () => {
+	const context = useContext(AuthContext);
+	if (!context) {
+		throw new Error("useAuth must be used within an AuthProvider");
+	}
+	return context;
+};
 
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
@@ -111,7 +119,23 @@ export const AuthProvider = ({ children }) => {
 		}
 	};
 
-	// Debug the admin check
+	const requireAuth = (action, onUnauthorized) => {
+		if (!user) {
+			if (onUnauthorized) {
+				onUnauthorized();
+			}
+			return false;
+		}
+		if (action) action();
+		return true;
+	};
+
+	const updateUser = (updates) => {
+		const updatedUser = { ...user, ...updates };
+		setUser(updatedUser);
+		localStorage.setItem("user", JSON.stringify(updatedUser));
+	};
+
 	const isAdminCheck = userProfile?.role === "admin";
 	console.log("🔍 Admin Check Debug:", {
 		userProfile: userProfile,
@@ -126,7 +150,10 @@ export const AuthProvider = ({ children }) => {
 		user,
 		userProfile,
 		loading,
+		login,
 		logout,
+		updateUser,
+		requireAuth,
 		isAuthenticated: !!user,
 		isAdmin: isAdminCheck,
 		userRole: userProfile?.role || null,
