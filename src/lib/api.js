@@ -79,5 +79,36 @@ export const fetchPopularPosts = (limit = 6) =>
 export const fetchRecentPosts = (limit = 6) =>
   apiClient.get("/posts/recent", { params: { limit } });
 
+// comments 
+export const fetchCommentsByPostId = (postId) =>
+  apiClient.get("/comments", { params: { postId } });
+export const createComment = (commentData) =>
+  apiClient.post("/comments", commentData);
+export const updateComment = (id, commentData) =>
+  apiClient.put(`/comments/${id}`, commentData);
+export const deleteComment = (id) =>
+  apiClient.delete(`/comments/${id}`);
+export const likeComment = (id) =>
+  apiClient.post(`/comments/${id}/like`);
+export const unlikeComment = (id) =>
+  apiClient.post(`/comments/${id}/unlike`);
+export const likeReply = (id) =>
+  apiClient.post(`/comments/${id}/like-reply`);
+export const addReply = (commentId, replyData) =>
+  apiClient.post(`/comments/${commentId}/reply`, replyData);
+export const editComment = (id, commentData) =>
+  apiClient.put(`/comments/${id}`, commentData);
+export const reportComment = (id, reportData) =>
+  apiClient.post(`/comments/${id}/report`, reportData);
+export const fetchCommentById = (id) =>
+  apiClient.get(`/comments/${id}`);
+export const fetchCommentsCount = (postId) =>
+  apiClient.get("/comments/count", { params: { postId } });
+export const fetchCommentsByUser = (userId, limit = 10) =>
+  apiClient.get(`/comments/user/${userId}`, { params: { limit } });
+export const pinComment = (commentId) =>
+  apiClient.post(`/comments/${commentId}/pin`);
+export const unpinComment = (commentId) =>
+  apiClient.post(`/comments/${commentId}/unpin`);
 
 export { apiClient };

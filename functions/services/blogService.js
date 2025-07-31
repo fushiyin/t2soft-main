@@ -47,16 +47,17 @@ const getMostRecentPosts = async (limit = 6) => {
 // Get most popular posts (sorted by readCount DESC)
 const getMostPopularPosts = async (limit = 6) => {
 	try {
-		const snapshot = await db.collection(POSTS_COLLECTION)
+		const snapshot = await db
+			.collection(POSTS_COLLECTION)
 			.orderBy("readCount", "desc")
 			.limit(limit)
 			.get();
-		
+
 		const posts = [];
-		snapshot.forEach(doc => {
+		snapshot.forEach((doc) => {
 			posts.push({ id: doc.id, ...doc.data() });
 		});
-		
+
 		return posts;
 	} catch (error) {
 		throw new Error(`Error fetching popular posts: ${error.message}`);
@@ -202,21 +203,21 @@ const getPostById = async (id) => {
 const incrementPostReadCount = async (id) => {
 	try {
 		const docRef = db.collection(POSTS_COLLECTION).doc(id);
-		
+
 		// Use transaction to ensure atomic increment
 		await db.runTransaction(async (transaction) => {
 			const doc = await transaction.get(docRef);
-			
+
 			if (!doc.exists) {
 				throw new Error("Post not found");
 			}
-			
+
 			const currentReadCount = doc.data().readCount || 0;
 			transaction.update(docRef, {
-				readCount: currentReadCount + 1
+				readCount: currentReadCount + 1,
 			});
 		});
-		
+
 		return { success: true };
 	} catch (error) {
 		throw new Error(`Error incrementing read count: ${error.message}`);
@@ -255,12 +256,12 @@ const createPost = async (postData) => {
 			readCount: 0, // Initialize readCount to 0 for new posts
 			is_pinned: false,
 			created_at: timestamp,
-			updated_at: timestamp
+			updated_at: timestamp,
 		};
-		
+
 		const docRef = await db.collection(POSTS_COLLECTION).add(newPost);
 		const doc = await docRef.get();
-		
+
 		return { id: doc.id, ...doc.data() };
 	} catch (error) {
 		throw new Error(`Error creating post: ${error.message}`);

@@ -12,10 +12,12 @@ const coursesRouter = require("./api/courses");
 const youtubeRouter = require("./api/youtube");
 const documentsRouter = require("./api/documents");
 const blogRoutes = require("./api/blog");
+const commentsRouter = require("./api/comments");
 
 app.use("/courses", coursesRouter);
 app.use("/youtube", youtubeRouter);
 app.use("/documents", documentsRouter);
 app.use("/posts", blogRoutes);
+app.use("/comments", commentsRouter);
 
 exports.api = functions.https.onRequest(app);

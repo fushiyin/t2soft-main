@@ -93,11 +93,11 @@ const BlogPosts = () => {
 					<div className="flex flex-col md:flex-row md:items-center md:justify-between">
 						<div>
 							<h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-								Bài viết nổi bật
+								Bài viết khác
 							</h2>
-							<p className="text-lg text-gray-600">
+							{/* <p className="text-lg text-gray-600">
 								Kiến thức chuyên sâu về Trading và Fintech
-							</p>
+							</p> */}
 						</div>
 
 						<div className="mt-6 md:mt-0">
