@@ -8,9 +8,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { idRouter } from "./idRouter";
 
 const Home = React.lazy(() => import("@/views/Home"));
-const About = React.lazy(() => import("@/views/About"));
 const Contact = React.lazy(() => import("@/views/Contact"));
-const Services = React.lazy(() => import("@/views/ServicesPage"));
 const Blog = React.lazy(() => import("@/views/MyBlog"));
 const Courses = React.lazy(() => import("@/views/Courses"));
 const Login = React.lazy(() => import("@/views/Login"));

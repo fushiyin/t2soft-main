@@ -284,7 +284,6 @@ const UserLogin = () => {
 			const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
 			
 			if (userCredential.user.emailVerified) {
-				toast.info("Your email is already verified! You can now log in.");
 				setShowResendVerification(false);
 				await auth.signOut();
 				return;
@@ -365,7 +364,6 @@ const UserLogin = () => {
 					popupError.message.includes("Cross-Origin-Opener-Policy") ||
 					popupError.message.includes("COOP")
 				) {
-					toast.info("Redirecting to Google for authentication...");
 					await signInWithRedirect(auth, authProvider);
 					// The redirect will handle the rest, and useEffect will catch the result
 					return;

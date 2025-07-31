@@ -13,11 +13,38 @@ export const AuthProvider = ({ children }) => {
 	const [userProfile, setUserProfile] = useState(null);
 	const [loading, setLoading] = useState(true);
 
+	// Load user from localStorage on app start
+	useEffect(() => {
+		const savedUser = localStorage.getItem("user");
+		if (savedUser) {
+			try {
+				const userData = JSON.parse(savedUser);
+				// Check if user data is still valid (not expired)
+				const loginTime = new Date(userData.loginTime);
+				const now = new Date();
+				const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+				if (hoursDiff < 24) {
+					// Keep login for 24 hours
+					setUser(userData);
+				} else {
+					localStorage.removeItem("user");
+				}
+			} catch (error) {
+				console.error("Error parsing saved user:", error);
+				localStorage.removeItem("user");
+			}
+		}
+		setLoading(false);
+	}, []);
+
 	const fetchUserProfile = async (uid) => {
 		try {
+			console.log("user id ", uid);
 			console.log("🔍 Fetching user profile for UID:", uid);
 			const userDocRef = doc(db, "users", uid);
 			const userDoc = await getDoc(userDocRef);
+			console.log("User document snapshot:", userDoc);
 
 			if (userDoc.exists()) {
 				const userData = userDoc.data();
@@ -56,6 +83,22 @@ export const AuthProvider = ({ children }) => {
 
 		return unsubscribe;
 	}, []);
+
+	const login = (userData) => {
+		const userInfo = {
+			id: userData.id || `user_${Date.now()}`,
+			name: userData.name || userData.displayName || "Người dùng",
+			email: userData.email,
+			avatar: userData.avatar || userData.photoURL,
+			provider: userData.provider || "unknown",
+			loginTime: new Date().toISOString(),
+			emailVerified: userData.emailVerified || false,
+			...userData,
+		};
+
+		setUser(userInfo);
+		localStorage.setItem("user", JSON.stringify(userInfo));
+	};
 
 	const logout = async () => {
 		try {

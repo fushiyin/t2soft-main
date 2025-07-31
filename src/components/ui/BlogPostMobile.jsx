@@ -14,9 +14,9 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fetchCommentsByPostId, createComment } from "@/lib/api";
+import { convertTimeToDate } from "@/lib/utils";
 
-const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
-	const [showScrollTop, setShowScrollTop] = useState(false);
+const BlogPostMobile = ({ post, isOpen, onClose, handleShare }) => {
 	const [commentText, setCommentText] = useState("");
 	const [isFocused, setIsFocused] = useState(false);
 	const [comments, setComments] = useState([]);
@@ -34,7 +34,7 @@ const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
 
 	const fetchComments = async () => {
 		if (!post?.id) return;
-		
+
 		setCommentsLoading(true);
 		try {
 			const response = await fetchCommentsByPostId(post.id);
@@ -42,43 +42,19 @@ const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
 				setComments(response.data.data || []);
 			}
 		} catch (error) {
-			console.error('Error fetching comments:', error);
+			console.error("Error fetching comments:", error);
 		} finally {
 			setCommentsLoading(false);
 		}
 	};
 
-	// Handle scroll to show/hide scroll-to-top button
-	useEffect(() => {
-		const scrollContainer = scrollContainerRef.current;
-		if (!scrollContainer) return;
-
-		const handleScroll = () => {
-			setShowScrollTop(scrollContainer.scrollTop > 300);
-		};
-
-		scrollContainer.addEventListener("scroll", handleScroll);
-		return () => scrollContainer.removeEventListener("scroll", handleScroll);
-	}, []);
-
-	const scrollToTop = () => {
-		if (scrollContainerRef.current) {
-			scrollContainerRef.current.scrollTo({
-				top: 0,
-				behavior: "smooth",
-			});
-		}
-	};
-
-	// Auto-resize textarea
 	const handleCommentChange = (e) => {
 		setCommentText(e.target.value);
 
-		// Auto-resize textarea
 		if (textareaRef.current) {
 			textareaRef.current.style.height = "auto";
 			const scrollHeight = textareaRef.current.scrollHeight;
-			const maxHeight = 5 * 24; // 5 lines * 24px line height
+			const maxHeight = 5 * 24;
 			textareaRef.current.style.height = Math.min(scrollHeight, maxHeight) + "px";
 		}
 	};
@@ -90,40 +66,24 @@ const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
 		try {
 			const commentData = {
 				postId: post.id,
-				authorId: "current_user_id", // Replace with actual user ID
-				authorName: "Người dùng hiện tại", // Replace with actual user name
-				content: commentText.trim()
+				authorId: "current_user_id",
+				authorName: "Người dùng hiện tại",
+				content: commentText.trim(),
 			};
 
 			const response = await createComment(commentData);
 			if (response.data && response.data.success) {
-				// Add new comment to the top of the list
-				setComments(prev => [response.data.data, ...prev]);
+				setComments((prev) => [response.data.data, ...prev]);
 				setCommentText("");
 				if (textareaRef.current) {
 					textareaRef.current.style.height = "auto";
 				}
 			}
 		} catch (error) {
-			console.error('Error submitting comment:', error);
+			console.error("Error submitting comment:", error);
 		} finally {
 			setSubmittingComment(false);
 		}
-	};
-
-	const formatCommentTime = (timestamp) => {
-		if (!timestamp) return "";
-		
-		const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-		const now = new Date();
-		const diffInMs = now - date;
-		const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
-		const diffInDays = Math.floor(diffInHours / 24);
-
-		if (diffInHours < 1) return "Vừa xong";
-		if (diffInHours < 24) return `${diffInHours} giờ trước`;
-		if (diffInDays < 7) return `${diffInDays} ngày trước`;
-		return date.toLocaleDateString('vi-VN');
 	};
 
 	return (
@@ -136,7 +96,6 @@ const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
 					transition={{ type: "spring", damping: 25, stiffness: 300 }}
 					className="fixed inset-0 z-50 bg-white flex flex-col"
 				>
-					{/* Mobile Header */}
 					<div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
 						<button
 							onClick={onClose}
@@ -147,7 +106,6 @@ const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
 						</button>
 					</div>
 
-					{/* Mobile Content */}
 					<div
 						ref={scrollContainerRef}
 						className="flex-1 overflow-y-auto"
@@ -159,12 +117,8 @@ const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
 
 							<div className="flex flex-wrap items-center gap-4 text-gray-600 mb-6 text-sm">
 								<div className="flex items-center space-x-2">
-									<User className="w-4 h-4" />
-									<span className="font-medium">{post.author_id}</span>
-								</div>
-								<div className="flex items-center space-x-2">
 									<Calendar className="w-4 h-4" />
-									<span className="">{formatDate(post.created_at._seconds)}</span>
+									<span className="">{convertTimeToDate(post.created_at)}</span>
 								</div>
 								<div className="flex items-center space-x-2">
 									<Eye className="w-4 h-4" />
@@ -250,27 +204,32 @@ const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
 									<div className="space-y-4">
 										{comments.length > 0 ? (
 											comments.map((comment) => (
-												<div key={comment.id} className="flex space-x-3">
+												<div
+													key={comment.id}
+													className="flex space-x-3"
+												>
 													<div className="w-8 h-8 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full flex items-center justify-center flex-shrink-0">
 														<User className="w-4 h-4 text-white" />
 													</div>
 													<div className="flex-1">
-														<div className="bg-gray-50 rounded-lg p-3">
-															<div className="font-semibold text-sm text-gray-900 mb-1">
-																{comment.authorName}
+														<div className="rounded-lg pb-3 px-3">
+															<div className="font-semibold flex items-center text-sm text-gray-900 mb-1 w-full justify-between">
+																<div>{comment.authorName}</div>
+																<div className="text-gray-600 text-xs font-semibold italic">
+																	{convertTimeToDate(
+																		comment.createdAt,
+																	)}
+																</div>
 															</div>
-															<p className="text-gray-700 text-sm">
+															<p className="text-gray-700 text-sm bg-gray-100 p-2 rounded">
 																{comment.content}
 															</p>
 														</div>
 														<div className="flex items-center space-x-4 mt-2 text-xs text-gray-500">
-															<span>{formatCommentTime(comment.createdAt)}</span>
-															<button className="hover:text-blue-600">
-																👍 {comment.likes || 0}
-															</button>
-															<button className="hover:text-blue-600">
-																Trả lời
-															</button>
+															{/* <button className="hover:text-blue-600">
+																{comment.replies?.length || 0} Trả
+																lời
+															</button> */}
 														</div>
 													</div>
 												</div>
@@ -286,17 +245,6 @@ const BlogPostMobile = ({ post, isOpen, onClose, formatDate, handleShare }) => {
 							</div>
 						</div>
 					</div>
-
-					{/* Scroll to Top Button */}
-					{showScrollTop && (
-						<button
-							onClick={scrollToTop}
-							className="fixed bottom-16 right-4 bg-blue-600 text-white rounded-full p-3 shadow-lg hover:bg-blue-700 transition-all duration-200"
-							title="Cuộn lên đầu trang"
-						>
-							<ChevronUp className="w-5 h-5" />
-						</button>
-					)}
 
 					{/* Fixed Comment Input - Improved */}
 					<div className="p-4 bg-white border-t border-gray-200 sticky bottom-0">

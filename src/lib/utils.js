@@ -30,3 +30,12 @@ export const smoothScrollTo = (targetY, duration = 500) => {
 export const scrollToTop = () => {
 	smoothScrollTo(0, 500);
 };
+
+export const convertTimeToDate = (firestoreTimestamp) => {
+	const seconds = firestoreTimestamp._seconds * 1000;
+	const nanoseconds = Math.floor(firestoreTimestamp._nanoseconds / 1e6);
+	const milliseconds = seconds + nanoseconds;
+	const date = new Date(milliseconds);
+	const options = { year: "numeric", month: "long", day: "numeric" };
+	return date.toLocaleDateString("vi-VN", options);
+};
