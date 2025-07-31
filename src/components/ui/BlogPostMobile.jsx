@@ -94,7 +94,7 @@ const BlogPostMobile = ({ post, isOpen, onClose, handleShare }) => {
 					animate={{ x: 0 }}
 					exit={{ x: "100%" }}
 					transition={{ type: "spring", damping: 25, stiffness: 300 }}
-					className="fixed inset-0 z-50 bg-white flex flex-col"
+					className="fixed inset-0 z-2000 bg-white flex flex-col"
 				>
 					<div className="flex items-center justify-between p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
 						<button
@@ -201,7 +201,7 @@ const BlogPostMobile = ({ post, isOpen, onClose, handleShare }) => {
 
 								{/* Comments List */}
 								{!commentsLoading && (
-									<div className="space-y-4">
+									<div>
 										{comments.length > 0 ? (
 											comments.map((comment) => (
 												<div
