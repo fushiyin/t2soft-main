@@ -26,6 +26,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
 import { toast } from "react-hot-toast";
 import { idRouter } from "@/routes/idRouter";
+import { saveUserToLocalStorage, removeUserFromLocalStorage } from "@/utils/localStorage";
 
 const UserLogin = () => {
 	const navigate = useNavigate();
@@ -103,6 +104,45 @@ const UserLogin = () => {
 		return true;
 	};
 
+	// Function to fetch user role from Firestore
+	const getUserRole = async (userId) => {
+		try {
+			const userDoc = await getDoc(doc(db, "users", userId));
+			if (userDoc.exists()) {
+				return userDoc.data().role || 'student'; // Default to 'student' if no role found
+			}
+			return 'student';
+		} catch (error) {
+			console.error('Error fetching user role:', error);
+			return 'student';
+		}
+	};
+
+	// Function to save complete user info to localStorage
+	const saveCompleteUserInfo = async (firebaseUser) => {
+		try {
+			const role = await getUserRole(firebaseUser.uid);
+			const token = await firebaseUser.getIdToken();
+			
+			const userInfo = {
+				id: firebaseUser.uid,
+				email: firebaseUser.email,
+				displayName: firebaseUser.displayName,
+				photoURL: firebaseUser.photoURL,
+				emailVerified: firebaseUser.emailVerified,
+				role: role,
+				token: token,
+				lastLogin: new Date().toISOString()
+			};
+			
+			saveUserToLocalStorage(userInfo);
+			return userInfo;
+		} catch (error) {
+			console.error('Error saving user info:', error);
+			throw error;
+		}
+	};
+
 	// Create user profile in Firestore for social login users
 	const createUserProfile = async (user) => {
 		try {
@@ -159,6 +199,9 @@ const UserLogin = () => {
 					updatedAt: new Date() 
 				}, { merge: true });
 			}
+			
+			// Save complete user info to localStorage after creating/updating profile
+			await saveCompleteUserInfo(user);
 		} catch (error) {
 			console.error("Error creating user profile:", error);
 			// Don't throw error here as the auth was successful
@@ -178,6 +221,7 @@ const UserLogin = () => {
 				if (!userCredential.user.emailVerified) {
 					// Sign out the user immediately
 					await auth.signOut();
+					removeUserFromLocalStorage(); // Clear any existing user data
 					setShowResendVerification(true);
 					toast.error(
 						"Please verify your email before logging in. Check your inbox for the verification link.",
@@ -187,6 +231,9 @@ const UserLogin = () => {
 					);
 					return;
 				}
+				
+				// Fetch user role and save complete user info to localStorage
+				await saveCompleteUserInfo(userCredential.user);
 				
 				toast.success("Welcome back!");
 			} else {
@@ -237,6 +284,7 @@ const UserLogin = () => {
 			navigate("/");
 		} catch (error) {
 			console.error("Authentication error:", error);
+			removeUserFromLocalStorage(); // Clear any existing user data on error
 			let errorMessage = "Authentication failed";
 
 			switch (error.code) {
@@ -348,7 +396,7 @@ const UserLogin = () => {
 				if (result && result.user) {
 					const providerName = provider.charAt(0).toUpperCase() + provider.slice(1);
 					
-					// Create Firestore user document if it doesn't exist
+					// Create Firestore user document if it doesn't exist and save to localStorage
 					await createUserProfile(result.user);
 					
 					toast.success(`Welcome! Signed in with ${providerName}`);
@@ -374,6 +422,7 @@ const UserLogin = () => {
 			}
 		} catch (error) {
 			console.error(`${provider} login error:`, error);
+			removeUserFromLocalStorage(); // Clear any existing user data on error
 			let errorMessage = `Failed to sign in with ${provider}`;
 
 			switch (error.code) {

@@ -17,7 +17,7 @@ const db = admin.firestore();
 async function checkAdminUser() {
 	try {
 		console.log("🔍 Checking admin user...");
-		
+
 		// Check if admin user exists in Firebase Auth
 		const adminEmail = "admin@t2soft.com";
 		let authUser;
@@ -37,6 +37,7 @@ async function checkAdminUser() {
 		try {
 			const userDoc = await db.collection("users").doc(authUser.uid).get();
 			if (userDoc.exists) {
+				console.log(userDoc.data());
 				const userData = userDoc.data();
 				console.log("✅ Admin user profile found in Firestore:");
 				console.log("  - Role:", userData.role);
@@ -45,9 +46,7 @@ async function checkAdminUser() {
 				console.log("  - Display Name:", userData.displayName);
 			} else {
 				console.log("❌ Admin user profile not found in Firestore");
-				
-				// Create admin profile if it doesn't exist
-				console.log("🔧 Creating admin user profile...");
+
 				const adminProfile = {
 					uid: authUser.uid,
 					email: authUser.email,
@@ -104,7 +103,6 @@ async function checkAdminUser() {
 		}
 
 		console.log("🎉 Admin user check completed successfully");
-		
 	} catch (error) {
 		console.error("❌ Error:", error);
 	}

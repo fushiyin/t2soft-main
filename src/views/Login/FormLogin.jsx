@@ -36,44 +36,47 @@ export default function FormLogin() {
 	});
 	const [loading, setLoading] = useState(false);
 
-	// Get user role-based redirect URL
 	const getRoleBasedRedirect = async (user) => {
 		try {
 			const userDocRef = doc(db, "users", user.uid);
 			const userDoc = await getDoc(userDocRef);
-			
+
 			if (userDoc.exists()) {
 				const userData = userDoc.data();
-				// Redirect based on user role
 				switch (userData.role) {
 					case "admin":
 						return "/admin/dashboard";
 					case "instructor":
-						return "/"; // Could be instructor dashboard in future
+						return "/";
 					default:
-						return "/"; // Regular user to home page
+						return "/";
 				}
 			}
-			return "/"; // Default to home if no user data found
+			return "/";
 		} catch (error) {
 			console.error("Error getting user role:", error);
-			return "/"; // Default to home on error
+			return "/";
 		}
 	};
 
 	const onSubmit = async (values) => {
+		console.log(values);
 		setLoading(true);
 		try {
-			const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
-			
-			// Check email verification
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				values.email,
+				values.password,
+			);
+
+			console.log(userCredential);
+
 			if (!userCredential.user.emailVerified) {
 				await auth.signOut();
 				toast.error("Please verify your email before logging in.");
 				return;
 			}
-			
-			// Get role-based redirect
+
 			const redirectUrl = await getRoleBasedRedirect(userCredential.user);
 			navigate(redirectUrl);
 		} catch (e) {
@@ -90,8 +93,7 @@ export default function FormLogin() {
 		try {
 			const provider = new GoogleAuthProvider();
 			const result = await signInWithPopup(auth, provider);
-			
-			// Get role-based redirect
+
 			const redirectUrl = await getRoleBasedRedirect(result.user);
 			navigate(redirectUrl);
 		} catch (e) {

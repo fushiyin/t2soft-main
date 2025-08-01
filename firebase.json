@@ -40,7 +40,7 @@
     "source": "functions"
   },
   "hosting": {
-    "public": "dist",
+    "public": "y",
     "ignore": [
       "firebase.json",
       "**/.*",
