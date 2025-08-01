@@ -310,8 +310,3 @@ module.exports = {
 	pinComment,
 	unpinComment,
 };
-	reportComment,
-	getCommentsByUser,
-	pinComment,
-	unpinComment,
-};

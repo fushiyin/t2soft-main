@@ -1,6 +1,7 @@
 {
   "projects": {
-    "y": "trading-76356"
+    "y": "trading-76356",
+    "default": "trading-76356"
   },
   "targets": {},
   "etags": {}
